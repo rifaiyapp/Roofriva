@@ -2,9 +2,10 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/site.css';
-import { site } from '../data/site';
+import '../styles/refine.css';
+import { site, roofingPhotos } from '../data/site';
 interface Props { title: string; description: string; image?: string; }
-const { title, description, image = 'https://images.pexels.com/photos/7587880/pexels-photo-7587880.jpeg?auto=compress&cs=tinysrgb&w=1200' } = Astro.props;
+const { title, description, image = roofingPhotos.house } = Astro.props;
 const canonical = new URL(Astro.url.pathname, site.domain).toString();
 ---
 <!doctype html>
@@ -29,6 +30,6 @@ const canonical = new URL(Astro.url.pathname, site.domain).toString();
   <Header />
   <main id="main-content"><slot /></main>
   <Footer />
-  <div class="mobile-actions"><a href={site.phoneHref}>Call</a><a href="/contact/">Free Quote</a></div>
+  <div class="mobile-actions"><a href={site.phoneHref}>CALL</a><a href="/contact/">FREE QUOTE</a></div>
 </body>
 </html>

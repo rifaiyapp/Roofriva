@@ -10,12 +10,23 @@ export const site = {
   demo: true,
 };
 
+const roofingPhotos = {
+  house: 'https://images.unsplash.com/photo-1744858029872-22d994d58ad9?auto=format&fit=crop&w=1600&q=82',
+  crew: 'https://images.unsplash.com/photo-1763665814485-a0a1b6f51ed7?auto=format&fit=crop&w=1200&q=82',
+  shingles: 'https://images.unsplash.com/photo-1763665814605-a6489a3bf2a0?auto=format&fit=crop&w=1200&q=82',
+  install: 'https://images.unsplash.com/photo-1763665814657-919dac53ea26?auto=format&fit=crop&w=1200&q=82',
+  repair: 'https://images.unsplash.com/photo-1763665814965-b5c4b3547908?auto=format&fit=crop&w=1200&q=82',
+  roof: 'https://images.unsplash.com/photo-1766598336763-bccfa6f8f5f0?auto=format&fit=crop&w=1200&q=82',
+};
+
+export { roofingPhotos };
+
 export const services = [
-  { slug: 'roof-repair', title: 'Roof Repair', short: 'Targeted repairs for leaks, flashing, damaged shingles and localized wear.', image: 'https://images.pexels.com/photos/37704245/pexels-photo-37704245.jpeg?auto=compress&cs=tinysrgb&w=1000' },
-  { slug: 'roof-replacement', title: 'Roof Replacement', short: 'A complete replacement path for aging, storm-worn or extensively damaged roofing.', image: 'https://images.pexels.com/photos/9431615/pexels-photo-9431615.jpeg?auto=compress&cs=tinysrgb&w=1000' },
-  { slug: 'residential-roofing', title: 'Residential Roofing', short: 'Roofing systems planned around the home, material, ventilation and drainage needs.', image: 'https://images.pexels.com/photos/7587880/pexels-photo-7587880.jpeg?auto=compress&cs=tinysrgb&w=1000' },
-  { slug: 'roof-inspection', title: 'Roof Inspection', short: 'A visual condition review to help identify damage, wear and the right next step.', image: 'https://images.pexels.com/photos/34019841/pexels-photo-34019841.jpeg?auto=compress&cs=tinysrgb&w=1000' },
-  { slug: 'metal-roofing', title: 'Metal Roofing', short: 'Modern metal roof profiles for distinctive looks and durable exterior protection.', image: 'https://images.pexels.com/photos/37704240/pexels-photo-37704240.jpeg?auto=compress&cs=tinysrgb&w=1000' },
+  { slug: 'roof-repair', title: 'Roof Repair', short: 'Targeted repairs for leaks, flashing, damaged shingles and localized wear.', image: roofingPhotos.repair },
+  { slug: 'roof-replacement', title: 'Roof Replacement', short: 'A complete replacement path for aging, storm-worn or extensively damaged roofing.', image: roofingPhotos.shingles },
+  { slug: 'residential-roofing', title: 'Residential Roofing', short: 'Roofing systems planned around the home, material, ventilation and drainage needs.', image: roofingPhotos.house },
+  { slug: 'roof-inspection', title: 'Roof Inspection', short: 'A visual condition review to help identify damage, wear and the right next step.', image: roofingPhotos.crew },
+  { slug: 'metal-roofing', title: 'Metal Roofing', short: 'Modern metal roof profiles for distinctive looks and durable exterior protection.', image: roofingPhotos.install },
 ];
 
 export const faqs = [
