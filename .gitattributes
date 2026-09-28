@@ -1,0 +1,10 @@
+* text=auto
+*.sh text eol=lf
+/.astro export-ignore
+/node_modules export-ignore
+/dist export-ignore
+/tmp export-ignore
+/.env* export-ignore
+/.env.example -export-ignore
+/.dev.vars* export-ignore
+/.wrangler export-ignore

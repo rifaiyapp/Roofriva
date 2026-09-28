@@ -1,0 +1,66 @@
+---
+import SetupPage from '../layouts/SetupPage.astro';
+---
+<SetupPage title="Welcome to New Website Setup">
+  <header class="setup-intro">
+    <h1>Welcome to<br class="desktop-break" /> New Website Setup</h1>
+    <p class="intro-copy">Use the form below to check your website setup before starting the final website build.</p>
+  </header>
+
+  <section class="form-card" aria-labelledby="form-title">
+    <header class="form-heading">
+      <h2 id="form-title">Test Website Form</h2>
+    </header>
+    <form id="callback" method="dialog" novalidate aria-labelledby="form-title" aria-describedby="required-note">
+      <p id="required-note" class="required-note">Fields marked <span aria-hidden="true">*</span><span class="visually-hidden">with an asterisk</span> are required.</p>
+      <div class="honeypot" aria-hidden="true">
+        <label for="website">Website</label>
+        <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+      </div>
+      <div class="form-grid">
+        <div class="field">
+          <label for="name">Name <span aria-hidden="true">*</span></label>
+          <input id="name" name="name" type="text" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="phone">Phone <span aria-hidden="true">*</span></label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" required />
+        </div>
+        <div class="field">
+          <label for="email">Email <span aria-hidden="true">*</span></label>
+          <input id="email" name="email" type="email" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="service">Service <span aria-hidden="true">*</span></label>
+          <select id="service" name="service" required>
+            <option value="" disabled selected>Select a service</option>
+            <option>General Inquiry</option>
+            <option>Website Service</option>
+            <option>Support Request</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="zip">ZIP Code <span aria-hidden="true">*</span></label>
+          <input id="zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" pattern="[0-9]{5}(-[0-9]{4})?" aria-describedby="zip-hint" required />
+          <span class="field-hint" id="zip-hint">5 digits, or ZIP+4 (12345-6789).</span>
+        </div>
+        <div class="field field-wide">
+          <label for="message">Message <span class="optional">Optional</span></label>
+          <textarea id="message" name="message" rows="4"></textarea>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="primary-action">Submit Test Lead <span aria-hidden="true">↗</span></button>
+      </div>
+      <p class="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
+      <noscript><p class="noscript-note">Enable JavaScript to test form behavior. No information is sent without it.</p></noscript>
+    </form>
+  </section>
+</SetupPage>
+
+<script>
+  import { connectLeadForm } from '../scripts/lead-form';
+  const form = document.querySelector<HTMLFormElement>('#callback');
+  if (form) connectLeadForm(form);
+</script>

@@ -1,0 +1,15 @@
+{
+  "name": "site-starter",
+  "compatibility_date": "2026-09-06",
+  "main": "publishing/asset-router.mjs",
+  "keep_vars": true,
+  "services": [
+    { "binding": "LEAD_GATEWAY", "service": "lead-gateway" }
+  ],
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": true,
+    "not_found_handling": "404-page"
+  }
+}

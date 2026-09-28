@@ -1,0 +1,19 @@
+---
+import '../styles/setup.css';
+interface Props { title: string }
+const { title } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex,nofollow,noarchive,nosnippet" />
+    <meta name="description" content="A neutral website setup screen for verifying form behavior before the final website build." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} | Website Starter</title>
+  </head>
+  <body>
+    <main id="main-content" class="setup-shell"><slot /></main>
+  </body>
+</html>

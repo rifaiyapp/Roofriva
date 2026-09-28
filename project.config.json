@@ -1,0 +1,13 @@
+{
+  "name": "shibga-site-starter",
+  "concept": "Website Starter",
+  "profile": "private-demo",
+  "approvedDesign": false,
+  "publishing": {
+    "branch": "main",
+    "outputDirectory": "dist"
+  },
+  "deployment": {
+    "basePath": "/"
+  }
+}
