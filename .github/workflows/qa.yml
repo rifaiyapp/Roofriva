@@ -1,0 +1,69 @@
+name: Roofriva Refine QA
+on:
+  push:
+    branches:
+      - qa/roofriva-refine
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run validate
+      - name: Verify refined live Roofriva deployment
+        shell: bash
+        run: |
+          set -euo pipefail
+          URL="https://roofriva.keydiv.workers.dev/"
+          for attempt in {1..18}; do
+            code=$(curl -L -sS -o /tmp/roofriva.html -w "%{http_code}" "$URL" || true)
+            echo "Attempt $attempt: HTTP $code"
+            if [ "$code" = "200" ] && grep -q "DEMO REVIEW INTEGRATION" /tmp/roofriva.html; then
+              cookie=$(curl -L -sS -o /dev/null -w "%{http_code}" "https://roofriva.keydiv.workers.dev/cookie-policy/" || true)
+              disclaimer=$(curl -L -sS -o /dev/null -w "%{http_code}" "https://roofriva.keydiv.workers.dev/website-disclaimer/" || true)
+              echo "Cookie policy: HTTP $cookie"
+              echo "Disclaimer: HTTP $disclaimer"
+              test "$cookie" = "200"
+              test "$disclaimer" = "200"
+              echo "Refined live deployment verified."
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "Refined deployment did not become visible in time."
+          exit 1
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Capture live desktop and mobile screenshots
+        shell: bash
+        run: |
+          mkdir -p qa-artifacts
+          cat > qa-capture.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          const browser = await chromium.launch({ headless: true });
+          const errors = [];
+          const desktop = await browser.newPage({ viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 1 });
+          desktop.on('console', m => { if (m.type() === 'error') errors.push(`desktop: ${m.text()}`); });
+          await desktop.goto('https://roofriva.keydiv.workers.dev/', { waitUntil: 'networkidle', timeout: 120000 });
+          await desktop.screenshot({ path: 'qa-artifacts/roofriva-refined-desktop.png', fullPage: true });
+          const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1, isMobile: true });
+          mobile.on('console', m => { if (m.type() === 'error') errors.push(`mobile: ${m.text()}`); });
+          await mobile.goto('https://roofriva.keydiv.workers.dev/', { waitUntil: 'networkidle', timeout: 120000 });
+          await mobile.screenshot({ path: 'qa-artifacts/roofriva-refined-mobile.png', fullPage: true });
+          console.log('Desktop size:', await desktop.evaluate(() => [document.documentElement.scrollWidth, document.documentElement.scrollHeight]));
+          console.log('Mobile size:', await mobile.evaluate(() => [document.documentElement.scrollWidth, document.documentElement.scrollHeight]));
+          console.log('Console error count:', errors.length);
+          if (errors.length) console.log(errors.join('\n'));
+          await browser.close();
+          EOF
+          node qa-capture.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: roofriva-refined-visual-qa
+          path: qa-artifacts/
+          if-no-files-found: error
