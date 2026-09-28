@@ -41,25 +41,26 @@ jobs:
         shell: bash
         run: |
           mkdir -p qa-artifacts
-          cat > /tmp/capture.mjs <<'EOF'
+          cat > qa-capture.mjs <<'EOF'
           import { chromium } from 'playwright';
-          const browser = await chromium.launch({headless:true});
-          const desktop = await browser.newPage({viewport:{width:1440,height:1000},deviceScaleFactor:1});
-          const errors=[];
-          desktop.on('console', m => { if (m.type()==='error') errors.push(m.text()); });
-          await desktop.goto('https://roofriva.keydiv.workers.dev/', {waitUntil:'networkidle', timeout:120000});
-          await desktop.screenshot({path:'qa-artifacts/roofriva-desktop.png', fullPage:true});
-          const mobile = await browser.newPage({viewport:{width:390,height:844},deviceScaleFactor:1,isMobile:true});
-          mobile.on('console', m => { if (m.type()==='error') errors.push(m.text()); });
-          await mobile.goto('https://roofriva.keydiv.workers.dev/', {waitUntil:'networkidle', timeout:120000});
-          await mobile.screenshot({path:'qa-artifacts/roofriva-mobile.png', fullPage:true});
+          const browser = await chromium.launch({ headless: true });
+          const errors = [];
+          const desktop = await browser.newPage({ viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 1 });
+          desktop.on('console', m => { if (m.type() === 'error') errors.push(`desktop: ${m.text()}`); });
+          await desktop.goto('https://roofriva.keydiv.workers.dev/', { waitUntil: 'networkidle', timeout: 120000 });
+          await desktop.screenshot({ path: 'qa-artifacts/roofriva-desktop.png', fullPage: true });
+          const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1, isMobile: true });
+          mobile.on('console', m => { if (m.type() === 'error') errors.push(`mobile: ${m.text()}`); });
+          await mobile.goto('https://roofriva.keydiv.workers.dev/', { waitUntil: 'networkidle', timeout: 120000 });
+          await mobile.screenshot({ path: 'qa-artifacts/roofriva-mobile.png', fullPage: true });
           console.log('Desktop title:', await desktop.title());
           console.log('Desktop size:', await desktop.evaluate(() => [document.documentElement.scrollWidth, document.documentElement.scrollHeight]));
           console.log('Mobile size:', await mobile.evaluate(() => [document.documentElement.scrollWidth, document.documentElement.scrollHeight]));
-          if (errors.length) console.log('Console errors:', errors);
+          console.log('Console error count:', errors.length);
+          if (errors.length) console.log(errors.join('\n'));
           await browser.close();
           EOF
-          node /tmp/capture.mjs
+          node qa-capture.mjs
       - uses: actions/upload-artifact@v4
         with:
           name: roofriva-visual-qa
