@@ -2,7 +2,7 @@
 import SiteLayout from '../layouts/SiteLayout.astro';
 import LeadForm from '../components/LeadForm.astro';
 import { site, services, faqs, roofingPhotos } from '../data/site';
-const findService = (slug) => services.find((service) => service.slug === slug)!;
+const findService = (slug: string) => services.find((service) => service.slug === slug)!;
 const homeServices = [
   { ...findService('residential-roofing'), displayTitle: 'New Roof' },
   { ...findService('roof-replacement'), displayTitle: 'Roof Replacement' },
