@@ -1,5 +1,5 @@
 {
-  "name": "site-starter",
+  "name": "roofriva",
   "compatibility_date": "2026-09-06",
   "main": "publishing/asset-router.mjs",
   "keep_vars": true,
