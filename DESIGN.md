@@ -1,7 +1,15 @@
-# Website Design
+# ROOFRIVA Design Direction
 
-This file records durable visual decisions for the current website.
+The attached roofing mockup is the visual source of truth. The homepage follows its top-to-bottom rhythm: compact dark header, atmospheric hero, overlapping residential imagery and estimate form, four tall services cards, dark/image about split, radial benefits composition, dark guarantee strip, editorial roof types, four material cards, red metrics panel, testimonial cards, asymmetric project gallery, FAQ + image CTA, angular red contact ending and dark footer.
 
-The starter has no approved client design yet. When a website brief is provided, define and maintain only the decisions that should remain consistent across future edits, such as typography, color system, spacing, imagery direction, component patterns and responsive behavior.
+## Visual system
+- Primary red: `#e51b23`
+- Deep charcoal: `#171719`
+- Near black: `#0b0b0d`
+- Light background: `#f5f5f3`
+- Desktop shell: 1180px max / 92vw
+- Headings: bold geometric sans-serif
+- Geometry: sharp rectangles, diagonal crops, roof shapes, minimal radii
 
-Do not add business claims or factual proof that was not supplied by the client.
+## Responsive strategy
+Desktop preserves the reference composition; tablet reduces columns while retaining geometry; mobile stacks overlap-heavy sections, makes the estimate form full width, provides a fixed Call / Free Quote bar, and preserves the red-charcoal-white identity.

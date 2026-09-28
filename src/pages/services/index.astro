@@ -1,0 +1,9 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { services } from '../../data/site';
+---
+<SiteLayout title="Roofing Services | Roofriva Demo" description="Explore Roofriva demo roofing services including roof repair, replacement, residential roofing, inspection and metal roofing.">
+<section class="inner-hero"><div class="shell"><div class="eyebrow">Roofing Services</div><h1>Roofing Services for Every Stage of Your Property</h1><p>From initial inspection to targeted repair and full replacement, each service page is structured around a clear customer decision.</p></div></section>
+<section class="section"><div class="shell"><div class="service-listing">{services.map(s=><a class="service-list-item" href={`/services/${s.slug}/`}><img src={s.image} alt={s.title}/><div><h3>{s.title}</h3><p>{s.short}</p><strong>Explore service →</strong></div></a>)}</div></div></section>
+<section class="cta-band"><div class="shell"><h2>Not sure which service fits your roof?</h2><p>Start with an inspection or tell us what you're seeing.</p><a class="button" href="/contact/">REQUEST AN ESTIMATE</a></div></section>
+</SiteLayout>

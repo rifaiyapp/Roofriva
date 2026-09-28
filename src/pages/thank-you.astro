@@ -1,10 +1,5 @@
 ---
-import SetupPage from '../layouts/SetupPage.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { site } from '../data/site';
 ---
-<SetupPage title="Submission Received">
-  <section class="confirmation">
-    <h1>Submission Received</h1>
-    <p class="confirmation-primary">Your test submission was processed successfully.</p>
-    <a href="/" data-runtime-mount-home class="primary-action">Return to Home <span aria-hidden="true">↗</span></a>
-  </section>
-</SetupPage>
+<SiteLayout title="Thank You | Roofriva" description="Thank you for your roofing enquiry."><section class="inner-hero"><div class="shell"><div class="eyebrow">Request Received</div><h1>Thank You</h1><p>Your roofing request has been received by the website form workflow.</p><p><a class="button" href="/">RETURN HOME</a> <a class="button" href="/services/">VIEW SERVICES</a></p><p>Demo phone: <a href={site.phoneHref}>{site.phone}</a></p></div></section></SiteLayout>

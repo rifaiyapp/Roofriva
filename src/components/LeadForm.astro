@@ -1,0 +1,20 @@
+---
+interface Props { id?: string; source?: string; compact?: boolean; }
+const { id='roofriva-estimate', source='roofriva_home_hero', compact=false } = Astro.props;
+---
+<form id={id} class:list={['lead-form', compact && 'compact']} novalidate>
+  <input type="hidden" name="form_source" value={source} />
+  <div class="honeypot" aria-hidden="true"><label for={`${id}-website`}>Website</label><input id={`${id}-website`} name="website" type="text" tabindex="-1" autocomplete="off"/></div>
+  <label>Full Name<input name="name" type="text" autocomplete="name" required /></label>
+  <label>Email<input name="email" type="email" autocomplete="email" required /></label>
+  <label>Phone<input name="phone" type="tel" autocomplete="tel" required /></label>
+  <label>ZIP Code<input name="zip" type="text" inputmode="numeric" autocomplete="postal-code" /></label>
+  <label>Service Needed<select name="service"><option>Roof Replacement</option><option>Roof Repair</option><option>Residential Roofing</option><option>Roof Inspection</option><option>Metal Roofing</option></select></label>
+  {!compact && <label>Project Message<textarea name="message" rows="3"></textarea></label>}
+  <button type="submit">GET MY FREE ESTIMATE</button>
+  <p class="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
+</form>
+<script>
+  import { connectLeadForm } from '../scripts/lead-form';
+  document.querySelectorAll<HTMLFormElement>('.lead-form').forEach((form) => connectLeadForm(form));
+</script>

@@ -1,0 +1,12 @@
+---
+import { site, services } from '../data/site';
+---
+<footer class="footer">
+  <div class="shell footer-grid">
+    <div class="footer-brand"><img src="/assets/logo-light.svg" alt="ROOFRIVA Roofing"/><p>ROOFRIVA is a fictional demonstration roofing brand created as a reusable Shibga Media website template.</p></div>
+    <div><h3>Company</h3><a href="/about/">About</a><a href="/projects/">Projects</a><a href="/faq/">FAQ</a><a href="/contact/">Contact</a></div>
+    <div><h3>Services</h3>{services.slice(0,5).map(s => <a href={`/services/${s.slug}/`}>{s.title}</a>)}</div>
+    <div><h3>Contact</h3><a href={site.phoneHref}>{site.phone}</a><a href={`mailto:${site.email}`}>{site.email}</a><span>{site.hours}</span><span>{site.serviceArea} — Demo</span></div>
+  </div>
+  <div class="shell footer-bottom"><span>© 2026 ROOFRIVA. Demo Roofing Website Template.</span><span><a href="/privacy-policy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/accessibility/">Accessibility</a></span></div>
+</footer>

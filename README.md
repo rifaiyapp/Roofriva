@@ -1,18 +1,15 @@
-# Website Starter
+# ROOFRIVA Roofing Template
 
-Starter repository for building a client website with Astro.
+Astro static website template for Shibga Media.
 
-## Development
+## Commands
+- `npm run dev`
+- `npm run build`
+- `npm run check`
+- `npm run validate`
 
-```bash
-npm install
-npm run dev
-```
+## Editing
+Business/demo data lives in `src/data/site.ts`. Main visual styles live in `src/styles/site.css`. Forms use the existing `connectLeadForm` integration and must not be redirected to a new browser-side webhook.
 
-Before publishing website changes:
-
-```bash
-npm run validate
-```
-
-Build website pages, components, layouts, styles, content and assets in the website layer. Keep the existing deployment and form infrastructure unchanged unless a maintenance task explicitly requires it.
+## Demo indexing
+The template intentionally ships `noindex,nofollow` and a blocking `robots.txt`. Replace demo data and review legal/SEO settings before using it for a real client.

@@ -1,0 +1,9 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import { site } from '../../data/site';
+---
+<SiteLayout title="Contact Roofriva | Roofing Website Demo" description="Contact the Roofriva demo roofing team or use the estimate form to preview the website lead experience.">
+<section class="inner-hero"><div class="shell"><div class="eyebrow">Contact</div><h1>Start Your Roofing Enquiry</h1><p>Demo contact details — replace before production launch.</p></div></section>
+<section class="section"><div class="shell contact-page-grid"><div class="contact-panel"><h2>Contact the Demo Roofing Team</h2><p>ROOFRIVA is a fictional demonstration brand.</p><p><strong>Phone</strong><br/><a href={site.phoneHref}>{site.phone}</a></p><p><strong>Email</strong><br/><a href={`mailto:${site.email}`}>{site.email}</a></p><p><strong>Hours</strong><br/>{site.hours}</p><p><strong>Demo Service Area</strong><br/>{site.serviceArea}</p></div><div class="contact-form-wrap"><LeadForm id="roofriva-contact" source="roofriva_contact"/></div></div></section>
+</SiteLayout>

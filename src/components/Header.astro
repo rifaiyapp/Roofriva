@@ -1,0 +1,13 @@
+---
+import { site } from '../data/site';
+---
+<div class="topbar"><div class="shell topbar-inner"><span>Premium roofing solutions</span><span>{site.hours}</span><a href={site.phoneHref}>{site.phone}</a></div></div>
+<header class="site-header">
+  <div class="shell nav-wrap">
+    <nav class="nav nav-left" aria-label="Primary"><a href="/">Home</a><a href="/about/">About</a><a href="/services/">Services</a></nav>
+    <a class="brand" href="/" aria-label="Roofriva home"><img src="/assets/logo-light.svg" alt="ROOFRIVA Roofing" /></a>
+    <nav class="nav nav-right" aria-label="Secondary"><a href="/projects/">Projects</a><a href="/faq/">FAQ</a><a href="/contact/">Contact</a></nav>
+    <a class="header-call" href={site.phoneHref}><span>Call us</span><strong>{site.phone}</strong></a>
+    <details class="mobile-menu"><summary aria-label="Open navigation"><span></span><span></span><span></span></summary><div class="mobile-panel"><a href="/">Home</a><a href="/about/">About</a><a href="/services/">Services</a><a href="/projects/">Projects</a><a href="/faq/">FAQ</a><a href="/contact/">Contact</a><a class="button" href="/contact/">Get a Free Estimate</a></div></details>
+  </div>
+</header>

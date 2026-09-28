@@ -1,0 +1,8 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+const imgs=['7587880','33039011','37704245','37704240','8134821','32854133'];
+---
+<SiteLayout title="Roofing Project Gallery | Roofriva Demo" description="Explore a demo roofing project gallery showing residential, repair, metal and roof replacement visual styles.">
+<section class="inner-hero"><div class="shell"><div class="eyebrow">Project Gallery</div><h1>Roofing Project Inspiration</h1><p>Demonstration visuals for this reusable roofing website template.</p></div></section>
+<section class="section"><div class="shell"><p><strong>Demo notice:</strong> These images do not represent completed ROOFRIVA projects.</p><div class="gallery-grid">{imgs.map(id=><img src={`https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=1000`} alt="Demonstration roofing project visual" loading="lazy"/>)}</div></div></section>
+</SiteLayout>

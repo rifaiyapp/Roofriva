@@ -1,0 +1,20 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import { services } from '../../data/site';
+export function getStaticPaths(){return services.map(service=>({params:{slug:service.slug},props:{service}}));}
+const { service } = Astro.props;
+const details: Record<string,string[]> = {
+ 'roof-repair':['Leaks and moisture entry','Missing or damaged shingles','Flashing and penetration issues','Localized storm damage'],
+ 'roof-replacement':['Widespread material deterioration','Repeated repair needs','Age-related wear','Major storm damage'],
+ 'residential-roofing':['New construction planning','Roof ventilation and drainage','Material selection','Architectural compatibility'],
+ 'roof-inspection':['Surface condition','Flashing and penetrations','Drainage and edge details','Visible storm damage'],
+ 'metal-roofing':['Panel profile selection','Flashing and transitions','Fastener or standing-seam systems','Architectural finish options']
+};
+const points = details[service.slug] || [];
+---
+<SiteLayout title={`${service.title} | Roofriva Demo`} description={`${service.title} information and estimate-request experience from the Roofriva roofing website template.`} image={service.image}>
+<section class="inner-hero" style={`background-image:linear-gradient(120deg,rgba(0,0,0,.78),rgba(229,27,35,.28)),url('${service.image}')`}><div class="shell"><div class="eyebrow">Roofing Service</div><h1>{service.title}</h1><p>{service.short}</p></div></section>
+<section class="prose"><div class="content-shell"><h2>When this service may be appropriate</h2><p>A professional roofing assessment should consider the overall roof condition, material, age, drainage, flashing details, recent weather and the extent of any visible damage. The correct solution depends on the specific property rather than a one-size-fits-all recommendation.</p><div class="cards-3">{points.slice(0,3).map(p=><div class="info-card"><h3>{p}</h3><p>One of the common conditions a roofing professional may evaluate before recommending next steps.</p></div>)}</div><h2>What a clear roofing process can include</h2><p>1. Initial enquiry and project information. 2. Property inspection. 3. Scope and recommendation. 4. Material discussion. 5. Scheduling and work. 6. Final review and site cleanup.</p><h2>Important considerations</h2><p>Roof size, slope, access, material choice, structural conditions and weather can all affect the scope and schedule. This page is demonstration content and should be replaced with the real contractor's verified process, warranties, pricing policies and service limitations.</p></div></section>
+<section class="section" style="background:#f4f4f2"><div class="shell"><div class="contact-page-grid"><div><div class="eyebrow">Start a Project</div><h2>Request a {service.title} Estimate</h2><p>Tell us what you're seeing and the template's lead form can route the enquiry through the existing Shibga lead system.</p></div><div class="contact-form-wrap"><LeadForm id={`form-${service.slug}`} source={`roofriva_${service.slug.replaceAll('-','_')}`}/></div></div></div></section>
+</SiteLayout>

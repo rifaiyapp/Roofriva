@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 150" role="img" aria-labelledby="t d"><title id="t">Roofriva Roofing</title><desc id="d">Red and white Roofriva roofing logo</desc>
+<defs><linearGradient id="r" x1="0" x2="1"><stop stop-color="#ff2828"/><stop offset="1" stop-color="#c90d16"/></linearGradient></defs>
+<path d="M36 70 114 12l70 52-20 20-50-38-58 44z" fill="url(#r)"/>
+<path d="M118 45 163 10l70 58-20 19-50-42-27 22z" fill="#fff"/>
+<path d="M157 61 210 22l49 38-18 20-31-24-35 27z" fill="url(#r)" opacity=".98"/>
+<rect x="185" y="61" width="13" height="13" rx="1" fill="#fff"/><rect x="201" y="61" width="13" height="13" rx="1" fill="#fff"/><rect x="185" y="77" width="13" height="13" rx="1" fill="#fff"/><rect x="201" y="77" width="13" height="13" rx="1" fill="#fff"/>
+<text x="260" y="82" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="53" font-weight="900" letter-spacing="-2" fill="#fff">ROOF<tspan fill="#ef1b24">RIVA</tspan></text>
+<text x="261" y="113" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" letter-spacing="9" fill="#fff">ROOFING</text>
+<text x="261" y="139" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="600" letter-spacing="3" fill="#d8d8d8">BUILT ABOVE. BUILT TO LAST.</text>
+</svg>

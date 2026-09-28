@@ -1,8 +1,4 @@
 ---
-import RuntimePage from '../layouts/RuntimePage.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
 ---
-<RuntimePage title="Page not found">
-  <h1>Page not found</h1>
-  <p>The requested page does not exist.</p>
-  <a href="/" data-runtime-mount-home>Back to home</a>
-</RuntimePage>
+<SiteLayout title="Page Not Found | Roofriva" description="The page you requested could not be found."><section class="inner-hero"><div class="shell"><div class="eyebrow">404</div><h1>Looks Like This Page Needs a Repair</h1><p>The page you're looking for isn't available.</p><p><a class="button" href="/">RETURN HOME</a> <a class="button" href="/contact/">CONTACT</a></p></div></section></SiteLayout>

@@ -1,0 +1,8 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { faqs } from '../../data/site';
+---
+<SiteLayout title="Roofing FAQ | Roofriva Demo" description="Helpful roofing questions and answers covering repair, replacement, inspections, materials and storm-related roof concerns.">
+<section class="inner-hero"><div class="shell"><div class="eyebrow">FAQ</div><h1>Roofing Questions & Answers</h1><p>Clear general information to help homeowners understand common roofing decisions.</p></div></section>
+<section class="section"><div class="content-shell faq-list">{faqs.map(([q,a])=><details><summary>{q}</summary><p>{a}</p></details>)}</div></section>
+</SiteLayout>
