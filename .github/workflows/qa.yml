@@ -6,7 +6,7 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -26,10 +26,42 @@ jobs:
             if [ "$code" = "200" ] && grep -q "Upgrade Your Residential" /tmp/roofriva.html; then
               echo "Live deployment contains the new ROOFRIVA homepage."
               grep -o "<title>[^<]*" /tmp/roofriva.html | head -1 || true
-              exit 0
+              break
+            fi
+            if [ "$attempt" = "12" ]; then
+              echo "Live URL did not expose the new homepage within the verification window."
+              head -c 800 /tmp/roofriva.html || true
+              exit 1
             fi
             sleep 10
           done
-          echo "Live URL did not expose the new homepage within the verification window."
-          head -c 800 /tmp/roofriva.html || true
-          exit 1
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Capture live desktop and mobile screenshots
+        shell: bash
+        run: |
+          mkdir -p qa-artifacts
+          cat > /tmp/capture.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          const browser = await chromium.launch({headless:true});
+          const desktop = await browser.newPage({viewport:{width:1440,height:1000},deviceScaleFactor:1});
+          const errors=[];
+          desktop.on('console', m => { if (m.type()==='error') errors.push(m.text()); });
+          await desktop.goto('https://roofriva.keydiv.workers.dev/', {waitUntil:'networkidle', timeout:120000});
+          await desktop.screenshot({path:'qa-artifacts/roofriva-desktop.png', fullPage:true});
+          const mobile = await browser.newPage({viewport:{width:390,height:844},deviceScaleFactor:1,isMobile:true});
+          mobile.on('console', m => { if (m.type()==='error') errors.push(m.text()); });
+          await mobile.goto('https://roofriva.keydiv.workers.dev/', {waitUntil:'networkidle', timeout:120000});
+          await mobile.screenshot({path:'qa-artifacts/roofriva-mobile.png', fullPage:true});
+          console.log('Desktop title:', await desktop.title());
+          console.log('Desktop size:', await desktop.evaluate(() => [document.documentElement.scrollWidth, document.documentElement.scrollHeight]));
+          console.log('Mobile size:', await mobile.evaluate(() => [document.documentElement.scrollWidth, document.documentElement.scrollHeight]));
+          if (errors.length) console.log('Console errors:', errors);
+          await browser.close();
+          EOF
+          node /tmp/capture.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: roofriva-visual-qa
+          path: qa-artifacts/
+          if-no-files-found: error
