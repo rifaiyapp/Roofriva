@@ -15,3 +15,21 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run validate
+      - name: Verify live Roofriva deployment
+        shell: bash
+        run: |
+          set -euo pipefail
+          URL="https://roofriva.keydiv.workers.dev/"
+          for attempt in {1..12}; do
+            code=$(curl -L -sS -o /tmp/roofriva.html -w "%{http_code}" "$URL" || true)
+            echo "Attempt $attempt: HTTP $code"
+            if [ "$code" = "200" ] && grep -q "Upgrade Your Residential" /tmp/roofriva.html; then
+              echo "Live deployment contains the new ROOFRIVA homepage."
+              grep -o "<title>[^<]*" /tmp/roofriva.html | head -1 || true
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "Live URL did not expose the new homepage within the verification window."
+          head -c 800 /tmp/roofriva.html || true
+          exit 1
