@@ -15,7 +15,7 @@ const asset = (name: string) => `/assets/roofriva/${name}.jpg`;
 const roofingPhotos = {
   hero: asset('hero-traditional'),
   house: asset('hero-traditional'),
-  crew: asset('crew-blueprint'),
+  crew: asset('crew-group'),
   shingles: asset('shingles'),
   install: asset('install'),
   repair: asset('repair'),
