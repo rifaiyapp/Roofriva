@@ -5,6 +5,7 @@
 .crew-card{width:42%;height:245px;clip-path:polygon(0 12%,87% 0,100% 100%,0 100%)}
 .crew-card img{object-position:center 12%;filter:saturate(.96) contrast(1.03)}
 .contact-worker img{object-position:38% 12%}
+.contact-info .eyebrow.light{color:#fff}
 .service-grid{max-width:930px}
 .about-copy{width:45%}.about-image{width:80%}
 .stats{max-width:980px}.project-gallery-wrap{max-width:1010px}.faq-grid{max-width:960px}
