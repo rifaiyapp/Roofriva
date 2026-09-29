@@ -1,0 +1,69 @@
+name: Roofriva Live Strict Check
+
+on:
+  push:
+    branches:
+      - qa/roofriva-live-strict
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      - name: Wait for Cloudflare deployment
+        shell: bash
+        run: |
+          set -euo pipefail
+          URL='https://roofriva.keydiv.workers.dev/'
+          for attempt in {1..24}; do
+            BODY="$(curl -fsSL "$URL" || true)"
+            if printf '%s' "$BODY" | grep -q 'What Makes Roofriva Roofing Stand Out' && printf '%s' "$BODY" | grep -q 'Some Frequently Asked Questions'; then
+              echo 'Live strict build detected.'
+              exit 0
+            fi
+            echo "Waiting for deployment ($attempt/24)..."
+            sleep 5
+          done
+          echo 'Live deployment did not update in time.' >&2
+          exit 1
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Capture live desktop and mobile
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p qa-live
+          cat > live.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          const browser=await chromium.launch({headless:true});
+          const errors=[];
+          async function capture(name,viewport,mobile=false){
+            const page=await browser.newPage({viewport,isMobile:mobile,deviceScaleFactor:1});
+            page.on('console',m=>{if(m.type()==='error') errors.push(`${name}: ${m.text()}`)});
+            const response=await page.goto('https://roofriva.keydiv.workers.dev/',{waitUntil:'networkidle',timeout:120000});
+            if(!response || response.status()!==200) throw new Error(`${name} status ${response?.status()}`);
+            const metrics=await page.evaluate(()=>({scrollWidth:document.documentElement.scrollWidth,clientWidth:document.documentElement.clientWidth,height:document.documentElement.scrollHeight,title:document.title}));
+            console.log(name,metrics);
+            if(metrics.scrollWidth>metrics.clientWidth+1) throw new Error(`${name}: horizontal overflow`);
+            await page.screenshot({path:`qa-live/${name}.png`,fullPage:true});
+            await page.close();
+          }
+          await capture('roofriva-live-desktop',{width:1440,height:1000});
+          await capture('roofriva-live-mobile',{width:390,height:844},true);
+          if(errors.length){console.error(errors);process.exitCode=1;}
+          await browser.close();
+          EOF
+          node live.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: roofriva-live-strict-check
+          path: qa-live/
+          if-no-files-found: error
