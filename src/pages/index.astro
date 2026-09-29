@@ -2,6 +2,7 @@
 import SiteLayout from '../layouts/SiteLayout.astro';
 import LeadForm from '../components/LeadForm.astro';
 import { site, services, faqs, roofingPhotos } from '../data/site';
+
 const findService = (slug: string) => services.find((service) => service.slug === slug)!;
 const homeServices = [
   { ...findService('residential-roofing'), displayTitle: 'New Roof' },
@@ -9,26 +10,144 @@ const homeServices = [
   { ...findService('roof-repair'), displayTitle: 'Roof Repair' },
   { ...findService('roof-inspection'), displayTitle: 'Roof Inspection' },
 ];
+const roofTypes = [
+  ['gable','Gable Roof','Two sloping sides meeting at a central ridge.'],
+  ['hip','Hip Roof','Sloping planes on all main sides of the home.'],
+  ['flat','Flat / Low-Slope Roof','A low-pitch system often used on modern additions and commercial properties.'],
+  ['shed','Shed Roof','A single-slope roof form common on additions and contemporary architecture.'],
+  ['gambrel','Gambrel Roof','A dual-slope profile with a distinctive traditional shape.'],
+  ['mansard','Mansard Roof','A multi-sided roof with steeper lower slopes and a strong architectural profile.'],
+];
 const materials = [
   ['ASPHALT SHINGLES', roofingPhotos.shingles],
-  ['DESIGNER SHINGLES', roofingPhotos.roof],
-  ['METAL ROOFING', roofingPhotos.install],
-  ['TILE ROOFING', roofingPhotos.house],
+  ['COMPOSITE ROOFING', roofingPhotos.roof],
+  ['METAL ROOFING', roofingPhotos.metal],
+  ['TILE ROOFING', roofingPhotos.tile],
 ];
 ---
 <SiteLayout title="Roofriva Roofing Website Template | Shibga Media Demo" description="ROOFRIVA is a polished, responsive roofing website template with conversion-focused UX, service pages, project gallery and accessible estimate forms.">
-<section class="hero">
-  <div class="shell hero-content"><div class="eyebrow">Roofing built for real-world protection</div><h1>Upgrade Your Residential & Commercial Roofing Experience</h1><p>Professional roofing solutions presented with clear service information, strong visual hierarchy and a streamlined path from first visit to estimate request.</p><div class="hero-actions"><a class="button" href="/contact/">GET A FREE ESTIMATE</a><a class="button ghost" href={site.phoneHref}>CALL {site.phone}</a></div></div>
-  <div class="hero-stage"><div class="hero-house" aria-hidden="true"></div><div class="crew-card"><img src={roofingPhotos.crew} alt="Roofing crew installing materials on a residential roof"/></div><div class="estimate-float"><div class="estimate-head"><div><small>Ready to start?</small><h2>Request Your Free Estimate</h2></div><div class="estimate-mark"></div></div><LeadForm compact={true}/></div></div>
-</section>
-<section class="section services-intro"><div class="shell"><div class="section-title"><div class="eyebrow">Services</div><h2>Let Us Give You the Best Roofing Service</h2><p>From inspections and repairs to replacement and material upgrades, each service has a clear next step.</p></div><div class="service-grid">{homeServices.map((s,i)=><a class:list={['service-card',i===1&&'red']} href={`/services/${s.slug}/`}><img src={s.image} alt={s.displayTitle}/><div class="service-card-content"><div class="service-icon">⌂</div><h3>{s.displayTitle}</h3><p>{s.short}</p></div></a>)}</div></div></section>
-<section class="about-band"><div class="shell about-grid"><div class="about-copy"><div class="eyebrow">About ROOFRIVA</div><h2>Roofing presented with clarity, confidence and purpose.</h2><p>ROOFRIVA is a fictional demo roofing brand created to show how a focused contractor website can communicate services, guide customers and capture enquiries without unnecessary friction.</p><div class="about-points"><div class="about-point"><b>01</b><div><strong>Clear Customer Journey</strong><small>Service discovery, project proof and estimate request flow together naturally.</small></div></div><div class="about-point"><b>02</b><div><strong>Quality Presentation</strong><small>Strong roofing imagery and concise content keep attention on the work.</small></div></div><div class="about-point"><b>03</b><div><strong>Customer-Focused Service</strong><small>Phone and form actions stay easy to find across the experience.</small></div></div></div></div></div><div class="about-image"><img src={roofingPhotos.install} alt="Roofing workers installing material on a residential property"/></div></section>
-<section class="section why"><div class="shell"><div class="section-title"><div class="eyebrow">Why Roofriva</div><h2>What Makes the Roofriva System Stand Out</h2><p>A reference-led composition built around roofing customers and reusable client delivery.</p></div><div class="radial"><div class="radial-logo"></div><div class="benefit b1"><strong>Fast Static Performance</strong>Lightweight Astro architecture.</div><div class="benefit b2"><strong>Responsive Experience</strong>Designed for every major screen size.</div><div class="benefit b3"><strong>Conversion-Focused UX</strong>Clear calls and estimate paths.</div><div class="benefit b4"><strong>SEO-Ready Structure</strong>Semantic pages and metadata foundation.</div><div class="benefit b5"><strong>Easy Rebranding</strong>Centralized business data and content.</div></div></div></section>
-<section class="cta-band"><div class="shell"><h2>We Work Hard to Make Every Roofing Enquiry Easy</h2><p>Clear information. Strong calls to action. A polished customer journey.</p><a class="button" href="/contact/">GET YOUR FREE ESTIMATE</a></div></section>
-<section class="section"><div class="shell"><div class="section-title"><div class="eyebrow">Roof Shapes</div><h2>Types of Residential Roofs We Install & Repair</h2></div><div class="editorial-grid"><div class="roof-list"><div class="roof-item"><h3>Gable Roof</h3><p>Two sloping sides meeting at a central ridge.</p></div><div class="roof-item"><h3>Hip Roof</h3><p>Sloping planes on all main sides of the home.</p></div><div class="roof-item"><h3>Flat / Low-Slope</h3><p>Low-pitch systems used on modern and commercial properties.</p></div><div class="roof-item"><h3>Gambrel Roof</h3><p>Dual-slope geometry with a traditional profile.</p></div><div class="roof-item"><h3>Mansard Roof</h3><p>Steeper lower slopes create a distinctive silhouette.</p></div><div class="roof-item"><h3>Combination Roof</h3><p>Multiple roof forms joined across more complex architecture.</p></div></div><div class="roof-diagrams"><div class="roof-shape"></div><div class="roof-shape"></div><div class="roof-shape"></div></div></div><div class="materials"><div class="section-title"><h2>Different Roofing Materials We Use</h2></div><div class="material-grid">{materials.map(m=><div class="material-card"><img src={m[1]} alt={m[0]}/><span>{m[0]}</span></div>)}</div><div class="callline">Give us a call today to discuss your roofing project<br/><b>{site.phone}</b></div></div></div></section>
-<section class="stats-wrap"><div class="shell"><div class="stats"><div class="stat"><strong>100%</strong><span>RESPONSIVE EXPERIENCE</span></div><div class="stat"><strong>90+</strong><span>PERFORMANCE TARGET</span></div><div class="stat"><strong>5</strong><span>CORE SERVICE PAGES</span></div><div class="stat"><strong>24/7</strong><span>ONLINE LEAD CAPTURE</span></div></div></div></section>
-<section class="section reviews"><div class="shell"><div class="section-title"><div class="eyebrow">Sample Testimonials</div><h2>What Our Roofing Customers Could Say</h2><p>Demo review content only — replace with verified customer feedback for a real client.</p></div><div class="review-grid"><article class="review"><div class="stars">★★★★★</div><p>“The process was straightforward, communication was clear, and the roofing options were easy to understand.”</p><strong>Alex M.</strong><small>SAMPLE HOMEOWNER</small></article><article class="review"><div class="stars">★★★★★</div><p>“The service pages made it simple to understand the difference between repair and replacement.”</p><strong>Jordan T.</strong><small>SAMPLE PROPERTY OWNER</small></article><article class="review"><div class="stars">★★★★★</div><p>“The quote request process was quick, clear and worked well on my phone.”</p><strong>Morgan R.</strong><small>SAMPLE CUSTOMER</small></article></div><div class="review-integrations"><span>DEMO REVIEW INTEGRATION</span><b>GOOGLE</b><b>YELP</b><b>FACEBOOK</b><b>TRUST SOURCE</b></div></div></section>
-<section class="section projects"><div class="shell"><div class="section-title"><div class="eyebrow">Projects</div><h2>View Some of Our Roofing Project Styles</h2></div><div class="project-strip"><div class="project"><img src={roofingPhotos.house} alt="Residential roofing project visual"/></div><div class="project featured"></div><div class="project"><img src={roofingPhotos.roof} alt="Modern roof project visual"/></div><div class="project"><img src={roofingPhotos.repair} alt="Roof repair project visual"/></div></div></div></section>
-<section class="section"><div class="shell"><div class="section-title"><div class="eyebrow">FAQ</div><h2>Some Frequently Asked Roofing Questions</h2></div><div class="faq-grid"><div class="faq-list">{faqs.slice(0,5).map(([q,a],i)=><details open={i===0}><summary>{q}</summary><p>{a}</p></details>)}</div><div class="faq-promo"><div><h3>Get the Best Roofing Service</h3><a class="button" href="/contact/">REQUEST AN ESTIMATE</a></div></div></div></div></section>
-<section class="contact-end"><div class="contact-worker"><img src={roofingPhotos.crew} alt="" aria-hidden="true"/></div><div class="shell contact-grid"><div class="map-card"><h3>Thank You</h3><p>For exploring the ROOFRIVA roofing template.</p><div class="map-visual"></div><p><a class="button" href="/contact/">VIEW SERVICE AREA</a></p></div><div class="contact-info"><div class="eyebrow" style="color:#fff">Demo Contact Information</div><h2>How to Contact Roofriva</h2><div class="contact-row"><b>☎</b><div><small>Give us a call</small><strong>{site.phone}</strong></div></div><div class="contact-row"><b>✉</b><div><small>Send an email</small><strong>{site.email}</strong></div></div><div class="contact-row"><b>⌂</b><div><small>Service area</small><strong>{site.serviceArea}</strong></div></div></div></div></section>
+  <section class="hero">
+    <div class="shell hero-content">
+      <div class="eyebrow">Roofing built for real-world protection</div>
+      <h1>Upgrade Your Residential & Commercial Roofing Experience</h1>
+      <p>Professional roofing solutions presented with clear service information, strong visual hierarchy and a streamlined path from first visit to estimate request.</p>
+      <a class="button hero-primary" href="/contact/">REQUEST A FREE ESTIMATE</a>
+    </div>
+    <div class="hero-stage">
+      <div class="hero-house" aria-hidden="true"></div>
+      <div class="crew-card"><img src={roofingPhotos.crew} alt="Roofing crew working together on a residential project"/></div>
+      <div class="estimate-float">
+        <div class="estimate-head"><div><small>Roofing project?</small><h2>Request Your Free Estimate</h2></div><div class="estimate-mark" aria-hidden="true"></div></div>
+        <LeadForm compact={true}/>
+      </div>
+    </div>
+  </section>
+
+  <section class="section services-intro">
+    <div class="shell">
+      <div class="section-title"><div class="eyebrow">Services</div><h2>Let Us Give You the Best Service for Residential & Commercial Roofs</h2></div>
+      <div class="service-grid">
+        {homeServices.map((s,i)=><a class:list={['service-card',i===1&&'red']} href={`/services/${s.slug}/`}>
+          <div class="service-image"><img src={s.image} alt={s.displayTitle}/></div>
+          <div class="service-card-content"><div class="service-icon" aria-hidden="true"><span></span></div><h3>{s.displayTitle}</h3><p>{s.short}</p></div>
+        </a>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="about-band">
+    <div class="about-image"><img src={roofingPhotos.install} alt="Roofing crew installing materials on a residential roof"/></div>
+    <div class="shell about-grid">
+      <div class="about-copy">
+        <div class="eyebrow">About ROOFRIVA</div>
+        <h2>About the Roofriva Roofing Experience</h2>
+        <p>ROOFRIVA is a fictional demo roofing brand created to show how a focused contractor website can communicate services, guide customers and capture enquiries without unnecessary friction.</p>
+        <div class="about-points">
+          <div class="about-point"><b>01</b><div><strong>Clear Customer Journey</strong><small>Service discovery, project proof and estimate request flow together naturally.</small></div></div>
+          <div class="about-point"><b>02</b><div><strong>Professional Presentation</strong><small>Roofing imagery and compact content keep attention on the work.</small></div></div>
+          <div class="about-point"><b>03</b><div><strong>Built for Growth</strong><small>The structure can expand with verified services, projects and service areas.</small></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section why">
+    <div class="shell">
+      <div class="section-title"><div class="eyebrow">Why Roofriva</div><h2>What Makes Roofriva Roofing Stand Out</h2></div>
+      <div class="radial">
+        <div class="radial-logo"><span class="radial-house"></span></div>
+        <div class="benefit b1"><span class="benefit-icon">01</span><strong>Fast Static Performance</strong><small>Lightweight Astro architecture.</small></div>
+        <div class="benefit b2"><span class="benefit-icon">02</span><strong>Responsive Experience</strong><small>Designed for every major screen size.</small></div>
+        <div class="benefit b3"><span class="benefit-icon">03</span><strong>Conversion-Focused UX</strong><small>Clear calls and estimate paths.</small></div>
+        <div class="benefit b4"><span class="benefit-icon">04</span><strong>SEO-Ready Structure</strong><small>Semantic pages and metadata foundation.</small></div>
+        <div class="benefit b5"><span class="benefit-icon">05</span><strong>Easy Rebranding</strong><small>Centralized business data and content.</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band"><div class="shell"><h2>We Work Hard to Make Every Roofing Enquiry Easy</h2><p>Clear information. Strong calls to action. A polished customer journey.</p><a class="button" href="/contact/">REQUEST YOUR ESTIMATE</a></div></section>
+
+  <section class="section roof-types-section">
+    <div class="shell">
+      <div class="section-title"><div class="eyebrow">Roof Types</div><h2>Types of Residential Roofs We Install & Repair</h2></div>
+      <div class="roof-type-grid">
+        {roofTypes.map(([kind,title,copy]) => <article class="roof-type-item"><div class:list={['roof-diagram',`roof-${kind}`]} aria-hidden="true"><i></i><b></b></div><h3>{title}</h3><p>{copy}</p></article>)}
+      </div>
+
+      <div class="materials">
+        <div class="section-title compact"><div class="eyebrow">Roofing Materials</div><h2>Different Types of Materials We Use</h2></div>
+        <div class="material-grid">{materials.map(([label,image])=><div class="material-card"><img src={image} alt={label}/><span>{label}</span></div>)}</div>
+        <div class="callline"><span>Give Us A Call Today To Discuss Your Roofing Projects</span><a href={site.phoneHref}>Call {site.phone}</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-wrap"><div class="shell"><div class="stats">
+    <div class="stat"><span class="stat-icon stat-screen" aria-hidden="true"></span><strong>100%</strong><span>RESPONSIVE EXPERIENCE</span></div>
+    <div class="stat"><span class="stat-icon stat-speed" aria-hidden="true"></span><strong>90+</strong><span>PERFORMANCE TARGET</span></div>
+    <div class="stat"><span class="stat-icon stat-roof" aria-hidden="true"></span><strong>6</strong><span>CORE ROOFING SERVICES</span></div>
+    <div class="stat"><span class="stat-icon stat-clock" aria-hidden="true"></span><strong>24/7</strong><span>ONLINE LEAD CAPTURE</span></div>
+  </div></div></section>
+
+  <section class="section reviews">
+    <div class="shell">
+      <div class="section-title"><div class="eyebrow">Sample Testimonials</div><h2>What Our Roofing Customers Could Say</h2><p>Demo review content only — replace with verified customer feedback for a real client.</p></div>
+      <div class="review-grid">
+        <article class="review"><div class="stars">★★★★★</div><p>“The process was straightforward, communication was clear, and the roofing options were easy to understand.”</p><div class="review-person"><span class="avatar">AM</span><div><strong>Alex M.</strong><small>SAMPLE HOMEOWNER</small></div></div></article>
+        <article class="review"><div class="stars">★★★★★</div><p>“The service pages made it simple to understand the difference between repair and replacement.”</p><div class="review-person"><span class="avatar">JT</span><div><strong>Jordan T.</strong><small>SAMPLE PROPERTY OWNER</small></div></div></article>
+        <article class="review"><div class="stars">★★★★★</div><p>“The quote request process was quick, clear and worked well on my phone.”</p><div class="review-person"><span class="avatar">MR</span><div><strong>Morgan R.</strong><small>SAMPLE CUSTOMER</small></div></div></article>
+      </div>
+      <div class="review-integrations"><span>DEMO TRUST INTEGRATION</span><b>REVIEWS</b><b>LOCAL</b><b>SOCIAL</b><b>TRUST</b></div>
+    </div>
+  </section>
+
+  <section class="section projects">
+    <div class="shell">
+      <div class="section-title"><div class="eyebrow">Projects</div><h2>View Some of Our Recent Project Styles</h2></div>
+      <div class="project-gallery-wrap"><span class="project-arrow left" aria-hidden="true">‹</span><div class="project-strip">
+        <div class="project small"><img src={roofingPhotos.house} alt="Residential roofing project visual"/><span>ASPHALT ROOF</span></div>
+        <div class="project featured"><div><small>ROOFRIVA DEMO</small><strong>LATEST ROOFING PROJECT</strong><a href="/projects/">VIEW PROJECT</a></div></div>
+        <div class="project tall"><img src={roofingPhotos.roof} alt="Modern roof project visual"/><span>METAL ROOF</span></div>
+        <div class="project small"><img src={roofingPhotos.repair} alt="Roof repair project visual"/><span>ROOF REPAIR</span></div>
+      </div><span class="project-arrow right" aria-hidden="true">›</span></div>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="shell"><div class="section-title"><div class="eyebrow">FAQ</div><h2>Some Frequently Asked Questions</h2></div>
+      <div class="faq-grid"><div class="faq-list">{faqs.slice(0,6).map(([q,a],i)=><details open={i===0}><summary>{q}</summary><p>{a}</p></details>)}</div><div class="faq-promo"><div><small>ROOFING HELP</small><h3>Get the Best Roofing Service</h3><a class="button" href="/contact/">REQUEST AN ESTIMATE</a></div></div></div>
+    </div>
+  </section>
+
+  <section class="contact-end">
+    <div class="contact-worker"><img src={roofingPhotos.crew} alt="" aria-hidden="true"/></div>
+    <div class="shell contact-grid">
+      <div class="map-card"><h3>Thank You</h3><p>For Choosing the ROOFRIVA Demo</p><div class="map-visual"><span class="map-pin" aria-hidden="true"></span><i class="road r1"></i><i class="road r2"></i><i class="road r3"></i><i class="road r4"></i></div><p><a class="button" href="/contact/">VIEW SERVICE AREA</a></p></div>
+      <div class="contact-info"><div class="eyebrow" style="color:#fff">Demo Contact Information</div><h2>How To Contact ROOFRIVA</h2>
+        <div class="contact-row"><b class="contact-icon">☎</b><div><small>Give us a call</small><strong>{site.phone}</strong></div></div>
+        <div class="contact-row"><b class="contact-icon">✉</b><div><small>Send an email</small><strong>{site.email}</strong></div></div>
+        <div class="contact-row"><b class="contact-icon">⌖</b><div><small>Service area</small><strong>{site.serviceArea}</strong></div></div>
+      </div>
+    </div>
+  </section>
 </SiteLayout>
