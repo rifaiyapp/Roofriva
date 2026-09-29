@@ -1,0 +1,64 @@
+name: Roofriva Live Check
+
+on:
+  push:
+    branches:
+      - qa/roofriva-live-check
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Wait for Cloudflare deployment
+        shell: bash
+        run: |
+          set -euo pipefail
+          HOME_URL='https://roofriva.keydiv.workers.dev/'
+          ASSET_URL='https://roofriva.keydiv.workers.dev/assets/roofriva/hero.jpg'
+          for attempt in {1..30}; do
+            home_code=$(curl -L -sS -o /tmp/home.html -w '%{http_code}' "$HOME_URL" || true)
+            asset_code=$(curl -L -sS -o /tmp/hero.jpg -w '%{http_code}' "$ASSET_URL" || true)
+            echo "Attempt $attempt: home=$home_code asset=$asset_code"
+            if [ "$home_code" = '200' ] && [ "$asset_code" = '200' ] && grep -q 'Roofriva Roofing Website Template' /tmp/home.html; then
+              echo 'Updated Roofriva deployment is live.'
+              exit 0
+            fi
+            sleep 10
+          done
+          echo 'Updated deployment was not visible within the verification window.'
+          exit 1
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Capture live screenshots
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p live-artifacts
+          cat > live-capture.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          const browser = await chromium.launch({headless:true});
+          for (const [name,viewport,mobile] of [
+            ['roofriva-live-desktop',{width:1440,height:1000},false],
+            ['roofriva-live-mobile',{width:390,height:844},true],
+          ]) {
+            const page=await browser.newPage({viewport,isMobile:mobile,deviceScaleFactor:1});
+            await page.goto('https://roofriva.keydiv.workers.dev/',{waitUntil:'networkidle',timeout:120000});
+            await page.screenshot({path:`live-artifacts/${name}.png`,fullPage:true});
+            console.log(name, await page.evaluate(()=>({w:document.documentElement.scrollWidth,h:document.documentElement.scrollHeight,title:document.title})));
+            await page.close();
+          }
+          await browser.close();
+          EOF
+          node live-capture.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: roofriva-live-verification
+          path: live-artifacts/
+          if-no-files-found: error
