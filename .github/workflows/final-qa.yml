@@ -1,0 +1,61 @@
+name: Roofriva Final QA
+
+on:
+  push:
+    branches:
+      - final/roofriva-reference
+    paths-ignore:
+      - public/assets/roofriva/**
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run validate
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Capture local production build
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p qa-artifacts
+          python3 -m http.server 4321 -d dist >/tmp/roofriva-server.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID || true' EXIT
+          for attempt in {1..20}; do
+            curl -fsS http://127.0.0.1:4321/ >/dev/null && break
+            sleep 1
+          done
+          cat > capture.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          const browser = await chromium.launch({headless:true});
+          const errors=[];
+          async function capture(name, viewport, mobile=false){
+            const page=await browser.newPage({viewport,isMobile:mobile,deviceScaleFactor:1});
+            page.on('console',m=>{if(m.type()==='error') errors.push(`${name}: ${m.text()}`)});
+            await page.goto('http://127.0.0.1:4321/',{waitUntil:'networkidle',timeout:120000});
+            await page.screenshot({path:`qa-artifacts/${name}.png`,fullPage:true});
+            console.log(name, await page.evaluate(()=>({w:document.documentElement.scrollWidth,h:document.documentElement.scrollHeight,title:document.title})));
+            await page.close();
+          }
+          await capture('roofriva-final-desktop',{width:1440,height:1000});
+          await capture('roofriva-final-mobile',{width:390,height:844},true);
+          console.log('console errors',errors);
+          await browser.close();
+          EOF
+          node capture.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: roofriva-final-visual-qa
+          path: qa-artifacts/
+          if-no-files-found: error
