@@ -5,7 +5,7 @@ import { site, services, faqs, roofingPhotos } from '../data/site';
 
 const findService = (slug: string) => services.find((service) => service.slug === slug)!;
 const homeServices = [
-  { ...findService('residential-roofing'), displayTitle: 'New Roof' },
+  { ...findService('residential-roofing'), displayTitle: 'New Roof Installation' },
   { ...findService('roof-replacement'), displayTitle: 'Roof Replacement' },
   { ...findService('roof-repair'), displayTitle: 'Roof Repair' },
   { ...findService('roof-inspection'), displayTitle: 'Roof Inspection' },
@@ -29,9 +29,15 @@ const materials = [
   <section class="hero">
     <div class="shell hero-content">
       <div class="eyebrow">Roofing built for real-world protection</div>
-      <h1>Upgrade Your Residential & Commercial Roofing Experience</h1>
-      <p>Professional roofing solutions presented with clear service information, strong visual hierarchy and a streamlined path from first visit to estimate request.</p>
-      <a class="button hero-primary" href="/contact/">REQUEST A FREE ESTIMATE</a>
+      <h1>Trusted Roofing Solutions for Residential & Commercial Properties</h1>
+      <p>A professional roofing website experience built around clear services, strong project visuals and an easy path from first visit to estimate request.</p>
+      <div class="hero-actions">
+        <a class="button hero-primary" href="/contact/">REQUEST A FREE ESTIMATE</a>
+        <a class="hero-phone" href={site.phoneHref}>Call {site.phone}</a>
+      </div>
+      <div class="hero-proof" aria-label="Template highlights">
+        <span>Responsive Design</span><span>Fast Lead Capture</span><span>Clear Service Journey</span>
+      </div>
     </div>
     <div class="hero-stage">
       <div class="hero-house" aria-hidden="true"></div>
@@ -45,7 +51,7 @@ const materials = [
 
   <section class="section services-intro">
     <div class="shell">
-      <div class="section-title"><div class="eyebrow">Services</div><h2>Let Us Give You the Best Service for Residential & Commercial Roofs</h2></div>
+      <div class="section-title"><div class="eyebrow">Our Roofing Services</div><h2>Professional Roofing Services for Homes & Commercial Properties</h2><p>Explore a focused set of roofing services presented with clear information and a strong path to the next step.</p></div>
       <div class="service-grid">
         {homeServices.map((s,i)=><a class:list={['service-card',i===1&&'red']} href={`/services/${s.slug}/`}>
           <div class="service-image"><img src={s.image} alt={s.displayTitle}/></div>
@@ -60,11 +66,11 @@ const materials = [
     <div class="shell about-grid">
       <div class="about-copy">
         <div class="eyebrow">About ROOFRIVA</div>
-        <h2>About the Roofriva Roofing Experience</h2>
+        <h2>A Better Structure for Roofing Businesses Online</h2>
         <p>ROOFRIVA is a fictional demo roofing brand created to show how a focused contractor website can communicate services, guide customers and capture enquiries without unnecessary friction.</p>
         <div class="about-points">
           <div class="about-point"><b>01</b><div><strong>Clear Customer Journey</strong><small>Service discovery, project proof and estimate request flow together naturally.</small></div></div>
-          <div class="about-point"><b>02</b><div><strong>Professional Presentation</strong><small>Roofing imagery and compact content keep attention on the work.</small></div></div>
+          <div class="about-point"><b>02</b><div><strong>Professional Service Presentation</strong><small>Roofing imagery and concise content keep attention on the work.</small></div></div>
           <div class="about-point"><b>03</b><div><strong>Built for Growth</strong><small>The structure can expand with verified services, projects and service areas.</small></div></div>
         </div>
       </div>
@@ -73,7 +79,7 @@ const materials = [
 
   <section class="section why">
     <div class="shell">
-      <div class="section-title"><div class="eyebrow">Why Roofriva</div><h2>What Makes Roofriva Roofing Stand Out</h2></div>
+      <div class="section-title"><div class="eyebrow">Why Choose Roofriva</div><h2>What Makes the Roofriva Website System Different</h2><p>A strong contractor template should feel professional before the visitor reads every word.</p></div>
       <div class="radial">
         <div class="radial-logo"><span class="radial-house"></span></div>
         <div class="benefit b1"><span class="benefit-icon">01</span><strong>Fast Static Performance</strong><small>Lightweight Astro architecture.</small></div>
@@ -85,19 +91,19 @@ const materials = [
     </div>
   </section>
 
-  <section class="cta-band"><div class="shell"><h2>We Work Hard to Make Every Roofing Enquiry Easy</h2><p>Clear information. Strong calls to action. A polished customer journey.</p><a class="button" href="/contact/">REQUEST YOUR ESTIMATE</a></div></section>
+  <section class="cta-band"><div class="shell"><h2>Built to Turn Roofing Traffic Into Real Enquiries</h2><p>Clear calls to action, focused service pages and a streamlined customer journey.</p><a class="button" href="/contact/">REQUEST YOUR ESTIMATE</a></div></section>
 
   <section class="section roof-types-section">
     <div class="shell">
-      <div class="section-title"><div class="eyebrow">Roof Types</div><h2>Types of Residential Roofs We Install & Repair</h2></div>
+      <div class="section-title"><div class="eyebrow">Roof Styles</div><h2>Common Residential Roof Styles</h2><p>A useful visual reference for common roof forms and project conversations.</p></div>
       <div class="roof-type-grid">
         {roofTypes.map(([kind,title,copy]) => <article class="roof-type-item"><div class:list={['roof-diagram',`roof-${kind}`]} aria-hidden="true"><i></i><b></b></div><h3>{title}</h3><p>{copy}</p></article>)}
       </div>
 
       <div class="materials">
-        <div class="section-title compact"><div class="eyebrow">Roofing Materials</div><h2>Different Types of Materials We Use</h2></div>
+        <div class="section-title compact"><div class="eyebrow">Roofing Materials</div><h2>Popular Roofing Materials</h2></div>
         <div class="material-grid">{materials.map(([label,image])=><div class="material-card"><img src={image} alt={label}/><span>{label}</span></div>)}</div>
-        <div class="callline"><span>Give Us A Call Today To Discuss Your Roofing Projects</span><a href={site.phoneHref}>Call {site.phone}</a></div>
+        <div class="callline"><span>Planning a roofing project?</span><a href={site.phoneHref}>Call {site.phone}</a></div>
       </div>
     </div>
   </section>
@@ -111,7 +117,7 @@ const materials = [
 
   <section class="section reviews">
     <div class="shell">
-      <div class="section-title"><div class="eyebrow">Sample Testimonials</div><h2>What Our Roofing Customers Could Say</h2><p>Demo review content only — replace with verified customer feedback for a real client.</p></div>
+      <div class="section-title"><div class="eyebrow">Client Feedback</div><h2>A Review Experience Designed to Build Confidence</h2><p>Demo review content only — replace with verified customer feedback for a real client.</p></div>
       <div class="review-grid">
         <article class="review"><div class="stars">★★★★★</div><p>“The process was straightforward, communication was clear, and the roofing options were easy to understand.”</p><div class="review-person"><span class="avatar">AM</span><div><strong>Alex M.</strong><small>SAMPLE HOMEOWNER</small></div></div></article>
         <article class="review"><div class="stars">★★★★★</div><p>“The service pages made it simple to understand the difference between repair and replacement.”</p><div class="review-person"><span class="avatar">JT</span><div><strong>Jordan T.</strong><small>SAMPLE PROPERTY OWNER</small></div></div></article>
@@ -123,27 +129,27 @@ const materials = [
 
   <section class="section projects">
     <div class="shell">
-      <div class="section-title"><div class="eyebrow">Projects</div><h2>View Some of Our Recent Project Styles</h2></div>
-      <div class="project-gallery-wrap"><span class="project-arrow left" aria-hidden="true">‹</span><div class="project-strip">
+      <div class="section-title"><div class="eyebrow">Project Gallery</div><h2>Explore Roofing Project Styles</h2><p>Use strong project imagery to make the template feel credible and easy to scan.</p></div>
+      <div class="project-gallery-wrap"><div class="project-strip">
         <div class="project small"><img src={roofingPhotos.house} alt="Residential roofing project visual"/><span>ASPHALT ROOF</span></div>
-        <div class="project featured"><div><small>ROOFRIVA DEMO</small><strong>LATEST ROOFING PROJECT</strong><a href="/projects/">VIEW PROJECT</a></div></div>
-        <div class="project tall"><img src={roofingPhotos.roof} alt="Modern roof project visual"/><span>METAL ROOF</span></div>
+        <div class="project featured"><img src={roofingPhotos.install} alt="Roof installation project visual"/><div><small>ROOFRIVA DEMO</small><strong>MODERN ROOF INSTALLATION</strong><a href="/projects/">VIEW PROJECT</a></div></div>
+        <div class="project tall"><img src={roofingPhotos.metal} alt="Metal roof project visual"/><span>METAL ROOF</span></div>
         <div class="project small"><img src={roofingPhotos.repair} alt="Roof repair project visual"/><span>ROOF REPAIR</span></div>
-      </div><span class="project-arrow right" aria-hidden="true">›</span></div>
+      </div></div>
     </div>
   </section>
 
   <section class="section faq-section">
-    <div class="shell"><div class="section-title"><div class="eyebrow">FAQ</div><h2>Some Frequently Asked Questions</h2></div>
-      <div class="faq-grid"><div class="faq-list">{faqs.slice(0,6).map(([q,a],i)=><details open={i===0}><summary>{q}</summary><p>{a}</p></details>)}</div><div class="faq-promo"><div><small>ROOFING HELP</small><h3>Get the Best Roofing Service</h3><a class="button" href="/contact/">REQUEST AN ESTIMATE</a></div></div></div>
+    <div class="shell"><div class="section-title"><div class="eyebrow">FAQ</div><h2>Frequently Asked Roofing Questions</h2><p>Give visitors useful answers without adding visual clutter.</p></div>
+      <div class="faq-grid"><div class="faq-list">{faqs.slice(0,6).map(([q,a],i)=><details open={i===0}><summary>{q}</summary><p>{a}</p></details>)}</div><div class="faq-promo"><div><small>NEED ROOFING HELP?</small><h3>Make the Next Step Easy</h3><a class="button" href="/contact/">REQUEST AN ESTIMATE</a></div></div></div>
     </div>
   </section>
 
   <section class="contact-end">
     <div class="contact-worker"><img src={roofingPhotos.crew} alt="" aria-hidden="true"/></div>
     <div class="shell contact-grid">
-      <div class="map-card"><h3>Thank You</h3><p>For Choosing the ROOFRIVA Demo</p><div class="map-visual"><span class="map-pin" aria-hidden="true"></span><i class="road r1"></i><i class="road r2"></i><i class="road r3"></i><i class="road r4"></i></div><p><a class="button" href="/contact/">VIEW SERVICE AREA</a></p></div>
-      <div class="contact-info"><div class="eyebrow light">Demo Contact Information</div><h2>How To Contact ROOFRIVA</h2>
+      <div class="map-card"><h3>Thank You</h3><p>For Exploring the ROOFRIVA Demo</p><div class="map-visual"><span class="map-pin" aria-hidden="true"></span><i class="road r1"></i><i class="road r2"></i><i class="road r3"></i><i class="road r4"></i></div><p><a class="button" href="/contact/">VIEW SERVICE AREA</a></p></div>
+      <div class="contact-info"><div class="eyebrow light">Demo Contact Information</div><h2>Contact the Demo Roofing Team</h2>
         <div class="contact-row"><b class="contact-icon">☎</b><div><small>Give us a call</small><strong>{site.phone}</strong></div></div>
         <div class="contact-row"><b class="contact-icon">✉</b><div><small>Send an email</small><strong>{site.email}</strong></div></div>
         <div class="contact-row"><b class="contact-icon">⌖</b><div><small>Service area</small><strong>{site.serviceArea}</strong></div></div>
