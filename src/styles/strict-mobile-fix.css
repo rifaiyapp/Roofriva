@@ -1,0 +1,9 @@
+/* Mobile containment for the strict-reference pass. */
+html,body{max-width:100%;overflow-x:clip}
+@media(max-width:700px){
+  .hero,.services-intro,.about-band,.why,.roof-types-section,.stats-wrap,.reviews,.projects,.faq-section,.contact-end,.footer{max-width:100%;overflow-x:clip}
+  .about-image,.contact-end:after,.contact-end:before{max-width:100%}
+  .project-gallery-wrap,.project-strip,.faq-grid,.service-grid,.roof-type-grid,.material-grid,.stats,.review-grid,.contact-grid,.footer-links-grid{min-width:0;max-width:100%}
+  .project-gallery-wrap{width:100%}
+  .project{min-width:0}
+}
