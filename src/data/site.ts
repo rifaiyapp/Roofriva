@@ -13,9 +13,9 @@ export const site = {
 const asset = (name: string) => `/assets/roofriva/${name}.jpg`;
 
 const roofingPhotos = {
-  hero: asset('hero'),
-  house: asset('house'),
-  crew: asset('crew'),
+  hero: asset('hero-traditional'),
+  house: asset('hero-traditional'),
+  crew: asset('crew-blueprint'),
   shingles: asset('shingles'),
   install: asset('install'),
   repair: asset('repair'),
