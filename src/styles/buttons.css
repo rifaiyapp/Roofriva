@@ -24,11 +24,11 @@
   transform:skew(13deg)!important;
 }
 
-/* White accent line: half overlaps the button and half sits outside on the right. */
+/* White accent line on the lower-right edge. */
 .button::before{
   content:'';
   position:absolute;
-  top:50%;
+  top:80%;
   right:0;
   width:74px;
   height:1px;
@@ -42,7 +42,7 @@
 }
 
 .button.angled::before{
-  transform:translate(50%,-50%) skew(13deg);
+  transform:translate(0%,-50%) skew(13deg);
 }
 
 .button:hover,
