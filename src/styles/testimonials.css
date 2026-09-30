@@ -3,7 +3,7 @@
   height:auto!important;
   min-height:0!important;
   margin-top:0!important;
-  padding:90px 0 82px!important;
+  padding:90px 0 76px!important;
   overflow:hidden;
 }
 
@@ -28,7 +28,7 @@
   scroll-behavior:smooth;
   scrollbar-width:none;
   -ms-overflow-style:none;
-  padding:8px 2px 34px;
+  padding:8px 2px 28px;
 }
 
 .reviews-grid::-webkit-scrollbar{display:none}
@@ -72,7 +72,7 @@
   align-items:center;
   justify-content:center;
   gap:18px;
-  margin:4px auto 34px;
+  margin:0 auto 20px;
 }
 
 .review-carousel-arrow{
@@ -119,22 +119,143 @@
   background:var(--red);
 }
 
-.review-platforms{
-  margin-top:20px!important;
+/* Review platform badges ------------------------------------------------ */
+.reviews-section .review-platforms{
+  width:min(860px,calc(100% - 40px));
+  margin:14px auto 0!important;
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:18px!important;
+  align-items:stretch;
+  justify-content:center;
+}
+
+.reviews-section .review-platforms>span{
+  width:100%!important;
+  height:86px!important;
+  min-width:0!important;
+  padding:10px 14px 12px!important;
+  display:flex!important;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  background:#fff!important;
+  border:1px solid rgba(183,0,7,.48)!important;
+  border-bottom:3px solid rgba(183,0,7,.45)!important;
+  box-shadow:0 7px 18px rgba(0,0,0,.06)!important;
+  line-height:1!important;
+  text-align:center;
+}
+
+.reviews-section .platform-bbb{
+  color:#17576d!important;
+  font-size:30px!important;
+  font-family:Arial,sans-serif!important;
+  font-weight:800!important;
+  letter-spacing:-.03em!important;
+}
+
+.reviews-section .platform-bbb>span{
+  display:block!important;
+  margin-top:4px!important;
+  font-size:6px!important;
+  line-height:1.15!important;
+  letter-spacing:.08em!important;
+  font-weight:700!important;
+}
+
+.reviews-section .platform-yelp{
+  color:#222!important;
+  font-family:Arial,sans-serif!important;
+  font-size:31px!important;
+  font-weight:700!important;
+  text-transform:lowercase;
+}
+
+.reviews-section .platform-yelp::after{
+  content:'✱';
+  margin-left:4px;
+  color:#c9272c;
+  font-size:27px;
+  line-height:1;
+  vertical-align:middle;
+}
+
+.reviews-section .platform-google{
+  font-family:Arial,sans-serif!important;
+  font-size:28px!important;
+  font-weight:500!important;
+  letter-spacing:-.035em!important;
+  flex-direction:row!important;
+  flex-wrap:wrap;
+  column-gap:0;
+}
+
+.reviews-section .platform-facebook{
+  color:#356199!important;
+  font-family:Arial,sans-serif!important;
+  font-size:27px!important;
+  font-weight:700!important;
+  letter-spacing:-.035em!important;
+  text-transform:lowercase;
+}
+
+.reviews-section .platform-stars{
+  flex-basis:100%;
+  display:block!important;
+  margin-top:7px!important;
+  color:#d5a044!important;
+  font-family:Arial,sans-serif!important;
+  font-size:13px!important;
+  line-height:1!important;
+  letter-spacing:1px!important;
+}
+
+.reviews-section .platform-note{
+  max-width:860px;
+  margin:7px auto 0!important;
+  color:#8b8b8b!important;
+  font-size:8px!important;
+  line-height:1.4!important;
+  text-align:center;
 }
 
 @media(max-width:900px){
-  .reviews-section{padding:76px 0 70px!important}
+  .reviews-section{padding:76px 0 68px!important}
   .reviews-grid .review-card{flex-basis:calc((100% - 20px)/2)}
   .reviews-grid{gap:20px!important}
+  .reviews-section .review-platforms{
+    width:min(700px,calc(100% - 44px));
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:14px!important;
+  }
 }
 
 @media(max-width:600px){
-  .reviews-section{padding:64px 0 60px!important}
+  .reviews-section{padding:64px 0 56px!important}
   .reviews-section .review-intro{margin-bottom:30px}
-  .reviews-grid{gap:14px!important;padding-bottom:26px}
+  .reviews-grid{gap:14px!important;padding-bottom:24px}
   .reviews-grid .review-card{flex-basis:100%}
   .review-card blockquote{min-height:175px!important}
-  .review-carousel-controls{margin-bottom:26px}
-  .review-platforms{margin-top:14px!important}
+  .review-carousel-controls{margin-bottom:18px}
+  .reviews-section .review-platforms{
+    width:calc(100% - 32px);
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px!important;
+    margin-top:10px!important;
+  }
+  .reviews-section .review-platforms>span{
+    height:72px!important;
+    padding:8px 10px 10px!important;
+  }
+  .reviews-section .platform-bbb,
+  .reviews-section .platform-yelp,
+  .reviews-section .platform-google,
+  .reviews-section .platform-facebook{
+    font-size:23px!important;
+  }
+  .reviews-section .platform-note{
+    width:calc(100% - 36px);
+    margin-top:6px!important;
+  }
 }
