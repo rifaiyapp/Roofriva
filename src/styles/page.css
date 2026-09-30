@@ -1,4 +1,5 @@
 /* Page-level section visibility and layout overrides. */
-.roof-types{
+.roof-types,
+.materials-section{
   display:none!important;
 }
