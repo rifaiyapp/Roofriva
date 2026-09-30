@@ -1,5 +1,13 @@
 (() => {
   const section = document.querySelector('.projects-section');
+  const promiseBand = document.querySelector('.promise-band');
+  const statsSection = document.querySelector('.stats-section');
+
+  if (section && promiseBand && statsSection) {
+    section.insertAdjacentElement('afterend', promiseBand);
+    promiseBand.insertAdjacentElement('afterend', statsSection);
+  }
+
   const track = section?.querySelector('.project-track');
   if (!section || !track) return;
 
