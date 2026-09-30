@@ -1,0 +1,160 @@
+/* About feature blocks --------------------------------------------------- */
+.about-panel .about-point {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  min-height: 116px;
+  margin-top: 28px !important;
+  padding: 0 28px 0 0 !important;
+  gap: 0 !important;
+  overflow: visible;
+  background: linear-gradient(100deg, rgba(49,49,49,.96) 0%, rgba(38,38,38,.94) 72%, rgba(29,29,29,.92) 100%) !important;
+  border: 1px solid rgba(255,255,255,.26);
+  box-shadow: 0 10px 22px rgba(0,0,0,.16);
+  transform: skew(-10deg) !important;
+}
+
+.about-panel .about-point > span {
+  position: relative;
+  width: 132px !important;
+  min-width: 132px !important;
+  min-height: 116px !important;
+  margin: -1px 32px -1px -26px !important;
+  display: grid !important;
+  place-items: center !important;
+  overflow: hidden;
+  background: linear-gradient(145deg, #ef0008 0%, #d70008 54%, #b90006 100%) !important;
+  color: #fff !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.10),
+    inset 0 -12px 22px rgba(92,0,2,.14),
+    0 12px 22px rgba(0,0,0,.19) !important;
+}
+
+/* Replace the original feature glyph with the clean white arrow from the mockup. */
+.about-panel .about-point > span .icon {
+  display: none !important;
+}
+
+.about-panel .about-point > span::before {
+  content: '\2192';
+  display: block;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 48px;
+  line-height: 1;
+  font-weight: 300;
+  letter-spacing: 0;
+  transform: skew(10deg) translateX(1px);
+  text-shadow: 0 1px 2px rgba(0,0,0,.10);
+}
+
+.about-panel .about-point > div {
+  flex: 1;
+  align-self: center;
+  padding: 19px 10px 19px 0 !important;
+  transform: skew(10deg) !important;
+}
+
+.about-panel .about-point h3 {
+  margin: 0 0 7px !important;
+  color: #fff;
+  font-family: var(--heading-font) !important;
+  font-size: 18px !important;
+  line-height: 1.18 !important;
+  font-weight: 700 !important;
+  letter-spacing: -.015em !important;
+}
+
+.about-panel .about-point p {
+  max-width: 390px;
+  margin: 0 !important;
+  color: rgba(255,255,255,.92);
+  font-size: 13px !important;
+  line-height: 1.42 !important;
+  font-weight: 400;
+}
+
+/* Slight lift and brighter tab on interaction, without changing the reference geometry. */
+.about-panel .about-point {
+  transition: transform .35s cubic-bezier(.2,.7,.2,1), border-color .3s ease, box-shadow .3s ease;
+}
+
+.about-panel .about-point:hover {
+  border-color: rgba(255,255,255,.40);
+  box-shadow: 0 14px 28px rgba(0,0,0,.22);
+  transform: skew(-10deg) translateX(4px) !important;
+}
+
+.about-panel .about-point:hover > span {
+  background: linear-gradient(145deg, #ff1018 0%, #e00008 55%, #c20007 100%) !important;
+}
+
+@media (max-width: 900px) {
+  .about-panel .about-point {
+    min-height: 96px;
+    margin-top: 20px !important;
+  }
+
+  .about-panel .about-point > span {
+    width: 104px !important;
+    min-width: 104px !important;
+    min-height: 96px !important;
+    margin-left: -18px !important;
+    margin-right: 24px !important;
+  }
+
+  .about-panel .about-point > span::before {
+    font-size: 40px;
+  }
+
+  .about-panel .about-point > div {
+    padding: 15px 6px 15px 0 !important;
+  }
+
+  .about-panel .about-point h3 {
+    font-size: 15px !important;
+  }
+
+  .about-panel .about-point p {
+    font-size: 11px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-panel .about-point {
+    min-height: 88px;
+    padding-right: 16px !important;
+    transform: skew(-8deg) !important;
+  }
+
+  .about-panel .about-point > span {
+    width: 86px !important;
+    min-width: 86px !important;
+    min-height: 88px !important;
+    margin-left: -14px !important;
+    margin-right: 18px !important;
+  }
+
+  .about-panel .about-point > span::before,
+  .about-panel .about-point > div {
+    transform: skew(8deg) !important;
+  }
+
+  .about-panel .about-point > span::before {
+    font-size: 34px;
+  }
+
+  .about-panel .about-point h3 {
+    font-size: 14px !important;
+  }
+
+  .about-panel .about-point p {
+    font-size: 10px !important;
+    line-height: 1.4 !important;
+  }
+
+  .about-panel .about-point:hover {
+    transform: skew(-8deg) translateX(2px) !important;
+  }
+}
