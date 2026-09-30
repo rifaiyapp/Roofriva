@@ -26,13 +26,13 @@ const projects=[['project-cabin','Blue metal roof on a timber home','METAL ROOF 
 ---
 <SiteLayout>
 <header class="site-header">
- <div class="header-inner">
-  <nav class="nav-left desktop-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/#about">About Us</a></nav>
+ <div class="header-top">
+  <div class="header-address"><Icon name="pin"/><span><small>Our Address</small><strong>123 Main Street, Austin, TX</strong></span></div>
   <a class="brand" href="/" aria-label="ROOFRIVA home"><BrandMark light/><span>roofriva</span></a>
   <a class="header-phone" href={site.phoneHref}><Icon name="phone"/><span><small>Give us a call</small><strong>{site.phone}</strong></span></a>
-  <nav class="nav-right desktop-nav" aria-label="Services and contact"><a href="/#services">Services</a><a href="/#contact">Contact Us</a></nav>
   <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav"><Icon name="menu"/></button>
  </div>
+ <nav class="header-nav desktop-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/#about">About Us</a><a href="/#services">Services</a><a href="/#projects">Projects</a><a href="/#contact">Contact Us</a></nav>
  <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" hidden><a href="/">Home</a><a href="/#about">About Us</a><a href="/#services">Services</a><a href="/#projects">Projects</a><a href="/#contact">Contact Us</a></nav>
 </header>
 <main id="main-content">
@@ -82,6 +82,24 @@ const projects=[['project-cabin','Blue metal roof on a timber home','METAL ROOF 
  <section class="contact-section" id="contact"><img class="contact-crew" src={photo('crew-cutout')} alt="" loading="lazy" width="1536" height="1024"/><div class="shell contact-grid"><div class="map-card"><h2>Thank You</h2><p>For Choosing Best Roofing!</p><a href="https://www.openstreetmap.org/search?query=Austin%2C%20Texas" target="_blank" rel="noopener noreferrer" aria-label="View the Austin service area on OpenStreetMap"><img src={photo('contact-map')} alt="Illustrative map representing the Austin service area" loading="lazy" width="1024" height="1024"/></a><small>Illustrative service area map</small><a class="map-link" href="https://www.openstreetmap.org/search?query=Austin%2C%20Texas" target="_blank" rel="noopener noreferrer">VIEW SERVICE AREA</a></div><div class="contact-info"><h2>How To Contact<br/>Best Roofing</h2><div class="contact-row"><span class="hex"><Icon name="pin"/></span><div><h3>Service Area</h3><p>{site.serviceArea}</p></div></div><div class="contact-row"><span class="hex"><Icon name="phone"/></span><div><h3>Phone Number</h3><a href={site.phoneHref}>{site.phone}</a></div></div><div class="contact-row"><span class="hex"><Icon name="mail"/></span><div><h3>Email Address</h3><a href={`mailto:${site.email}`}>{site.email}</a></div></div></div></div></section>
 </main>
 <footer class="site-footer"><div class="footer-main"><div class="footer-hours"><Icon name="clock"/><p><strong>Opening Hours</strong>{site.hours}</p></div><a class="brand footer-brand" href="/" aria-label="ROOFRIVA home"><BrandMark light/><span>roofriva</span></a><a class="footer-phone" href={site.phoneHref}><Icon name="phone"/><span><small>Call us today</small><strong>{site.phone}</strong></span></a></div><nav class="footer-nav" aria-label="Footer navigation"><a href="/">HOME</a><a href="/#about">ABOUT US</a><a href="/#services">SERVICES</a><a href="/#contact">CONTACT US</a></nav><div class="footer-contact"><a href={site.phoneHref} aria-label="Call ROOFRIVA"><Icon name="phone"/></a><a href={`mailto:${site.email}`} aria-label="Email ROOFRIVA"><Icon name="mail"/></a><a href="/#quote" aria-label="Request an estimate"><Icon name="document"/></a></div><p class="copyright">© {new Date().getFullYear()} ROOFRIVA. Demo website · Sample imagery and content.</p></footer>
+<style is:global>
+ .site-header .header-top{width:min(1000px,calc(100% - 80px));height:150px;margin:0 auto;display:grid;grid-template-columns:1fr 220px 1fr;align-items:center;position:relative}
+ .site-header .header-address{display:flex;align-items:center;gap:12px;justify-self:start;color:#fff;text-align:left}
+ .site-header .header-address .icon{width:32px;height:32px;stroke:#fff;stroke-width:1.6}
+ .site-header .header-address small,.site-header .header-phone small{font-size:10px;display:block;font-weight:400}
+ .site-header .header-address strong,.site-header .header-phone strong{font-size:15px;display:block;font-weight:600;white-space:nowrap}
+ .site-header .header-top>.brand{justify-self:center;align-self:center;padding:0}
+ .site-header .header-phone{position:static;right:auto;top:auto;justify-self:end;display:flex;gap:12px;align-items:center}
+ .site-header .header-nav{width:min(1000px,calc(100% - 80px));height:52px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:48px;border-top:1px solid rgba(255,255,255,.28);border-bottom:1px solid rgba(255,255,255,.28);font-size:13px}
+ .site-header .header-nav a{display:flex;height:100%;align-items:center;white-space:nowrap}
+ @media(max-width:900px){
+  .site-header .header-top{width:calc(100% - 36px);height:104px;display:grid;grid-template-columns:1fr auto;align-items:center}
+  .site-header .header-address,.site-header .header-phone,.site-header .header-nav{display:none!important}
+  .site-header .header-top>.brand{grid-column:1;justify-self:start}
+  .site-header .menu-toggle{display:grid;grid-column:2;place-items:center;justify-self:end;background:transparent;border:0;color:#fff;padding:10px}
+  .site-header .menu-toggle .icon{width:30px;height:30px}
+ }
+</style>
 </SiteLayout>
 <script>
  const toggle=document.querySelector<HTMLButtonElement>('.menu-toggle');
