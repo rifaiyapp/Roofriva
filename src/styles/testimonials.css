@@ -3,7 +3,7 @@
   height:auto!important;
   min-height:0!important;
   margin-top:0!important;
-  padding:90px 0 76px!important;
+  padding:90px 0 68px!important;
   overflow:hidden;
 }
 
@@ -72,7 +72,7 @@
   align-items:center;
   justify-content:center;
   gap:18px;
-  margin:0 auto 18px;
+  margin:0 auto;
 }
 
 .review-carousel-arrow{
@@ -119,69 +119,86 @@
   background:var(--red);
 }
 
-/* Compact trust-logo strip using real brand marks ----------------------- */
-.reviews-section .review-platforms{
-  width:min(620px,calc(100% - 40px));
-  margin:8px auto 0!important;
+/* Official review-platform logos positioned between Testimonials and Projects. */
+.review-platforms{
+  position:relative;
+  z-index:8;
+  width:min(700px,calc(100% - 48px))!important;
+  min-height:70px;
+  margin:-35px auto 44px!important;
+  padding:0 18px!important;
   display:grid!important;
   grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:22px!important;
+  gap:28px!important;
   align-items:center;
   justify-content:center;
+  background:transparent!important;
 }
 
-.reviews-section .review-platforms>span{
+.review-platforms>span{
   width:100%!important;
-  height:48px!important;
+  height:58px!important;
   min-width:0!important;
   padding:0!important;
-  display:block!important;
-  position:relative;
-  background-color:transparent!important;
-  background-position:center!important;
-  background-repeat:no-repeat!important;
-  background-size:contain!important;
+  margin:0!important;
+  display:flex!important;
+  align-items:center;
+  justify-content:center;
+  background:transparent!important;
   border:0!important;
   box-shadow:none!important;
   color:transparent!important;
   font-size:0!important;
   line-height:0!important;
-  overflow:hidden;
 }
 
-.reviews-section .platform-bbb{
-  background-image:url('https://upload.wikimedia.org/wikipedia/commons/e/eb/Better_Business_Bureau.svg')!important;
-  background-size:auto 44px!important;
-}
-
-.reviews-section .platform-yelp{
-  background-image:url('https://upload.wikimedia.org/wikipedia/commons/a/ad/Yelp_Logo.svg')!important;
-  background-size:auto 34px!important;
-}
-
-.reviews-section .platform-google{
-  background-image:url('https://upload.wikimedia.org/wikipedia/commons/e/ee/Google_2026_logo.svg')!important;
-  background-size:auto 30px!important;
-}
-
-.reviews-section .platform-facebook{
-  background-image:url('https://upload.wikimedia.org/wikipedia/commons/8/89/Facebook_Logo_%282019%29.svg')!important;
-  background-size:auto 25px!important;
-}
-
-.reviews-section .review-platforms>span>*,
-.reviews-section .platform-yelp::after,
-.reviews-section .platform-note{
+.review-platforms>span::before,
+.review-platforms>span::after,
+.review-platforms .platform-stars{
   display:none!important;
 }
 
+.review-platforms img{
+  display:block;
+  width:auto;
+  max-width:100%;
+  height:auto;
+  max-height:36px;
+  object-fit:contain;
+}
+
+.review-platforms .platform-bbb img{
+  max-height:50px;
+}
+
+.review-platforms .platform-yelp img{
+  max-height:38px;
+}
+
+.review-platforms .platform-google img{
+  max-height:31px;
+}
+
+.review-platforms .platform-facebook img{
+  max-height:28px;
+}
+
+.platform-note{
+  display:none!important;
+}
+
+.review-platforms + .projects-section{
+  padding-top:72px!important;
+}
+
 @media(max-width:900px){
-  .reviews-section{padding:76px 0 68px!important}
+  .reviews-section{padding:76px 0 62px!important}
   .reviews-grid .review-card{flex-basis:calc((100% - 20px)/2)}
   .reviews-grid{gap:20px!important}
-  .reviews-section .review-platforms{
-    width:min(560px,calc(100% - 44px));
-    gap:18px!important;
+  .review-platforms{
+    width:min(620px,calc(100% - 40px))!important;
+    gap:22px!important;
+    margin-top:-32px!important;
   }
 }
 
@@ -191,18 +208,19 @@
   .reviews-grid{gap:14px!important;padding-bottom:24px}
   .reviews-grid .review-card{flex-basis:100%}
   .review-card blockquote{min-height:175px!important}
-  .review-carousel-controls{margin-bottom:16px}
-  .reviews-section .review-platforms{
-    width:min(330px,calc(100% - 36px));
+  .review-platforms{
+    width:calc(100% - 34px)!important;
     grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:12px 20px!important;
-    margin-top:6px!important;
+    min-height:108px;
+    gap:10px 24px!important;
+    margin:-28px auto 34px!important;
+    padding:12px 14px!important;
   }
-  .reviews-section .review-platforms>span{
-    height:42px!important;
-  }
-  .reviews-section .platform-bbb{background-size:auto 38px!important}
-  .reviews-section .platform-yelp{background-size:auto 29px!important}
-  .reviews-section .platform-google{background-size:auto 26px!important}
-  .reviews-section .platform-facebook{background-size:auto 22px!important}
+  .review-platforms>span{height:42px!important}
+  .review-platforms img{max-height:28px}
+  .review-platforms .platform-bbb img{max-height:38px}
+  .review-platforms .platform-yelp img{max-height:30px}
+  .review-platforms .platform-google img{max-height:25px}
+  .review-platforms .platform-facebook img{max-height:23px}
+  .review-platforms + .projects-section{padding-top:54px!important}
 }
