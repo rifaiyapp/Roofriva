@@ -36,28 +36,28 @@ const {id='hero-quote',source='homepage-hero-quote'} = Astro.props;
 <style is:global>
  .estimate-card .lead-form{
   background:transparent!important;
-  padding:28px 22px 24px!important;
-  gap:14px!important;
+  padding:24px 22px 22px!important;
+  gap:10px!important;
  }
  .estimate-card .lead-form>input:not([type=hidden]),
  .estimate-card .lead-form>textarea,
  .estimate-card .zip-field>input{
   width:100%!important;
-  min-height:66px!important;
-  padding:16px 18px!important;
+  min-height:54px!important;
+  padding:12px 16px!important;
   border:1px solid #d4dbe3!important;
   border-radius:0!important;
   background:#fff!important;
   color:#2b2b2b!important;
   box-shadow:none!important;
-  font-size:17px!important;
+  font-size:14px!important;
   line-height:1.2!important;
   font-weight:400!important;
  }
  .estimate-card .lead-form>textarea{
-  min-height:94px!important;
+  min-height:80px!important;
   resize:vertical!important;
-  padding-top:18px!important;
+  padding-top:14px!important;
  }
  .estimate-card .lead-form input::placeholder,
  .estimate-card .lead-form textarea::placeholder{
@@ -69,20 +69,20 @@ const {id='hero-quote',source='homepage-hero-quote'} = Astro.props;
   width:100%;
  }
  .estimate-card .zip-field>input{
-  padding-right:58px!important;
+  padding-right:50px!important;
  }
  .estimate-card .zip-accent{
   position:absolute;
   top:50%;
-  right:24px;
-  width:29px;
-  height:29px;
+  right:18px;
+  width:25px;
+  height:25px;
   transform:translateY(-50%);
   display:flex;
   align-items:center;
   justify-content:center;
   gap:3px;
-  border-radius:6px;
+  border-radius:5px;
   background:var(--red,#c60008);
   box-shadow:0 2px 0 rgba(0,0,0,.12);
   pointer-events:none;
@@ -96,11 +96,11 @@ const {id='hero-quote',source='homepage-hero-quote'} = Astro.props;
  .estimate-card .form-submit{
   align-self:center!important;
   width:100%!important;
-  min-height:68px!important;
-  margin:6px 0 0!important;
-  padding:15px 36px!important;
+  min-height:62px!important;
+  margin:5px 0 0!important;
+  padding:14px 34px!important;
   border-radius:0!important;
-  font-size:17px!important;
+  font-size:16px!important;
   line-height:1!important;
   font-weight:800!important;
   letter-spacing:.035em!important;
@@ -110,10 +110,10 @@ const {id='hero-quote',source='homepage-hero-quote'} = Astro.props;
   white-space:nowrap;
  }
  .estimate-card .form-reassurance{
-  margin:-2px 0 0!important;
+  margin:-1px 0 0!important;
   color:#fff!important;
   text-align:center;
-  font-size:13px!important;
+  font-size:12px!important;
   line-height:1.2!important;
   font-weight:700!important;
   letter-spacing:.01em!important;
@@ -127,11 +127,13 @@ const {id='hero-quote',source='homepage-hero-quote'} = Astro.props;
  .estimate-card .form-status:empty{display:none!important}
 
  @media(max-width:600px){
-  .estimate-card .lead-form{padding:22px 16px 20px!important;gap:12px!important}
+  .estimate-card .lead-form{padding:20px 16px 18px!important;gap:9px!important}
   .estimate-card .lead-form>input:not([type=hidden]),
   .estimate-card .lead-form>textarea,
-  .estimate-card .zip-field>input{min-height:58px!important;font-size:16px!important}
-  .estimate-card .lead-form>textarea{min-height:96px!important}
-  .estimate-card .form-submit{min-height:62px!important;font-size:15px!important}
+  .estimate-card .zip-field>input{min-height:50px!important;font-size:14px!important;padding:11px 14px!important}
+  .estimate-card .lead-form>textarea{min-height:82px!important;padding-top:13px!important}
+  .estimate-card .zip-field>input{padding-right:46px!important}
+  .estimate-card .zip-accent{right:15px;width:24px;height:24px}
+  .estimate-card .form-submit{min-height:58px!important;font-size:14px!important}
  }
 </style>
