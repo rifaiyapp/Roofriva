@@ -82,6 +82,52 @@
   controls.append(prev, dots, next);
   track.insertAdjacentElement('afterend', controls);
 
+  const platformStrip = section.querySelector('.review-platforms');
+  const platformNote = section.querySelector('.platform-note');
+
+  if (platformNote) platformNote.remove();
+
+  if (platformStrip) {
+    platformStrip.setAttribute('aria-label', 'Review platforms');
+
+    const platformLogos = [
+      {
+        selector: '.platform-bbb',
+        src: 'https://www.bbb.org/TerminusContent/dist/img/BBB_US_Torch_sm.svg',
+        alt: 'Better Business Bureau'
+      },
+      {
+        selector: '.platform-yelp',
+        src: 'https://upload.wikimedia.org/wikipedia/commons/a/ad/Yelp_Logo.svg',
+        alt: 'Yelp'
+      },
+      {
+        selector: '.platform-google',
+        src: 'https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_74x24px.svg',
+        alt: 'Google'
+      },
+      {
+        selector: '.platform-facebook',
+        src: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Facebook_Logo_%282019%29.svg',
+        alt: 'Facebook'
+      }
+    ];
+
+    platformLogos.forEach(({ selector, src, alt }) => {
+      const item = platformStrip.querySelector(selector);
+      if (!item) return;
+      item.innerHTML = '';
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = alt;
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      item.appendChild(img);
+    });
+
+    section.insertAdjacentElement('afterend', platformStrip);
+  }
+
   let page = 0;
 
   const visibleCount = () => {
