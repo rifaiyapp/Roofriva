@@ -89,40 +89,65 @@
 
   if (platformStrip) {
     platformStrip.setAttribute('aria-label', 'Review platforms');
+    platformStrip.classList.add('trust-badges');
 
-    const platformLogos = [
+    const badges = [
       {
         selector: '.platform-bbb',
         src: 'https://www.bbb.org/TerminusContent/dist/img/BBB_US_Torch_sm.svg',
-        alt: 'Better Business Bureau'
+        alt: 'Better Business Bureau',
+        label: 'ACCREDITED BUSINESS',
+        rating: 'BBB Rating: A+'
       },
       {
         selector: '.platform-yelp',
-        src: 'https://upload.wikimedia.org/wikipedia/commons/a/ad/Yelp_Logo.svg',
-        alt: 'Yelp'
+        src: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Yelp_Logo.svg',
+        alt: 'Yelp',
+        label: 'Reviews',
+        rating: '★★★★★'
       },
       {
         selector: '.platform-google',
-        src: 'https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_74x24px.svg',
-        alt: 'Google'
+        src: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Google_2026_logo.svg',
+        alt: 'Google',
+        label: 'Reviews',
+        rating: '★★★★★'
       },
       {
         selector: '.platform-facebook',
         src: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Facebook_Logo_%282019%29.svg',
-        alt: 'Facebook'
+        alt: 'Facebook',
+        label: 'Reviews',
+        rating: '★★★★★'
       }
     ];
 
-    platformLogos.forEach(({ selector, src, alt }) => {
+    badges.forEach(({ selector, src, alt, label, rating }) => {
       const item = platformStrip.querySelector(selector);
       if (!item) return;
       item.innerHTML = '';
-      const img = document.createElement('img');
-      img.src = src;
-      img.alt = alt;
-      img.loading = 'lazy';
-      img.decoding = 'async';
-      item.appendChild(img);
+      item.classList.add('trust-badge');
+
+      const logo = document.createElement('img');
+      logo.className = 'trust-badge-logo';
+      logo.src = src;
+      logo.alt = alt;
+      logo.loading = 'lazy';
+      logo.decoding = 'async';
+
+      const copy = document.createElement('span');
+      copy.className = 'trust-badge-copy';
+
+      const labelEl = document.createElement('span');
+      labelEl.className = 'trust-badge-label';
+      labelEl.textContent = label;
+
+      const ratingEl = document.createElement('span');
+      ratingEl.className = selector === '.platform-bbb' ? 'trust-badge-rating is-bbb' : 'trust-badge-rating';
+      ratingEl.textContent = rating;
+
+      copy.append(labelEl, ratingEl);
+      item.append(logo, copy);
     });
 
     section.insertAdjacentElement('afterend', platformStrip);
