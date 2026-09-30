@@ -1,0 +1,60 @@
+/* Shared CTA treatment. Keep this file brand-agnostic so the template can be reused. */
+.button{
+  position:relative;
+  overflow:visible;
+  isolation:isolate;
+  background:linear-gradient(180deg,#ee0008 0%,#c60008 100%)!important;
+  border:0!important;
+  color:#fff!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.14),
+    inset 0 -8px 15px rgba(82,0,0,.22),
+    inset 0 0 16px rgba(255,255,255,.035),
+    0 11px 22px rgba(0,0,0,.34)!important;
+  text-shadow:0 1px 1px rgba(0,0,0,.2);
+  transition:background .2s ease,box-shadow .2s ease,filter .2s ease;
+}
+
+.button.angled{
+  transform:skew(-13deg)!important;
+}
+
+.button.angled>span{
+  display:inline-block;
+  transform:skew(13deg)!important;
+}
+
+/* White accent line: half overlaps the button and half sits outside on the left. */
+.button::before{
+  content:'';
+  position:absolute;
+  top:50%;
+  left:0;
+  width:74px;
+  height:1px;
+  background:#fff;
+  opacity:.96;
+  transform:translate(-50%,-50%);
+  transform-origin:center;
+  pointer-events:none;
+  z-index:2;
+  box-shadow:0 0 7px rgba(255,255,255,.14);
+}
+
+.button.angled::before{
+  transform:translate(-50%,-50%) skew(13deg);
+}
+
+.button:hover,
+.button:focus-visible{
+  background:linear-gradient(180deg,#f70009 0%,#d00008 100%)!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.17),
+    inset 0 -8px 15px rgba(82,0,0,.2),
+    inset 0 0 18px rgba(255,255,255,.045),
+    0 14px 27px rgba(0,0,0,.38)!important;
+}
+
+@media(max-width:700px){
+  .button::before{width:50px}
+}
