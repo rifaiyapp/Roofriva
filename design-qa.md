@@ -8,7 +8,7 @@ final result: blocked
 - Inferred primary viewport: 1440 CSS pixels wide, density 1. Normalize render to 286 pixels wide for comparison. The source is a downscaled desktop design, not a 286px mobile design.
 - Additional required widths: 1280, 1024, 768, 390, 360.
 - Full source and focused hero, service, material, About and lower-page crops inspected.
-- Current production opened in cloud browser: starter form matching upstream main `88d2790`.
+- Current production reloaded in cloud browser after the branch push: starter form matching upstream main `88d2790`. A viewport screenshot confirms that the reconstruction is not live.
 - No implementation screenshot exists. The supervised preview starts successfully, but cloud browser access returns `net::ERR_BLOCKED_BY_CLIENT`. Reading the resulting error tab is rejected by browser URL security policy. No raw browser or alternate-host workaround used.
 
 ## Implemented
@@ -45,7 +45,7 @@ final result: blocked
 | Check | Result |
 | --- | --- |
 | Static source/asset/link checks | PASS: no missing local assets, no broken anchors, one H1, canonical form fields and accessible status, no external scripts |
-| Production check/build | PASS; existing unused mountedAssets hint in untouched infrastructure |
+| Local production check/build | PASS: `npm run validate`; zero errors/warnings, existing unused mountedAssets hint in untouched infrastructure |
 | 1440 / 1280 / 1024 / 768 / 390 / 360 browser QA | BLOCKED |
 | Full-page and focused screenshot comparison | BLOCKED |
 | Menu, FAQ, gallery, keyboard and focus | Implemented; browser verification pending |
@@ -53,14 +53,26 @@ final result: blocked
 | Live lead delivery | Not tested; no real leads submitted |
 | Console errors | Not checked in implementation browser |
 | Motion | Deferred until static parity; no new animation libraries; reduced-motion guard included |
-| Production deployment of this rebuild | Not approved by required visual gate |
-| Post-deployment screenshot/comparison | Not performed |
+| Cloudflare branch build | FAIL for implementation commit `8e55daf9b98e3b02e2d0abc28e1ff48670cc3f9d`; build `b4483602-d9b8-44e6-8b8c-9af9d30199a7` |
+| Production deployment of this rebuild | Not attempted: required visual gate remains blocked; main is unchanged |
+| Production screenshot/comparison | Current production screenshot captured; still the starter form. No deployed reconstruction exists to compare |
 
 The existing prebuild synchronization changes generated local routing configuration. Those generated diffs are excluded from the website source commit.
 
+## Git and deployment checkpoint
+
+- Repository: `rifaiyapp/Roofriva`.
+- Saved remote branch: `rebuild/mockup-20260930`.
+- Implementation commit: `8e55daf9b98e3b02e2d0abc28e1ff48670cc3f9d` (31 files).
+- Main remains at `88d27906ef6fce3f48178d17c9a181204b664634`.
+- The GitHub `Workers Builds: roofriva` check reports failure; its output provides no error log or preview URL.
+- The linked Cloudflare build dashboard remains on “Performing security verification” after one reload. Browser access is blocked by a persistent bot-verification challenge; no bypass attempted. The build failure cause remains unknown.
+- Build dashboard: https://dash.cloudflare.com/bb8543241b074ba3a57e1214db852fad/workers/services/view/roofriva/production/builds/b4483602-d9b8-44e6-8b8c-9af9d30199a7
+- Production: https://roofriva.keydiv.workers.dev/
+
 ## Required continuation
 
-1. Restore supported browser preview access.
+1. Obtain the failed Cloudflare build log and resolve its actual cause; restore a supported, browser-accessible preview. Local preview policy and Cloudflare dashboard access currently prevent this.
 2. Capture stable fonts/images at 1440px, combine with source, compare every section, fix P0/P1/P2 issues and repeat.
 3. Test every required viewport, keyboard and form states using intercepted/mock delivery. Add restrained motion only after parity.
 4. Validate, review, commit, push main, wait for Cloudflare, verify actual production and capture/compare again.
