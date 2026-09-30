@@ -92,37 +92,13 @@
     platformStrip.classList.add('trust-badges');
 
     const badges = [
-      {
-        selector: '.platform-bbb',
-        src: 'https://www.bbb.org/TerminusContent/dist/img/BBB_US_Torch_sm.svg',
-        alt: 'Better Business Bureau',
-        label: 'ACCREDITED BUSINESS',
-        rating: 'BBB Rating: A+'
-      },
-      {
-        selector: '.platform-yelp',
-        src: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Yelp_Logo.svg',
-        alt: 'Yelp',
-        label: 'Reviews',
-        rating: '★★★★★'
-      },
-      {
-        selector: '.platform-google',
-        src: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Google_2026_logo.svg',
-        alt: 'Google',
-        label: 'Reviews',
-        rating: '★★★★★'
-      },
-      {
-        selector: '.platform-facebook',
-        src: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Facebook_Logo_%282019%29.svg',
-        alt: 'Facebook',
-        label: 'Reviews',
-        rating: '★★★★★'
-      }
+      { selector: '.platform-bbb', src: '/assets/icons/bbb-review.webp', alt: 'Better Business Bureau rating' },
+      { selector: '.platform-yelp', src: '/assets/icons/yelp-review.webp', alt: 'Yelp reviews' },
+      { selector: '.platform-google', src: '/assets/icons/google-review.webp', alt: 'Google reviews' },
+      { selector: '.platform-facebook', src: '/assets/icons/facebook-review.webp', alt: 'Facebook reviews' }
     ];
 
-    badges.forEach(({ selector, src, alt, label, rating }) => {
+    badges.forEach(({ selector, src, alt }) => {
       const item = platformStrip.querySelector(selector);
       if (!item) return;
       item.innerHTML = '';
@@ -134,20 +110,7 @@
       logo.alt = alt;
       logo.loading = 'lazy';
       logo.decoding = 'async';
-
-      const copy = document.createElement('span');
-      copy.className = 'trust-badge-copy';
-
-      const labelEl = document.createElement('span');
-      labelEl.className = 'trust-badge-label';
-      labelEl.textContent = label;
-
-      const ratingEl = document.createElement('span');
-      ratingEl.className = selector === '.platform-bbb' ? 'trust-badge-rating is-bbb' : 'trust-badge-rating';
-      ratingEl.textContent = rating;
-
-      copy.append(labelEl, ratingEl);
-      item.append(logo, copy);
+      item.appendChild(logo);
     });
 
     section.insertAdjacentElement('afterend', platformStrip);
