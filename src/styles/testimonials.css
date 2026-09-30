@@ -119,76 +119,122 @@
   background:var(--red);
 }
 
-/* Official review-platform logos positioned between Testimonials and Projects. */
+/* Trust badges sit on the boundary between Testimonials and Projects. */
 .review-platforms{
   position:relative;
   z-index:8;
-  width:min(700px,calc(100% - 48px))!important;
-  min-height:70px;
-  margin:-35px auto 44px!important;
-  padding:0 18px!important;
+  width:min(780px,calc(100% - 48px))!important;
+  margin:-38px auto 48px!important;
+  padding:0!important;
   display:grid!important;
   grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:28px!important;
-  align-items:center;
+  gap:15px!important;
+  align-items:stretch;
   justify-content:center;
   background:transparent!important;
 }
 
-.review-platforms>span{
-  width:100%!important;
-  height:58px!important;
+.review-platforms>span.trust-badge{
   min-width:0!important;
-  padding:0!important;
+  height:86px!important;
+  padding:9px 12px!important;
   margin:0!important;
   display:flex!important;
-  align-items:center;
-  justify-content:center;
-  background:transparent!important;
-  border:0!important;
-  box-shadow:none!important;
-  color:transparent!important;
-  font-size:0!important;
-  line-height:0!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:4px!important;
+  background:#fff!important;
+  border:1px solid #e2e2e2!important;
+  border-radius:8px!important;
+  box-shadow:0 5px 16px rgba(0,0,0,.045)!important;
+  color:#222!important;
+  font-size:initial!important;
+  line-height:normal!important;
+  overflow:hidden;
+}
+
+.review-platforms .trust-badge-logo{
+  display:block!important;
+  width:auto!important;
+  max-width:118px!important;
+  height:auto!important;
+  max-height:30px!important;
+  object-fit:contain!important;
+  flex:none;
+}
+
+.review-platforms .platform-bbb .trust-badge-logo{
+  max-height:31px!important;
+  max-width:44px!important;
+}
+
+.review-platforms .platform-yelp .trust-badge-logo{
+  max-height:29px!important;
+  max-width:92px!important;
+}
+
+.review-platforms .platform-google .trust-badge-logo{
+  max-height:27px!important;
+  max-width:100px!important;
+}
+
+.review-platforms .platform-facebook .trust-badge-logo{
+  max-height:23px!important;
+  max-width:108px!important;
+}
+
+.review-platforms .trust-badge-copy{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:5px!important;
+  min-height:16px;
+  white-space:nowrap;
+}
+
+.review-platforms .trust-badge-label{
+  display:inline-block!important;
+  color:#575757!important;
+  font-family:Arial,sans-serif!important;
+  font-size:9px!important;
+  line-height:1!important;
+  font-weight:500!important;
+  letter-spacing:0!important;
+}
+
+.review-platforms .platform-bbb .trust-badge-label{
+  color:#15607b!important;
+  font-size:7px!important;
+  font-weight:700!important;
+  letter-spacing:.02em!important;
+}
+
+.review-platforms .trust-badge-rating{
+  display:inline-block!important;
+  color:#eda400!important;
+  font-family:Arial,sans-serif!important;
+  font-size:12px!important;
+  line-height:1!important;
+  font-weight:700!important;
+  letter-spacing:.04em!important;
+}
+
+.review-platforms .trust-badge-rating.is-bbb{
+  color:#15607b!important;
+  font-size:8px!important;
+  letter-spacing:0!important;
 }
 
 .review-platforms>span::before,
 .review-platforms>span::after,
-.review-platforms .platform-stars{
-  display:none!important;
-}
-
-.review-platforms img{
-  display:block;
-  width:auto;
-  max-width:100%;
-  height:auto;
-  max-height:36px;
-  object-fit:contain;
-}
-
-.review-platforms .platform-bbb img{
-  max-height:50px;
-}
-
-.review-platforms .platform-yelp img{
-  max-height:38px;
-}
-
-.review-platforms .platform-google img{
-  max-height:31px;
-}
-
-.review-platforms .platform-facebook img{
-  max-height:28px;
-}
-
+.review-platforms .platform-stars,
 .platform-note{
   display:none!important;
 }
 
 .review-platforms + .projects-section{
-  padding-top:72px!important;
+  padding-top:52px!important;
 }
 
 @media(max-width:900px){
@@ -196,9 +242,10 @@
   .reviews-grid .review-card{flex-basis:calc((100% - 20px)/2)}
   .reviews-grid{gap:20px!important}
   .review-platforms{
-    width:min(620px,calc(100% - 40px))!important;
-    gap:22px!important;
-    margin-top:-32px!important;
+    width:min(650px,calc(100% - 40px))!important;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:15px!important;
+    margin:-32px auto 40px!important;
   }
 }
 
@@ -211,16 +258,19 @@
   .review-platforms{
     width:calc(100% - 34px)!important;
     grid-template-columns:repeat(2,minmax(0,1fr));
-    min-height:108px;
-    gap:10px 24px!important;
-    margin:-28px auto 34px!important;
-    padding:12px 14px!important;
+    gap:12px 15px!important;
+    margin:-28px auto 32px!important;
   }
-  .review-platforms>span{height:42px!important}
-  .review-platforms img{max-height:28px}
-  .review-platforms .platform-bbb img{max-height:38px}
-  .review-platforms .platform-yelp img{max-height:30px}
-  .review-platforms .platform-google img{max-height:25px}
-  .review-platforms .platform-facebook img{max-height:23px}
-  .review-platforms + .projects-section{padding-top:54px!important}
+  .review-platforms>span.trust-badge{
+    height:78px!important;
+    padding:8px 10px!important;
+  }
+  .review-platforms .trust-badge-logo{max-height:25px!important}
+  .review-platforms .platform-bbb .trust-badge-logo{max-height:28px!important}
+  .review-platforms .platform-yelp .trust-badge-logo{max-height:25px!important}
+  .review-platforms .platform-google .trust-badge-logo{max-height:23px!important}
+  .review-platforms .platform-facebook .trust-badge-logo{max-height:20px!important}
+  .review-platforms .trust-badge-label{font-size:8px!important}
+  .review-platforms .trust-badge-rating{font-size:10px!important}
+  .review-platforms + .projects-section{padding-top:42px!important}
 }
