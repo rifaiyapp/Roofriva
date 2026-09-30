@@ -42,9 +42,23 @@
   const caption = section.querySelector('.project-caption');
   if (caption) caption.textContent = projectData[0].title;
 
+  const carousel = section.querySelector('.project-carousel');
   const prev = section.querySelector('.gallery-arrow.previous');
   const next = section.querySelector('.gallery-arrow.next');
-  let position = 0;
+
+  const controls = document.createElement('div');
+  controls.className = 'project-carousel-controls';
+  controls.setAttribute('aria-label', 'Project carousel controls');
+
+  const dots = document.createElement('div');
+  dots.className = 'project-carousel-dots';
+
+  if (prev && next && carousel) {
+    controls.append(prev, dots, next);
+    carousel.appendChild(controls);
+  }
+
+  let page = 0;
 
   const visibleCount = () => {
     if (window.matchMedia('(max-width: 600px)').matches) return 1;
@@ -52,23 +66,53 @@
     return 4;
   };
 
-  const goTo = (nextPosition) => {
-    const maxPosition = Math.max(0, projectData.length - visibleCount());
-    position = nextPosition > maxPosition ? 0 : nextPosition < 0 ? maxPosition : nextPosition;
-    const target = cards[position];
-    if (target) {
-      track.scrollTo({ left: target.offsetLeft - track.offsetLeft, behavior: 'smooth' });
-      if (caption) caption.textContent = projectData[position].title;
-    }
+  const pageStarts = () => {
+    const visible = visibleCount();
+    const maxStart = Math.max(0, projectData.length - visible);
+    const starts = [];
+    for (let start = 0; start <= maxStart; start += visible) starts.push(start);
+    if (!starts.length) starts.push(0);
+    if (starts[starts.length - 1] !== maxStart) starts.push(maxStart);
+    return starts;
   };
 
-  prev?.addEventListener('click', () => goTo(position - 1));
-  next?.addEventListener('click', () => goTo(position + 1));
+  const renderDots = () => {
+    const starts = pageStarts();
+    page = Math.min(page, starts.length - 1);
+    dots.innerHTML = '';
+    starts.forEach((_, index) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = `project-carousel-dot${index === page ? ' is-active' : ''}`;
+      dot.setAttribute('aria-label', `Show project group ${index + 1}`);
+      dot.addEventListener('click', () => goToPage(index));
+      dots.appendChild(dot);
+    });
+  };
+
+  const goToPage = (nextPage) => {
+    const starts = pageStarts();
+    page = (nextPage + starts.length) % starts.length;
+    const startIndex = starts[page];
+    const target = cards[startIndex];
+    if (target) {
+      track.scrollTo({ left: target.offsetLeft - track.offsetLeft, behavior: 'smooth' });
+      if (caption) caption.textContent = projectData[startIndex].title;
+    }
+    renderDots();
+  };
+
+  prev?.addEventListener('click', () => goToPage(page - 1));
+  next?.addEventListener('click', () => goToPage(page + 1));
 
   let resizeTimer;
   window.addEventListener('resize', () => {
     window.clearTimeout(resizeTimer);
-    resizeTimer = window.setTimeout(() => goTo(Math.min(position, Math.max(0, projectData.length - visibleCount()))), 120);
+    resizeTimer = window.setTimeout(() => {
+      page = 0;
+      renderDots();
+      goToPage(0);
+    }, 120);
   });
 
   const lightbox = document.createElement('div');
@@ -146,4 +190,6 @@
     if (event.key === 'ArrowLeft') changeLightbox(-1);
     if (event.key === 'ArrowRight') changeLightbox(1);
   });
+
+  renderDots();
 })();
