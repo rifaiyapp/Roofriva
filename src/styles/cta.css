@@ -1,20 +1,35 @@
-/* Full-width CTA band ---------------------------------------------------- */
+/* Full-width CTA + stats band ------------------------------------------- */
 .promise-band {
   position: relative !important;
   isolation: isolate;
   height: auto !important;
   min-height: 470px;
-  padding: 92px 32px 82px !important;
+  padding: 92px 32px 72px !important;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: #fff;
-  overflow: hidden;
+  overflow: visible;
   background:
-    linear-gradient(110deg, rgba(16,16,16,.90) 0%, rgba(28,28,28,.86) 48%, rgba(12,12,12,.92) 100%),
+    linear-gradient(110deg, rgba(10,10,10,.91) 0%, rgba(20,20,20,.86) 48%, rgba(8,8,8,.93) 100%),
     url('/assets/home/project-cabin.webp') center 58% / cover no-repeat !important;
+}
+
+/* Continue the exact same background behind the stats so both read as one section. */
+.promise-band::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 330px;
+  z-index: -2;
+  background:
+    linear-gradient(110deg, rgba(10,10,10,.91) 0%, rgba(20,20,20,.86) 48%, rgba(8,8,8,.93) 100%),
+    url('/assets/home/project-cabin.webp') center 58% / cover no-repeat;
+  pointer-events: none;
 }
 
 .promise-band::before {
@@ -55,23 +70,122 @@
   display: none !important;
 }
 
+/* Stats are now part of the same visual band instead of a separate red block. */
+.stats-section {
+  position: relative !important;
+  z-index: 2 !important;
+  height: auto !important;
+  min-height: 300px;
+  margin: 0 !important;
+  padding: 0 0 70px !important;
+  background: transparent !important;
+}
+
+.stats-section .stats-grid {
+  width: min(var(--shell), calc(100% - 80px));
+  height: auto !important;
+  min-height: 250px;
+  margin: 0 auto !important;
+  padding: 42px 34px 36px !important;
+  background: rgba(10,10,10,.34) !important;
+  border-top: 1px solid rgba(255,255,255,.18);
+  border-bottom: 1px solid rgba(255,255,255,.10);
+  box-shadow: none !important;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  color: #fff;
+}
+
+.stats-section .stat {
+  position: relative;
+  border-right: 1px solid rgba(255,255,255,.13) !important;
+}
+
+.stats-section .stat:last-of-type {
+  border-right: 0 !important;
+}
+
+.stats-section .stat > .hex {
+  width: 84px !important;
+  height: 92px !important;
+  background: var(--red) !important;
+  color: #fff !important;
+  box-shadow: 0 12px 26px rgba(0,0,0,.24);
+}
+
+.stats-section .stat > .hex .icon {
+  width: 42px !important;
+  height: 42px !important;
+}
+
+.stats-section .stat strong {
+  margin-top: 14px !important;
+  color: #fff !important;
+  font-family: var(--heading-font) !important;
+  font-size: 42px !important;
+  line-height: 1.15 !important;
+  font-weight: 600 !important;
+  text-shadow: 0 2px 14px rgba(0,0,0,.28);
+}
+
+.stats-section .stat > span:last-child {
+  margin-top: 6px;
+  color: rgba(255,255,255,.78) !important;
+  font-size: 10px !important;
+  letter-spacing: .12em !important;
+}
+
+.stats-section .stats-demo {
+  display: none !important;
+}
+
+/* The next section should begin after this combined band, not overlap it. */
+.reviews-section {
+  margin-top: 0 !important;
+  padding-top: 90px !important;
+}
+
 @media (max-width: 900px) {
   .promise-band {
     min-height: 420px;
-    padding: 78px 26px 70px !important;
+    padding: 78px 26px 64px !important;
     background-position: 54% center !important;
+  }
+
+  .promise-band::after {
+    height: 470px;
+    background-position: 54% center;
   }
 
   .promise-band h2 {
     max-width: 720px !important;
     font-size: clamp(31px, 5vw, 40px) !important;
   }
+
+  .stats-section {
+    padding-bottom: 54px !important;
+  }
+
+  .stats-section .stats-grid {
+    width: calc(100% - 44px);
+    grid-template-columns: repeat(2, 1fr) !important;
+    row-gap: 38px;
+    padding: 38px 24px !important;
+  }
+
+  .stats-section .stat:nth-child(2) {
+    border-right: 0 !important;
+  }
 }
 
 @media (max-width: 600px) {
   .promise-band {
     min-height: 390px;
-    padding: 66px 20px 60px !important;
+    padding: 66px 20px 54px !important;
+  }
+
+  .promise-band::after {
+    height: 760px;
   }
 
   .promise-band h2 {
@@ -84,5 +198,29 @@
   .promise-band .button {
     min-width: min(300px, calc(100vw - 72px));
     min-height: 58px;
+  }
+
+  .stats-section .stats-grid {
+    width: calc(100% - 32px);
+    grid-template-columns: 1fr !important;
+    gap: 0;
+    padding: 22px 24px !important;
+  }
+
+  .stats-section .stat,
+  .stats-section .stat:nth-child(2) {
+    min-height: 190px;
+    justify-content: center;
+    border-right: 0 !important;
+    border-bottom: 1px solid rgba(255,255,255,.12);
+    padding: 24px 0;
+  }
+
+  .stats-section .stat:last-of-type {
+    border-bottom: 0;
+  }
+
+  .reviews-section {
+    padding-top: 70px !important;
   }
 }
