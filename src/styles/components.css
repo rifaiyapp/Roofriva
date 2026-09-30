@@ -1,5 +1,35 @@
 /* Shared component-level refinements. */
 
+/* Typography ------------------------------------------------------------- */
+:root {
+  --heading-font: "Segoe UI Variable Display", "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--heading-font) !important;
+  letter-spacing: -0.025em;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.section-title h2 {
+  font-family: var(--heading-font) !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.03em !important;
+}
+
+.section-title > .section-title-icon {
+  width: 30px !important;
+  height: 30px !important;
+  margin: 17px auto 0 !important;
+  color: var(--red) !important;
+  stroke: currentColor !important;
+  stroke-width: 1.65 !important;
+}
+
 /* Service cards ---------------------------------------------------------- */
 .service-card {
   position: relative;
@@ -95,7 +125,7 @@
   color: inherit !important;
   font-size: 19px;
   line-height: 1.25;
-  font-weight: 500;
+  font-weight: 600;
   transition:
     color .35s ease,
     transform .5s cubic-bezier(.2,.75,.2,1),
