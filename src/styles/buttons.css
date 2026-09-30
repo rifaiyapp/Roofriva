@@ -24,17 +24,17 @@
   transform:skew(13deg)!important;
 }
 
-/* White accent line: half overlaps the button and half sits outside on the left. */
+/* White accent line: half overlaps the button and half sits outside on the right. */
 .button::before{
   content:'';
   position:absolute;
   top:50%;
-  left:0;
+  right:0;
   width:74px;
   height:1px;
   background:#fff;
   opacity:.96;
-  transform:translate(-50%,-50%);
+  transform:translate(50%,-50%);
   transform-origin:center;
   pointer-events:none;
   z-index:2;
@@ -42,7 +42,7 @@
 }
 
 .button.angled::before{
-  transform:translate(-50%,-50%) skew(13deg);
+  transform:translate(50%,-50%) skew(13deg);
 }
 
 .button:hover,
