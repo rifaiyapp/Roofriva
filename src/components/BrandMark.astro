@@ -102,11 +102,12 @@ const { light = false, class: className = '' } = Astro.props;
   .site-header .header-nav a:hover::before,
   .site-header .header-nav a:focus-visible::before{background:#ff1820}
 
-  /* Estimate heading: use the uploaded dark logo and a clean inset red border. */
+  /* Estimate heading: dark logo with compact heading dimensions. */
   .estimate-heading{
     position:relative!important;
+    height:140px!important;
     border:0!important;
-    padding:45px 40px!important;
+    padding:36px 28px!important;
     overflow:hidden!important;
   }
   .estimate-heading::before{
@@ -127,10 +128,10 @@ const { light = false, class: className = '' } = Astro.props;
   .estimate-heading::after{
     content:'';
     position:absolute;
-    right:28px;
-    top:24px;
-    width:210px;
-    height:155px;
+    right:30px;
+    top:0;
+    width:120px;
+    height:100%;
     background:url('/assets/brand/logodark.png') center/contain no-repeat;
     z-index:2;
     pointer-events:none;
@@ -143,6 +144,5 @@ const { light = false, class: className = '' } = Astro.props;
   @media(max-width:600px){
     .site-header .brand-logo{width:100px!important;max-height:76px!important}
     .site-footer .brand-logo{width:155px!important;max-height:118px}
-    .estimate-heading::after{right:22px;top:30px;width:165px;height:130px}
   }
 </style>
