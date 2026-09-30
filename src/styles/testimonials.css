@@ -72,7 +72,7 @@
   align-items:center;
   justify-content:center;
   gap:18px;
-  margin:0 auto 20px;
+  margin:0 auto 18px;
 }
 
 .review-carousel-arrow{
@@ -119,105 +119,60 @@
   background:var(--red);
 }
 
-/* Review platform badges ------------------------------------------------ */
+/* Compact trust-logo strip using real brand marks ----------------------- */
 .reviews-section .review-platforms{
-  width:min(860px,calc(100% - 40px));
-  margin:14px auto 0!important;
+  width:min(620px,calc(100% - 40px));
+  margin:8px auto 0!important;
   display:grid!important;
   grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:18px!important;
-  align-items:stretch;
+  gap:22px!important;
+  align-items:center;
   justify-content:center;
 }
 
 .reviews-section .review-platforms>span{
   width:100%!important;
-  height:86px!important;
+  height:48px!important;
   min-width:0!important;
-  padding:10px 14px 12px!important;
-  display:flex!important;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  background:#fff!important;
-  border:1px solid rgba(183,0,7,.48)!important;
-  border-bottom:3px solid rgba(183,0,7,.45)!important;
-  box-shadow:0 7px 18px rgba(0,0,0,.06)!important;
-  line-height:1!important;
-  text-align:center;
+  padding:0!important;
+  display:block!important;
+  position:relative;
+  background-color:transparent!important;
+  background-position:center!important;
+  background-repeat:no-repeat!important;
+  background-size:contain!important;
+  border:0!important;
+  box-shadow:none!important;
+  color:transparent!important;
+  font-size:0!important;
+  line-height:0!important;
+  overflow:hidden;
 }
 
 .reviews-section .platform-bbb{
-  color:#17576d!important;
-  font-size:30px!important;
-  font-family:Arial,sans-serif!important;
-  font-weight:800!important;
-  letter-spacing:-.03em!important;
-}
-
-.reviews-section .platform-bbb>span{
-  display:block!important;
-  margin-top:4px!important;
-  font-size:6px!important;
-  line-height:1.15!important;
-  letter-spacing:.08em!important;
-  font-weight:700!important;
+  background-image:url('https://upload.wikimedia.org/wikipedia/commons/e/eb/Better_Business_Bureau.svg')!important;
+  background-size:auto 44px!important;
 }
 
 .reviews-section .platform-yelp{
-  color:#222!important;
-  font-family:Arial,sans-serif!important;
-  font-size:31px!important;
-  font-weight:700!important;
-  text-transform:lowercase;
-}
-
-.reviews-section .platform-yelp::after{
-  content:'✱';
-  margin-left:4px;
-  color:#c9272c;
-  font-size:27px;
-  line-height:1;
-  vertical-align:middle;
+  background-image:url('https://upload.wikimedia.org/wikipedia/commons/a/ad/Yelp_Logo.svg')!important;
+  background-size:auto 34px!important;
 }
 
 .reviews-section .platform-google{
-  font-family:Arial,sans-serif!important;
-  font-size:28px!important;
-  font-weight:500!important;
-  letter-spacing:-.035em!important;
-  flex-direction:row!important;
-  flex-wrap:wrap;
-  column-gap:0;
+  background-image:url('https://upload.wikimedia.org/wikipedia/commons/e/ee/Google_2026_logo.svg')!important;
+  background-size:auto 30px!important;
 }
 
 .reviews-section .platform-facebook{
-  color:#356199!important;
-  font-family:Arial,sans-serif!important;
-  font-size:27px!important;
-  font-weight:700!important;
-  letter-spacing:-.035em!important;
-  text-transform:lowercase;
+  background-image:url('https://upload.wikimedia.org/wikipedia/commons/8/89/Facebook_Logo_%282019%29.svg')!important;
+  background-size:auto 25px!important;
 }
 
-.reviews-section .platform-stars{
-  flex-basis:100%;
-  display:block!important;
-  margin-top:7px!important;
-  color:#d5a044!important;
-  font-family:Arial,sans-serif!important;
-  font-size:13px!important;
-  line-height:1!important;
-  letter-spacing:1px!important;
-}
-
+.reviews-section .review-platforms>span>*,
+.reviews-section .platform-yelp::after,
 .reviews-section .platform-note{
-  max-width:860px;
-  margin:7px auto 0!important;
-  color:#8b8b8b!important;
-  font-size:8px!important;
-  line-height:1.4!important;
-  text-align:center;
+  display:none!important;
 }
 
 @media(max-width:900px){
@@ -225,9 +180,8 @@
   .reviews-grid .review-card{flex-basis:calc((100% - 20px)/2)}
   .reviews-grid{gap:20px!important}
   .reviews-section .review-platforms{
-    width:min(700px,calc(100% - 44px));
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:14px!important;
+    width:min(560px,calc(100% - 44px));
+    gap:18px!important;
   }
 }
 
@@ -237,25 +191,18 @@
   .reviews-grid{gap:14px!important;padding-bottom:24px}
   .reviews-grid .review-card{flex-basis:100%}
   .review-card blockquote{min-height:175px!important}
-  .review-carousel-controls{margin-bottom:18px}
+  .review-carousel-controls{margin-bottom:16px}
   .reviews-section .review-platforms{
-    width:calc(100% - 32px);
+    width:min(330px,calc(100% - 36px));
     grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:10px!important;
-    margin-top:10px!important;
-  }
-  .reviews-section .review-platforms>span{
-    height:72px!important;
-    padding:8px 10px 10px!important;
-  }
-  .reviews-section .platform-bbb,
-  .reviews-section .platform-yelp,
-  .reviews-section .platform-google,
-  .reviews-section .platform-facebook{
-    font-size:23px!important;
-  }
-  .reviews-section .platform-note{
-    width:calc(100% - 36px);
+    gap:12px 20px!important;
     margin-top:6px!important;
   }
+  .reviews-section .review-platforms>span{
+    height:42px!important;
+  }
+  .reviews-section .platform-bbb{background-size:auto 38px!important}
+  .reviews-section .platform-yelp{background-size:auto 29px!important}
+  .reviews-section .platform-google{background-size:auto 26px!important}
+  .reviews-section .platform-facebook{background-size:auto 22px!important}
 }
