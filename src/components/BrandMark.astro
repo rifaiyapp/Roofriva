@@ -21,15 +21,93 @@ const { light = false, class: className = '' } = Astro.props;
 )}
 <style is:global>
   .brand > span{display:none!important}
-  .site-header .brand-logo{width:150px!important;height:auto!important;max-height:118px;object-fit:contain}
+  .site-header .brand-logo{width:150px!important;height:auto!important;max-height:110px!important;object-fit:contain}
   .site-footer .brand-logo{width:190px!important;height:auto!important;max-height:145px;object-fit:contain}
   .hero-house{top:0!important}
+
+  /* Header row 1 — match the supplied reference proportions. */
+  .site-header .header-top{height:120px!important}
+  .site-header .header-address,
+  .site-header .header-phone{gap:16px!important;align-items:center!important;color:#fff!important}
+
+  .site-header .header-address .icon{
+    width:47px!important;
+    height:55px!important;
+    stroke:#fff!important;
+    stroke-width:1.25!important;
+    flex:none!important;
+  }
+  .site-header .header-phone .icon{
+    width:50px!important;
+    height:50px!important;
+    stroke:#fff!important;
+    stroke-width:1.25!important;
+    fill:none!important;
+    flex:none!important;
+  }
+
+  .site-header .header-address span,
+  .site-header .header-phone span{display:block!important;line-height:1.2!important}
+
+  .site-header .header-address small{
+    display:block!important;
+    margin:0 0 5px!important;
+    font-size:15px!important;
+    line-height:1!important;
+    font-weight:600!important;
+    letter-spacing:.01em!important;
+    color:#fff!important;
+  }
+  .site-header .header-address strong{
+    display:block!important;
+    max-width:225px!important;
+    white-space:normal!important;
+    font-size:12.5px!important;
+    line-height:1.38!important;
+    font-weight:400!important;
+    letter-spacing:.01em!important;
+    color:rgba(255,255,255,.92)!important;
+  }
+
+  .site-header .header-phone small{
+    display:block!important;
+    margin:0 0 4px!important;
+    font-size:12px!important;
+    line-height:1!important;
+    font-weight:400!important;
+    letter-spacing:.01em!important;
+    color:rgba(255,255,255,.9)!important;
+  }
+  .site-header .header-phone strong{
+    display:block!important;
+    white-space:nowrap!important;
+    font-size:20px!important;
+    line-height:1!important;
+    font-weight:700!important;
+    letter-spacing:.01em!important;
+    color:#fff!important;
+  }
+
+  /* Red branded icon before every desktop navigation item. */
+  .site-header .header-nav a{gap:8px!important}
+  .site-header .header-nav a::before{
+    content:'';
+    display:block;
+    width:11px;
+    height:10px;
+    flex:none;
+    background:#d40009;
+    clip-path:polygon(50% 0,100% 43%,84% 43%,84% 100%,57% 100%,57% 67%,43% 67%,43% 100%,16% 100%,16% 43%,0 43%);
+  }
+  .site-header .header-nav a:hover::before,
+  .site-header .header-nav a:focus-visible::before{background:#ff1820}
+
   @media(max-width:900px){
-    .site-header .brand-logo{width:115px!important;max-height:88px}
+    .site-header .brand-logo{width:115px!important;max-height:88px!important}
     .site-footer .brand-logo{width:165px!important;max-height:126px}
   }
   @media(max-width:600px){
-    .site-header .brand-logo{width:100px!important;max-height:76px}
+    .site-header .brand-logo{width:100px!important;max-height:76px!important}
     .site-footer .brand-logo{width:155px!important;max-height:118px}
   }
 </style>
