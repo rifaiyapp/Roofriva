@@ -102,6 +102,40 @@ const { light = false, class: className = '' } = Astro.props;
   .site-header .header-nav a:hover::before,
   .site-header .header-nav a:focus-visible::before{background:#ff1820}
 
+  /* Estimate heading: use the uploaded dark logo and a clean inset red border. */
+  .estimate-heading{
+    position:relative!important;
+    border:0!important;
+    padding:45px 40px!important;
+    overflow:hidden!important;
+  }
+  .estimate-heading::before{
+    content:'';
+    position:absolute;
+    inset:15px;
+    border:1px solid #c60008;
+    pointer-events:none;
+    z-index:1;
+  }
+  .estimate-heading>div{
+    position:relative;
+    z-index:2;
+  }
+  .estimate-heading>.brand-mark{
+    display:none!important;
+  }
+  .estimate-heading::after{
+    content:'';
+    position:absolute;
+    right:28px;
+    top:24px;
+    width:210px;
+    height:155px;
+    background:url('/assets/brand/logodark.png') center/contain no-repeat;
+    z-index:2;
+    pointer-events:none;
+  }
+
   @media(max-width:900px){
     .site-header .brand-logo{width:115px!important;max-height:88px!important}
     .site-footer .brand-logo{width:165px!important;max-height:126px}
@@ -109,5 +143,6 @@ const { light = false, class: className = '' } = Astro.props;
   @media(max-width:600px){
     .site-header .brand-logo{width:100px!important;max-height:76px!important}
     .site-footer .brand-logo{width:155px!important;max-height:118px}
+    .estimate-heading::after{right:22px;top:30px;width:165px;height:130px}
   }
 </style>
