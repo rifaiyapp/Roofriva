@@ -1,35 +1,21 @@
-/* Full-width CTA + stats band ------------------------------------------- */
+/* Compact CTA + trust metrics ------------------------------------------- */
 .promise-band {
   position: relative !important;
   isolation: isolate;
   height: auto !important;
-  min-height: 470px;
-  padding: 92px 32px 72px !important;
-  display: flex;
-  flex-direction: column;
+  min-height: 205px !important;
+  margin: 0 !important;
+  padding: 44px max(40px, calc((100% - 1180px) / 2)) !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  gap: 72px;
   color: #fff;
-  overflow: visible;
+  text-align: left !important;
+  overflow: hidden;
   background:
-    linear-gradient(110deg, rgba(10,10,10,.91) 0%, rgba(20,20,20,.86) 48%, rgba(8,8,8,.93) 100%),
-    url('/assets/home/project-cabin.webp') center 58% / cover no-repeat !important;
-}
-
-/* Continue the exact same background behind the stats so both read as one section. */
-.promise-band::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 100%;
-  height: 330px;
-  z-index: -2;
-  background:
-    linear-gradient(110deg, rgba(10,10,10,.91) 0%, rgba(20,20,20,.86) 48%, rgba(8,8,8,.93) 100%),
-    url('/assets/home/project-cabin.webp') center 58% / cover no-repeat;
-  pointer-events: none;
+    linear-gradient(110deg, rgba(8,8,8,.90) 0%, rgba(16,16,16,.84) 48%, rgba(7,7,7,.91) 100%),
+    url('/assets/home/project-cabin.webp') center 56% / cover no-repeat !important;
 }
 
 .promise-band::before {
@@ -38,66 +24,93 @@
   inset: 0;
   z-index: -1;
   background:
-    radial-gradient(circle at 50% 42%, rgba(255,255,255,.055), transparent 42%),
-    linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.28));
+    linear-gradient(90deg, rgba(0,0,0,.22), transparent 46%, rgba(0,0,0,.18)),
+    linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.18));
+  pointer-events: none;
+}
+
+.promise-band::after {
+  content: '';
+  position: absolute;
+  left: max(40px, calc((100% - 1180px) / 2));
+  right: max(40px, calc((100% - 1180px) / 2));
+  bottom: 0;
+  height: 1px;
+  background: rgba(255,255,255,.16);
   pointer-events: none;
 }
 
 .promise-band h2 {
-  width: min(100%, 860px);
-  max-width: 860px !important;
-  margin: 0 auto 34px !important;
+  width: auto !important;
+  max-width: 700px !important;
+  margin: 0 !important;
   color: #fff !important;
   font-family: var(--heading-font) !important;
-  font-size: clamp(34px, 2.75vw, 46px) !important;
-  line-height: 1.12 !important;
+  font-size: clamp(27px, 2.05vw, 35px) !important;
+  line-height: 1.08 !important;
   font-weight: 600 !important;
-  letter-spacing: -.025em !important;
+  letter-spacing: -.028em !important;
+  text-align: left !important;
   text-wrap: balance;
-  text-shadow: 0 3px 20px rgba(0,0,0,.38);
+  text-shadow: 0 2px 14px rgba(0,0,0,.34);
 }
 
 .promise-band .button {
   position: relative;
   z-index: 2;
-  min-width: 320px;
-  min-height: 64px;
-  padding: 16px 34px !important;
-  font-size: 13px !important;
+  min-width: 285px !important;
+  min-height: 58px !important;
+  margin: 0 !important;
+  padding: 14px 34px !important;
+  font-size: 12px !important;
+  justify-self: end;
 }
 
 .promise-band .demo-note {
   display: none !important;
 }
 
-/* Stats are now part of the same visual band instead of a separate red block. */
+/* Slim metric strip using the same background treatment. */
 .stats-section {
   position: relative !important;
   z-index: 2 !important;
   height: auto !important;
-  min-height: 300px;
+  min-height: 145px !important;
   margin: 0 !important;
-  padding: 0 0 70px !important;
-  background: transparent !important;
+  padding: 0 !important;
+  color: #fff;
+  background:
+    linear-gradient(110deg, rgba(8,8,8,.90) 0%, rgba(16,16,16,.84) 48%, rgba(7,7,7,.91) 100%),
+    url('/assets/home/project-cabin.webp') center 76% / cover no-repeat !important;
 }
 
 .stats-section .stats-grid {
-  width: min(var(--shell), calc(100% - 80px));
+  width: min(1180px, calc(100% - 80px));
   height: auto !important;
-  min-height: 250px;
+  min-height: 145px !important;
   margin: 0 auto !important;
-  padding: 42px 34px 36px !important;
-  background: rgba(10,10,10,.34) !important;
-  border-top: 1px solid rgba(255,255,255,.18);
-  border-bottom: 1px solid rgba(255,255,255,.10);
+  padding: 28px 0 30px !important;
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  align-items: center;
+  gap: 0;
+  background: transparent !important;
   box-shadow: none !important;
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
   color: #fff;
 }
 
 .stats-section .stat {
-  position: relative;
+  min-width: 0;
+  min-height: 78px;
+  padding: 8px 24px !important;
+  display: grid !important;
+  grid-template-columns: 50px minmax(0, auto);
+  grid-template-rows: auto auto;
+  align-items: center;
+  justify-content: center;
+  column-gap: 14px;
+  row-gap: 0;
+  text-align: left !important;
   border-right: 1px solid rgba(255,255,255,.13) !important;
 }
 
@@ -106,118 +119,151 @@
 }
 
 .stats-section .stat > .hex {
-  width: 84px !important;
-  height: 92px !important;
-  background: var(--red) !important;
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  width: 48px !important;
+  height: 48px !important;
+  margin: 0 !important;
+  border: 1px solid rgba(232,0,10,.95);
+  border-radius: 50%;
+  clip-path: none !important;
+  background: rgba(198,0,8,.12) !important;
   color: #fff !important;
-  box-shadow: 0 12px 26px rgba(0,0,0,.24);
+  box-shadow: none !important;
 }
 
 .stats-section .stat > .hex .icon {
-  width: 42px !important;
-  height: 42px !important;
+  width: 22px !important;
+  height: 22px !important;
+  stroke-width: 1.7 !important;
 }
 
 .stats-section .stat strong {
-  margin-top: 14px !important;
+  grid-column: 2;
+  grid-row: 1;
+  align-self: end;
+  margin: 0 !important;
   color: #fff !important;
   font-family: var(--heading-font) !important;
-  font-size: 42px !important;
-  line-height: 1.15 !important;
+  font-size: 27px !important;
+  line-height: 1 !important;
   font-weight: 600 !important;
-  text-shadow: 0 2px 14px rgba(0,0,0,.28);
+  letter-spacing: -.025em;
+  text-shadow: none !important;
 }
 
 .stats-section .stat > span:last-child {
-  margin-top: 6px;
-  color: rgba(255,255,255,.78) !important;
-  font-size: 10px !important;
+  grid-column: 2;
+  grid-row: 2;
+  align-self: start;
+  margin: 7px 0 0 !important;
+  color: rgba(255,255,255,.66) !important;
+  font-size: 8px !important;
+  line-height: 1.25 !important;
+  font-weight: 500;
   letter-spacing: .12em !important;
+  white-space: normal;
 }
 
 .stats-section .stats-demo {
   display: none !important;
 }
 
-/* The next section should begin after this combined band, not overlap it. */
 .reviews-section {
   margin-top: 0 !important;
   padding-top: 90px !important;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 980px) {
   .promise-band {
-    min-height: 420px;
-    padding: 78px 26px 64px !important;
-    background-position: 54% center !important;
-  }
-
-  .promise-band::after {
-    height: 470px;
-    background-position: 54% center;
+    min-height: 190px !important;
+    padding: 38px 34px !important;
+    gap: 36px;
   }
 
   .promise-band h2 {
-    max-width: 720px !important;
-    font-size: clamp(31px, 5vw, 40px) !important;
+    max-width: 560px !important;
+    font-size: 29px !important;
   }
 
-  .stats-section {
-    padding-bottom: 54px !important;
+  .promise-band .button {
+    min-width: 250px !important;
   }
 
   .stats-section .stats-grid {
-    width: calc(100% - 44px);
+    width: calc(100% - 48px);
     grid-template-columns: repeat(2, 1fr) !important;
-    row-gap: 38px;
-    padding: 38px 24px !important;
+    padding: 20px 0 !important;
+  }
+
+  .stats-section .stat {
+    min-height: 72px;
+    justify-content: start;
+    padding: 14px 30px !important;
   }
 
   .stats-section .stat:nth-child(2) {
     border-right: 0 !important;
   }
+
+  .stats-section .stat:nth-child(-n+2) {
+    border-bottom: 1px solid rgba(255,255,255,.10);
+  }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .promise-band {
-    min-height: 390px;
-    padding: 66px 20px 54px !important;
-  }
-
-  .promise-band::after {
-    height: 760px;
+    min-height: 0 !important;
+    padding: 44px 24px 42px !important;
+    grid-template-columns: 1fr !important;
+    gap: 26px;
   }
 
   .promise-band h2 {
-    max-width: 430px !important;
-    margin-bottom: 28px !important;
-    font-size: 29px !important;
-    line-height: 1.16 !important;
+    max-width: 520px !important;
+    font-size: 28px !important;
+    line-height: 1.12 !important;
   }
 
   .promise-band .button {
-    min-width: min(300px, calc(100vw - 72px));
-    min-height: 58px;
+    justify-self: start;
+    min-width: min(285px, calc(100vw - 72px)) !important;
+    min-height: 56px !important;
+  }
+
+  .promise-band::after {
+    left: 24px;
+    right: 24px;
   }
 
   .stats-section .stats-grid {
     width: calc(100% - 32px);
-    grid-template-columns: 1fr !important;
-    gap: 0;
-    padding: 22px 24px !important;
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 
-  .stats-section .stat,
-  .stats-section .stat:nth-child(2) {
-    min-height: 190px;
-    justify-content: center;
-    border-right: 0 !important;
-    border-bottom: 1px solid rgba(255,255,255,.12);
-    padding: 24px 0;
+  .stats-section .stat {
+    grid-template-columns: 42px minmax(0, auto);
+    column-gap: 11px;
+    padding: 14px 12px !important;
   }
 
-  .stats-section .stat:last-of-type {
-    border-bottom: 0;
+  .stats-section .stat > .hex {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .stats-section .stat > .hex .icon {
+    width: 19px !important;
+    height: 19px !important;
+  }
+
+  .stats-section .stat strong {
+    font-size: 23px !important;
+  }
+
+  .stats-section .stat > span:last-child {
+    font-size: 7px !important;
+    letter-spacing: .08em !important;
   }
 
   .reviews-section {
