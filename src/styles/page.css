@@ -1,0 +1,4 @@
+/* Page-level section visibility and layout overrides. */
+.roof-types{
+  display:none!important;
+}
