@@ -1,5 +1,6 @@
 ---
-import '../styles/roofriva.css';
+import '../styles/global.css';
+import '../styles/buttons.css';
 import { site } from '../data/site';
 interface Props { title?: string; description?: string; }
 const {title='ROOFRIVA | Residential & Commercial Roofing',description='Explore roofing installation, repair, replacement and inspection options. Request an estimate for your residential or commercial roofing project.'}=Astro.props;
@@ -11,58 +12,9 @@ const {title='ROOFRIVA | Residential & Commercial Roofing',description='Explore 
   <title>{title}</title><meta name="description" content={description}/><meta name="robots" content="noindex,nofollow,noarchive,nosnippet"/>
   <link rel="canonical" href={new URL(Astro.url.pathname,site.domain).href}/><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
   <meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:type" content="website"/>
-  <meta property="og:url" content={new URL(Astro.url.pathname,site.domain).href}/><meta property="og:image" content={`${site.domain}/assets/roofriva/hero-reference.webp`}/>
+  <meta property="og:url" content={new URL(Astro.url.pathname,site.domain).href}/><meta property="og:image" content={`${site.domain}/assets/home/hero-reference.webp`}/>
   <link rel="preload" href="/assets/fonts/poppins-regular.woff" as="font" type="font/woff" crossorigin/>
   <link rel="preload" href="/assets/fonts/poppins-bold.woff" as="font" type="font/woff" crossorigin/>
  </head>
  <body><a class="skip-link" href="#main-content">Skip to content</a><slot/></body>
 </html>
-<style is:global>
- /* Global ROOFRIVA CTA treatment based on the supplied reference. */
- .button:not(.rooflume-submit){
-  position:relative;
-  overflow:visible;
-  isolation:isolate;
-  background:linear-gradient(180deg,#dd0008 0%,#c60008 100%)!important;
-  border:0!important;
-  color:#fff!important;
-  box-shadow:
-   inset 0 1px 0 rgba(255,255,255,.12),
-   inset 0 -9px 16px rgba(83,0,0,.20),
-   inset 0 0 18px rgba(255,255,255,.04),
-   0 11px 22px rgba(0,0,0,.34)!important;
-  text-shadow:0 1px 1px rgba(0,0,0,.22);
-  transition:background .2s ease,box-shadow .2s ease,filter .2s ease;
- }
- .button.angled:not(.rooflume-submit){
-  transform:skew(-13deg)!important;
- }
- .button.angled:not(.rooflume-submit)>span{
-  transform:skew(13deg)!important;
- }
- .button:not(.rooflume-submit)::after{
-  content:'';
-  position:absolute;
-  top:50%;
-  right:-82px;
-  width:64px;
-  height:1px;
-  background:#fff;
-  opacity:.95;
-  transform:skew(13deg) translateY(-50%);
-  transform-origin:center;
-  pointer-events:none;
- }
- .button:not(.rooflume-submit):hover,
- .button:not(.rooflume-submit):focus-visible{
-  background:linear-gradient(180deg,#ed0009 0%,#d00008 100%)!important;
-  box-shadow:
-   inset 0 1px 0 rgba(255,255,255,.15),
-   inset 0 -9px 16px rgba(83,0,0,.18),
-   inset 0 0 20px rgba(255,255,255,.05),
-   0 14px 27px rgba(0,0,0,.38)!important;
- }
- @media(max-width:700px){
-  .button:not(.rooflume-submit)::after{right:-55px;width:40px}
- }
-</style>
