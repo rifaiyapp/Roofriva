@@ -119,12 +119,12 @@
   background:var(--red);
 }
 
-/* Trust badges sit on the boundary between Testimonials and Projects. */
+/* Trust badges sit between Testimonials and Projects. ------------------- */
 .review-platforms{
   position:relative;
   z-index:8;
-  width:min(780px,calc(100% - 48px))!important;
-  margin:-38px auto 48px!important;
+  width:min(850px,calc(100% - 48px))!important;
+  margin:-34px auto 42px!important;
   padding:0!important;
   display:grid!important;
   grid-template-columns:repeat(4,minmax(0,1fr));
@@ -135,100 +135,34 @@
 }
 
 .review-platforms>span.trust-badge{
+  width:100%!important;
   min-width:0!important;
-  height:86px!important;
-  padding:9px 12px!important;
+  height:92px!important;
+  padding:7px 9px!important;
   margin:0!important;
   display:flex!important;
-  flex-direction:column!important;
   align-items:center!important;
   justify-content:center!important;
-  gap:4px!important;
   background:#fff!important;
-  border:1px solid #e2e2e2!important;
+  border:1px solid #e4e4e4!important;
   border-radius:8px!important;
-  box-shadow:0 5px 16px rgba(0,0,0,.045)!important;
-  color:#222!important;
-  font-size:initial!important;
-  line-height:normal!important;
+  box-shadow:0 5px 15px rgba(0,0,0,.035)!important;
   overflow:hidden;
 }
 
 .review-platforms .trust-badge-logo{
   display:block!important;
-  width:auto!important;
-  max-width:118px!important;
+  width:100%!important;
+  max-width:192px!important;
   height:auto!important;
-  max-height:30px!important;
+  max-height:77px!important;
   object-fit:contain!important;
-  flex:none;
-}
-
-.review-platforms .platform-bbb .trust-badge-logo{
-  max-height:31px!important;
-  max-width:44px!important;
-}
-
-.review-platforms .platform-yelp .trust-badge-logo{
-  max-height:29px!important;
-  max-width:92px!important;
-}
-
-.review-platforms .platform-google .trust-badge-logo{
-  max-height:27px!important;
-  max-width:100px!important;
-}
-
-.review-platforms .platform-facebook .trust-badge-logo{
-  max-height:23px!important;
-  max-width:108px!important;
-}
-
-.review-platforms .trust-badge-copy{
-  display:flex!important;
-  align-items:center!important;
-  justify-content:center!important;
-  gap:5px!important;
-  min-height:16px;
-  white-space:nowrap;
-}
-
-.review-platforms .trust-badge-label{
-  display:inline-block!important;
-  color:#575757!important;
-  font-family:Arial,sans-serif!important;
-  font-size:9px!important;
-  line-height:1!important;
-  font-weight:500!important;
-  letter-spacing:0!important;
-}
-
-.review-platforms .platform-bbb .trust-badge-label{
-  color:#15607b!important;
-  font-size:7px!important;
-  font-weight:700!important;
-  letter-spacing:.02em!important;
-}
-
-.review-platforms .trust-badge-rating{
-  display:inline-block!important;
-  color:#eda400!important;
-  font-family:Arial,sans-serif!important;
-  font-size:12px!important;
-  line-height:1!important;
-  font-weight:700!important;
-  letter-spacing:.04em!important;
-}
-
-.review-platforms .trust-badge-rating.is-bbb{
-  color:#15607b!important;
-  font-size:8px!important;
-  letter-spacing:0!important;
 }
 
 .review-platforms>span::before,
 .review-platforms>span::after,
 .review-platforms .platform-stars,
+.review-platforms .trust-badge-copy,
 .platform-note{
   display:none!important;
 }
@@ -242,10 +176,10 @@
   .reviews-grid .review-card{flex-basis:calc((100% - 20px)/2)}
   .reviews-grid{gap:20px!important}
   .review-platforms{
-    width:min(650px,calc(100% - 40px))!important;
+    width:min(620px,calc(100% - 40px))!important;
     grid-template-columns:repeat(2,minmax(0,1fr));
     gap:15px!important;
-    margin:-32px auto 40px!important;
+    margin:-30px auto 38px!important;
   }
 }
 
@@ -259,18 +193,11 @@
     width:calc(100% - 34px)!important;
     grid-template-columns:repeat(2,minmax(0,1fr));
     gap:12px 15px!important;
-    margin:-28px auto 32px!important;
+    margin:-26px auto 30px!important;
   }
   .review-platforms>span.trust-badge{
-    height:78px!important;
-    padding:8px 10px!important;
+    height:82px!important;
+    padding:6px 8px!important;
   }
-  .review-platforms .trust-badge-logo{max-height:25px!important}
-  .review-platforms .platform-bbb .trust-badge-logo{max-height:28px!important}
-  .review-platforms .platform-yelp .trust-badge-logo{max-height:25px!important}
-  .review-platforms .platform-google .trust-badge-logo{max-height:23px!important}
-  .review-platforms .platform-facebook .trust-badge-logo{max-height:20px!important}
-  .review-platforms .trust-badge-label{font-size:8px!important}
-  .review-platforms .trust-badge-rating{font-size:10px!important}
   .review-platforms + .projects-section{padding-top:42px!important}
 }
