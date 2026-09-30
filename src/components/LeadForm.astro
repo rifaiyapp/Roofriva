@@ -24,7 +24,7 @@ const {id='hero-quote',source='homepage-hero-quote'} = Astro.props;
  <label class="sr-only" for={`${id}-message`}>Tell us about your roof</label>
  <textarea id={`${id}-message`} name="message" rows="4" placeholder="Tell us about your roof"></textarea>
 
- <button type="submit" class="button rooflume-submit">GET FREE INSPECTION</button>
+ <button type="submit" class="button angled form-submit"><span>GET FREE INSPECTION</span></button>
  <p class="form-reassurance">No spam. No obligation.</p>
  <p class="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
  <noscript><p>Please enable JavaScript to send this form, or use the phone or email below.</p></noscript>
@@ -93,26 +93,21 @@ const {id='hero-quote',source='homepage-hero-quote'} = Astro.props;
   border-radius:50%;
   background:#fff;
  }
- .estimate-card .rooflume-submit{
+ .estimate-card .form-submit{
+  align-self:center!important;
   width:100%!important;
   min-height:68px!important;
-  margin:5px 0 0!important;
+  margin:6px 0 0!important;
   padding:15px 36px!important;
-  border:0!important;
   border-radius:0!important;
-  background:var(--red,#c60008)!important;
-  color:#fff!important;
-  box-shadow:none!important;
-  clip-path:polygon(9% 0,100% 0,91% 100%,0 100%);
   font-size:17px!important;
   line-height:1!important;
   font-weight:800!important;
   letter-spacing:.035em!important;
-  text-transform:uppercase;
+  text-transform:uppercase!important;
  }
- .estimate-card .rooflume-submit:hover,
- .estimate-card .rooflume-submit:focus-visible{
-  background:#e00008!important;
+ .estimate-card .form-submit>span{
+  white-space:nowrap;
  }
  .estimate-card .form-reassurance{
   margin:-2px 0 0!important;
@@ -137,6 +132,6 @@ const {id='hero-quote',source='homepage-hero-quote'} = Astro.props;
   .estimate-card .lead-form>textarea,
   .estimate-card .zip-field>input{min-height:58px!important;font-size:16px!important}
   .estimate-card .lead-form>textarea{min-height:96px!important}
-  .estimate-card .rooflume-submit{min-height:62px!important;font-size:15px!important}
+  .estimate-card .form-submit{min-height:62px!important;font-size:15px!important}
  }
 </style>
