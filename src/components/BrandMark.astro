@@ -3,14 +3,22 @@ interface Props { light?: boolean; class?: string; }
 const { light = false, class: className = '' } = Astro.props;
 ---
 {light ? (
-  <img
-    class:list={['brand-mark','brand-logo',className]}
-    src="/assets/brand/logolight.png"
-    alt=""
-    width="1390"
-    height="1033"
-    decoding="async"
-  />
+  <>
+    <img
+      class:list={['brand-mark','brand-logo',className]}
+      src="/assets/brand/logolight.png"
+      alt=""
+      width="1390"
+      height="1033"
+      decoding="async"
+    />
+    <div class="header-address" aria-hidden="true">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-8 8-13A8 8 0 0 0 4 9c0 5 8 13 8 13Zm0-10a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+      </svg>
+      <span><small>Our Address</small><strong>123 Main Street, Austin, TX</strong></span>
+    </div>
+  </>
 ) : (
   <svg class:list={['brand-mark', className]} viewBox="0 0 240 230" fill="none" aria-hidden="true">
     <path d="M113 5 172 99 149 135 125 97 135 80 113 44 85 89 169 223 130 223 46 89Z" fill="#2b2c2c" />
@@ -20,10 +28,17 @@ const { light = false, class: className = '' } = Astro.props;
   </svg>
 )}
 <style is:global>
-  .brand > .brand-logo + span{display:none!important}
+  .brand > span{display:none!important}
+  .header-address{display:none}
+  .site-header .header-address{position:absolute;left:0;top:40px;display:flex;gap:12px;align-items:center;text-align:left;color:#fff;pointer-events:none}
+  .site-header .header-address .icon{width:32px;height:32px;fill:none;stroke:#fff;stroke-width:1.6}
+  .site-header .header-address small{font-size:10px;display:block;font-weight:400}
+  .site-header .header-address strong{font-size:15px;display:block;font-weight:600;white-space:nowrap}
   .site-header .brand-logo{width:150px!important;height:auto!important;max-height:118px;object-fit:contain}
   .site-footer .brand-logo{width:190px!important;height:auto!important;max-height:145px;object-fit:contain}
+  .hero-house{top:0!important}
   @media(max-width:900px){
+    .site-header .header-address{display:none}
     .site-header .brand-logo{width:115px!important;max-height:88px}
     .site-footer .brand-logo{width:165px!important;max-height:126px}
   }
