@@ -1,6 +1,24 @@
 # ROOFRIVA reconstruction QA — 2026-09-30
 
-final result: blocked
+final result: production deployed; strict visual and responsive acceptance remains incomplete
+
+## Production deployment update
+
+The user explicitly requested pushing all changes and deploying Cloudflare after the initial blocked report. The complete reconstruction was fast-forwarded to `main` at `fde58736af23939bd9d14c7965298a88030a9fe4`.
+
+- Cloudflare production build `0258bee5-0454-4417-b078-d82e7f3bb37f`: **SUCCESS**.
+- Deployed Worker version: `274d41bb-6adb-47b8-8f95-c8987e35072b`.
+- Actual production URL reloaded and verified: https://roofriva.keydiv.workers.dev/
+- The reconstruction is live. Title, all 21 image elements, self-hosted Poppins, compiled CSS and both JavaScript modules loaded.
+- Browser viewport: 1348 × 936. Page: 1348 × 10285. Horizontal overflow: zero at this viewport.
+- Live checks passed: appointment anchor, required-field validation and accessible error status, connected form helper, project next button and selected state/caption, FAQ opening and automatic closing of the previously open item.
+- `/thank-you/` and `/404` render correctly. Phone and email destinations match the configured contacts.
+- No application-origin console errors observed. The browser reports unrelated extension metadata errors.
+- No real lead was submitted; success/error delivery and redirect remain untested.
+- Production hero viewport screenshot captured. Full-page screenshot capture timed out. The required exact-width screenshot comparisons and responsive checks remain outstanding.
+- Motion remains deferred, and P0/P1/P2 clearance is not established. Deployment success is not visual acceptance.
+
+The earlier blocked checkpoint below is retained as the history leading to this deployment.
 
 ## Target and evidence
 
@@ -70,9 +88,9 @@ The existing prebuild synchronization changes generated local routing configurat
 - Build dashboard: https://dash.cloudflare.com/bb8543241b074ba3a57e1214db852fad/workers/services/view/roofriva/production/builds/b4483602-d9b8-44e6-8b8c-9af9d30199a7
 - Production: https://roofriva.keydiv.workers.dev/
 
-## Required continuation
+## Remaining QA
 
-1. Obtain the failed Cloudflare build log and resolve its actual cause; restore a supported, browser-accessible preview. Local preview policy and Cloudflare dashboard access currently prevent this.
+1. Use supported browser tooling to capture the live implementation at the required exact viewport widths. The earlier branch-preview build failed, but the main production build succeeded.
 2. Capture stable fonts/images at 1440px, combine with source, compare every section, fix P0/P1/P2 issues and repeat.
 3. Test every required viewport, keyboard and form states using intercepted/mock delivery. Add restrained motion only after parity.
 4. Validate, review, commit, push main, wait for Cloudflare, verify actual production and capture/compare again.
