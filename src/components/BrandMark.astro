@@ -37,6 +37,50 @@ const { light = false, class: className = '' } = Astro.props;
   .site-header .brand-logo{width:150px!important;height:auto!important;max-height:118px;object-fit:contain}
   .site-footer .brand-logo{width:190px!important;height:auto!important;max-height:145px;object-fit:contain}
   .hero-house{top:0!important}
+
+  @media(min-width:901px){
+    .site-header .header-inner{
+      height:218px!important;
+      align-items:start!important;
+      padding-bottom:0!important;
+      border-bottom:0!important;
+    }
+    .site-header .header-inner .brand{
+      grid-column:2!important;
+      align-self:start!important;
+      padding-top:14px!important;
+    }
+    .site-header .desktop-nav{
+      position:absolute!important;
+      top:156px!important;
+      height:52px!important;
+      display:flex!important;
+      align-items:center!important;
+      gap:42px!important;
+      border-top:1px solid rgba(255,255,255,.28)!important;
+      border-bottom:1px solid rgba(255,255,255,.28)!important;
+      font-size:13px!important;
+    }
+    .site-header .nav-left{
+      left:0!important;
+      width:50%!important;
+      justify-content:flex-end!important;
+      padding-right:22px!important;
+    }
+    .site-header .nav-right{
+      right:0!important;
+      width:50%!important;
+      justify-content:flex-start!important;
+      padding-left:22px!important;
+    }
+    .site-header .desktop-nav a{
+      display:flex;
+      align-items:center;
+      height:100%;
+      white-space:nowrap;
+    }
+  }
+
   @media(max-width:900px){
     .site-header .header-address{display:none}
     .site-header .brand-logo{width:115px!important;max-height:88px}
