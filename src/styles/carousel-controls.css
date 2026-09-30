@@ -1,0 +1,93 @@
+/* Shared-style navigation for the Projects carousel --------------------- */
+.project-carousel-controls{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+  margin:18px auto 0;
+}
+
+.project-carousel-controls .gallery-arrow{
+  position:static!important;
+  top:auto!important;
+  right:auto!important;
+  left:auto!important;
+  bottom:auto!important;
+  transform:none!important;
+  width:42px!important;
+  height:42px!important;
+  padding:0!important;
+  display:grid!important;
+  place-items:center!important;
+  border:1px solid #d6d6d6!important;
+  border-radius:50%!important;
+  background:#fff!important;
+  color:#242424!important;
+  box-shadow:none!important;
+  transition:background .25s ease,color .25s ease,border-color .25s ease,transform .25s ease!important;
+}
+
+.project-carousel-controls .gallery-arrow.previous{
+  transform:rotate(180deg)!important;
+}
+
+.project-carousel-controls .gallery-arrow:hover,
+.project-carousel-controls .gallery-arrow:focus-visible{
+  background:var(--red)!important;
+  color:#fff!important;
+  border-color:var(--red)!important;
+  transform:translateY(-2px)!important;
+}
+
+.project-carousel-controls .gallery-arrow.previous:hover,
+.project-carousel-controls .gallery-arrow.previous:focus-visible{
+  transform:rotate(180deg) translateY(2px)!important;
+}
+
+.project-carousel-controls .gallery-arrow .icon{
+  width:22px!important;
+  height:22px!important;
+}
+
+.project-carousel-dots{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-width:40px;
+}
+
+.project-carousel-dot{
+  width:7px;
+  height:7px;
+  padding:0;
+  border:0;
+  border-radius:50%;
+  background:#c9c9c9;
+  transition:width .25s ease,background .25s ease,border-radius .25s ease;
+}
+
+.project-carousel-dot.is-active{
+  width:24px;
+  border-radius:10px;
+  background:var(--red);
+}
+
+.project-caption{
+  margin-top:12px!important;
+}
+
+@media(max-width:600px){
+  .project-carousel-controls{
+    margin-top:14px;
+  }
+
+  .project-carousel-controls .gallery-arrow{
+    width:42px!important;
+    height:42px!important;
+  }
+
+  .project-caption{
+    margin-top:11px!important;
+  }
+}
