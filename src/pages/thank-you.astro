@@ -1,10 +1,8 @@
 ---
-import SetupPage from '../layouts/SetupPage.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import BrandMark from '../components/BrandMark.astro';
+import { site } from '../data/site';
 ---
-<SetupPage title="Submission Received">
-  <section class="confirmation">
-    <h1>Submission Received</h1>
-    <p class="confirmation-primary">Your test submission was processed successfully.</p>
-    <a href="/" data-runtime-mount-home class="primary-action">Return to Home <span aria-hidden="true">↗</span></a>
-  </section>
-</SetupPage>
+<SiteLayout title="Submission Received | ROOFRIVA" description="Your roofing inquiry has been received.">
+ <main id="main-content" class="message-page"><BrandMark/><h1>Thank You</h1><h2>Submission Received</h2><p>Your request was processed successfully.</p><a href="/" data-runtime-mount-home class="button">Return to Home</a><a class="message-phone" href={site.phoneHref}>{site.phone}</a></main>
+</SiteLayout>

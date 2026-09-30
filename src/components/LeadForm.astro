@@ -1,0 +1,19 @@
+---
+interface Props { id?: string; source?: string; }
+const {id='hero-quote',source='homepage-hero-quote'} = Astro.props;
+---
+<form id={id} class="lead-form" method="dialog" novalidate aria-label="Request a roofing estimate">
+ <input type="hidden" name="form_source" value={source}/>
+ <div class="honeypot" aria-hidden="true"><label for={`${id}-website`}>Website</label><input id={`${id}-website`} name="website" type="text" tabindex="-1" autocomplete="off"/></div>
+ <label class="sr-only" for={`${id}-name`}>Name (required)</label><input id={`${id}-name`} name="name" autocomplete="name" required placeholder="Name*"/>
+ <label class="sr-only" for={`${id}-email`}>Email</label><input id={`${id}-email`} name="email" type="email" autocomplete="email" placeholder="Email"/>
+ <label class="sr-only" for={`${id}-phone`}>Phone (required)</label><input id={`${id}-phone`} name="phone" type="tel" autocomplete="tel" required placeholder="Phone*"/>
+ <label class="sr-only" for={`${id}-message`}>Tell us about your project</label><textarea id={`${id}-message`} name="message" rows="4" placeholder="Your message here..."></textarea>
+ <button type="submit" class="button">SUBMIT NOW</button>
+ <p class="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
+ <noscript><p>Please enable JavaScript to send this form, or use the phone or email below.</p></noscript>
+</form>
+<script>
+ import { connectLeadForm } from '../scripts/lead-form';
+ document.querySelectorAll<HTMLFormElement>('.lead-form').forEach(connectLeadForm);
+</script>

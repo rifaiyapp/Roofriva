@@ -1,0 +1,25 @@
+---
+interface Props { name?: string; class?: string; }
+const {name = 'house', class: className = ''} = Astro.props;
+const paths: Record<string,string> = {
+ house: 'M3 11 12 3l9 8M5 10v11h5v-6h4v6h5V10',
+ repair: 'm4 21 8-8m1-1 3-3m-1-6a6 6 0 0 0-7 8L2 17a3 3 0 0 0 4 4l6-6a6 6 0 0 0 8-7l-4 4-4-4 4-4Z',
+ search: 'm3 10 8-7 8 7M5 9v11h6m5-7a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm3 7 3 3',
+ shield: 'M12 3 3 7v5c0 5 9 10 9 10s9-5 9-10V7Z M8 12l3 3 5-6',
+ document: 'M6 3h8l4 4v14H6ZM14 3v5h4M9 12h6M9 16h6',
+ calendar: 'M4 5h16v16H4ZM4 10h16M8 2v6M16 2v6m-8 6 3 3 5-5',
+ team: 'M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm8 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM2 21v-5c0-4 12-4 12 0v5m1-8c5-1 7 1 7 4v4',
+ smile: 'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20ZM7 9h1m8 0h1M7 14s1 4 5 4 5-4 5-4',
+ phone: 'M6 3 3 5c-2 7 9 18 16 16l2-3-6-4-2 3c-3-1-5-3-6-6l3-2Z',
+ mail: 'M3 5h18v14H3ZM3 5l9 7 9-7',
+ pin: 'M12 22s8-8 8-13A8 8 0 0 0 4 9c0 5 8 13 8 13Zm0-10a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z',
+ arrow: 'M3 12h18m-7-7 7 7-7 7',
+ chevron: 'm9 5 7 7-7 7',
+ check: 'm4 12 5 5L20 6',
+ clock: 'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20ZM12 6v6l4 2',
+ star: 'm12 2 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1Z',
+ menu: 'M3 6h18M3 12h18M3 18h18',
+ close: 'm5 5 14 14M19 5 5 19',
+};
+---
+<svg class:list={['icon',className]} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={paths[name] || paths.house}/></svg>

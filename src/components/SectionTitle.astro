@@ -1,0 +1,6 @@
+---
+import BrandMark from './BrandMark.astro';
+interface Props { text: string; eyebrow?: string; }
+const { text, eyebrow } = Astro.props;
+---
+<div class="section-title">{eyebrow && <p class="eyebrow">{eyebrow}</p>}<h2>{text}</h2><BrandMark /></div>

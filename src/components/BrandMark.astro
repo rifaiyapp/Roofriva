@@ -1,0 +1,10 @@
+---
+interface Props { light?: boolean; class?: string; }
+const { light = false, class: className = '' } = Astro.props;
+---
+<svg class:list={['brand-mark', className]} viewBox="0 0 240 230" fill="none" aria-hidden="true">
+  <path d="M113 5 172 99 149 135 125 97 135 80 113 44 85 89 169 223 130 223 46 89Z" fill={light ? '#fff' : '#2b2c2c'} />
+  <path d="M69 114 10 211 109 211 145 152 124 120 87 179 65 179 90 147Z" fill="#c60009" />
+  <path d="M171 119 237 224 197 224 151 151Z" fill={light ? '#fff' : '#2b2c2c'} />
+  <path d="m143 51 30 48-23 37-19-30 9-14-17-26Z" fill="#b90007" />
+</svg>

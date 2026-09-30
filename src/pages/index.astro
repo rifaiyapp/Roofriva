@@ -1,66 +1,100 @@
 ---
-import SetupPage from '../layouts/SetupPage.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import BrandMark from '../components/BrandMark.astro';
+import Icon from '../components/Icon.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import LeadForm from '../components/LeadForm.astro';
+import { site, faqs } from '../data/site';
+const photo = (name: string) => `/assets/roofriva/${name}.webp`;
+const services = [
+ {title:'New Roof',image:'new-roof',icon:'house',copy:'A new roof starts with the right materials, careful planning and attention to your home.'},
+ {title:'Roof Replacement',image:'about-reference',icon:'house',copy:'Explore replacement options for an aging or damaged roof, with a clear plan for every step.'},
+ {title:'Fixing Damaged Roofs',image:'roof-repair',icon:'repair',copy:'Find the right solution for damaged tiles, worn flashing and roofing that needs attention.'},
+ {title:'Roof Inspection',image:'roof-inspector',icon:'search',copy:'Understand the condition of your roof and the next steps for repair or replacement.'},
+];
+const benefits=[['shield','A considered approach to every roof'],['house','Roofing options explained clearly'],['document','Project planning around your home'],['calendar','Clear communication at every step'],['team','Attention to the details that matter']];
+const roofTypes=[
+ ['Gable Roof','A familiar roof shape with two slopes meeting at a ridge. Its simple profile works with a wide range of residential roofing materials.'],
+ ['Hip Roof','Sloping on all four sides, a hip roof creates an even, balanced shape. Its layout can suit both traditional and contemporary homes.'],
+ ['Flat & Low-Slope Roofing','A lower-pitch roof needs a system designed around drainage, waterproofing and the way the building is used.'],
+ ['Mansard Roof','A distinctive four-sided form with steep lower slopes, often chosen where additional upper-level space is part of the design.'],
+ ['Butterfly Roof','Two sloping surfaces meet in a central valley. This architectural form needs careful attention to drainage and detailing.'],
+ ['Bonnet Roof','A double-slope profile with a gentler lower section. The extended eaves can shelter the perimeter of the home.'],
+ ['Saltbox Roof','An asymmetric roof with a longer slope on one side, commonly associated with traditional residential architecture.'],
+];
+const projects=[['project-cabin','Blue metal roof on a timber home','METAL ROOF PROJECT'],['hero-reference','Craftsman home with a dark tiled roof','LARGE ROOF DESIGN PROJECT'],['project-home','Grey bungalow with a red front door','RESIDENTIAL ROOF PROJECT'],['new-roof','Roofer at work on a pitched roof','ROOF INSTALLATION']];
 ---
-<SetupPage title="Welcome to New Website Setup">
-  <header class="setup-intro">
-    <h1>Welcome to<br class="desktop-break" /> New Website Setup</h1>
-    <p class="intro-copy">Use the form below to check your website setup before starting the final website build.</p>
-  </header>
-
-  <section class="form-card" aria-labelledby="form-title">
-    <header class="form-heading">
-      <h2 id="form-title">Test Website Form</h2>
-    </header>
-    <form id="callback" method="dialog" novalidate aria-labelledby="form-title" aria-describedby="required-note">
-      <p id="required-note" class="required-note">Fields marked <span aria-hidden="true">*</span><span class="visually-hidden">with an asterisk</span> are required.</p>
-      <div class="honeypot" aria-hidden="true">
-        <label for="website">Website</label>
-        <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
-      </div>
-      <div class="form-grid">
-        <div class="field">
-          <label for="name">Name <span aria-hidden="true">*</span></label>
-          <input id="name" name="name" type="text" autocomplete="name" required />
-        </div>
-        <div class="field">
-          <label for="phone">Phone <span aria-hidden="true">*</span></label>
-          <input id="phone" name="phone" type="tel" autocomplete="tel" required />
-        </div>
-        <div class="field">
-          <label for="email">Email <span aria-hidden="true">*</span></label>
-          <input id="email" name="email" type="email" autocomplete="email" required />
-        </div>
-        <div class="field">
-          <label for="service">Service <span aria-hidden="true">*</span></label>
-          <select id="service" name="service" required>
-            <option value="" disabled selected>Select a service</option>
-            <option>General Inquiry</option>
-            <option>Website Service</option>
-            <option>Support Request</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="zip">ZIP Code <span aria-hidden="true">*</span></label>
-          <input id="zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" pattern="[0-9]{5}(-[0-9]{4})?" aria-describedby="zip-hint" required />
-          <span class="field-hint" id="zip-hint">5 digits, or ZIP+4 (12345-6789).</span>
-        </div>
-        <div class="field field-wide">
-          <label for="message">Message <span class="optional">Optional</span></label>
-          <textarea id="message" name="message" rows="4"></textarea>
-        </div>
-      </div>
-      <div class="form-actions">
-        <button type="submit" class="primary-action">Submit Test Lead <span aria-hidden="true">↗</span></button>
-      </div>
-      <p class="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
-      <noscript><p class="noscript-note">Enable JavaScript to test form behavior. No information is sent without it.</p></noscript>
-    </form>
-  </section>
-</SetupPage>
-
+<SiteLayout>
+<header class="site-header">
+ <div class="header-inner">
+  <nav class="nav-left desktop-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/#about">About Us</a></nav>
+  <a class="brand" href="/" aria-label="ROOFRIVA home"><BrandMark light/><span>roofriva</span></a>
+  <a class="header-phone" href={site.phoneHref}><Icon name="phone"/><span><small>Give us a call</small><strong>{site.phone}</strong></span></a>
+  <nav class="nav-right desktop-nav" aria-label="Services and contact"><a href="/#services">Services</a><a href="/#contact">Contact Us</a></nav>
+  <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav"><Icon name="menu"/></button>
+ </div>
+ <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" hidden><a href="/">Home</a><a href="/#about">About Us</a><a href="/#services">Services</a><a href="/#projects">Projects</a><a href="/#contact">Contact Us</a></nav>
+</header>
+<main id="main-content">
+ <section class="hero" aria-labelledby="hero-title">
+  <img class="hero-house" src={photo('hero-reference')} alt="Craftsman home with a dark roof at sunset" width="1536" height="1024" fetchpriority="high"/>
+  <div class="hero-heading"><h1 id="hero-title">Upgrade Your Residential And Commercial Roofing Service</h1><p>Give your home a new level of protection. Explore the right roofing solution for you.</p><a class="button angled" href="/#quote"><span>REQUEST AN APPOINTMENT</span></a></div>
+  <div class="hero-red" aria-hidden="true"></div>
+  <img class="hero-crew" src={photo('crew-cutout')} alt="Three construction professionals reviewing a roof plan" width="1536" height="1024"/>
+  <aside class="estimate-card" id="quote" aria-labelledby="estimate-title"><div class="estimate-heading"><div><h2 id="estimate-title">Have questions?</h2><p>Feel free to get in touch to discuss<br/>your next roofing project.</p></div><BrandMark/></div><LeadForm/></aside>
+ </section>
+ <section class="services-section" id="services">
+  <div class="shell"><SectionTitle text="Let's Give You The Best Service For Residential & Commercial Roof"/>
+   <div class="service-grid">{services.map((s,i)=><a class:list={['service-card',i===1&&'service-featured']} href="/#quote"><img class="service-photo" src={photo(s.image)} alt={s.title} width="1024" height="1536" loading="lazy"/><div class="service-info"><span class="hex"><Icon name={s.icon}/></span><h3>{s.title}</h3><p>{s.copy}</p></div></a>)}</div>
+  </div>
+ </section>
+ <section class="about-band" id="about" aria-labelledby="about-title">
+  <img class="about-photo" src={photo('about-reference')} alt="Two roofers fitting tiles over blue roofing underlayment" loading="lazy" width="1536" height="1024"/>
+  <div class="shell"><div class="about-panel"><h2 id="about-title">About the<br/>ROOFRIVA</h2><p>From a new roof to a repair, every project starts with understanding your property. Explore the materials, roof styles and practical details that can help you choose the right next step for your home or business.</p><p>Tell us what your roof needs. We will help you begin the conversation with a clear picture of your project.</p>
+   <div class="about-point"><span><Icon name="house"/></span><div><h3>New Roofs & Replacement</h3><p>Explore roofing options that suit the style and needs of your property.</p></div></div>
+   <div class="about-point"><span><Icon name="repair"/></span><div><h3>Repairs & Inspections</h3><p>Understand visible damage, wear and the areas that need attention.</p></div></div>
+  </div></div>
+ </section>
+ <section class="why-section">
+  <div class="shell"><SectionTitle text="What Makes ROOFRIVA Roofing The Best Roofer"/>
+   <div class="radial"><BrandMark class="radial-brand"/>{benefits.map(([icon,text],i)=><div class:list={['benefit',`benefit-${i+1}`]}><span class="hex"><Icon name={icon}/></span><p>{text}</p></div>)}</div>
+  </div>
+ </section>
+ <section class="promise-band"><h2>We Work Hard To Ensure Our Customers Are Happy And We Back It That With A 100% Satisfaction Guarantee!</h2><a class="button angled" href="/#quote"><span>REQUEST AN APPOINTMENT</span></a><p class="demo-note">Illustrative template promise — confirm terms with your contractor.</p></section>
+ <section class="roof-types" id="roof-types"><div class="shell narrow-shell">
+  <SectionTitle text="Types of Residential Roofs We Install & Repairs"/>
+  <div class="roof-type-columns"><div class="roof-type-left">{roofTypes.slice(0,2).map(([title,copy])=><article><h3>{title}</h3><p>{copy}</p></article>)}
+   <div class="roof-diagrams" aria-label="Examples of roof shapes">{['Gable roof','Hip roof','Flat roof','Mansard roof','Saltbox roof'].map((name,i)=><figure><svg viewBox="0 0 120 80" aria-hidden="true"><path d="m16 35 48-20 42 17-47 23Z" fill="#ccc"/><path d="M16 35v24l43 19V54Z" fill="#f4f4f4"/><path d="M59 54v24l47-22V32Z" fill="#c6c6c6"/>{i===0?<><path d="m4 38 25-33 41 17-24 34Z" fill="#db0010"/><path d="m29 5 10 34 70 13-39-30Z" fill="#a40009"/></>:i===1?<><path d="m4 35 48-25 63 22-57 28Z" fill="#d1000b"/><path d="m52 10 6 50 57-28Z" fill="#a90009"/></>:i===2?<path d="m8 28 47-21 58 23-58 26Z" fill="#ca0010"/>:i===3?<><path d="m8 35 23-25 33 10 39 22-45 19Z" fill="#d0000b"/><path d="m64 20 9 32 30-10Z" fill="#a90009"/></>:<><path d="m9 34 57-30 18 30-28 24Z" fill="#db0010"/><path d="m66 4 43 17-25 13Z" fill="#a5000a"/></>}</svg><figcaption>{name}</figcaption></figure>)}</div>
+  </div><div class="roof-type-right">{roofTypes.slice(2).map(([title,copy])=><article><h3>{title}</h3><p>{copy}</p></article>)}</div></div>
+ </div></section>
+ <section class="materials-section"><div class="shell"><h2>Different Types of Materials we use</h2><div class="materials-grid">{[['ASPHALT ROOF','asphalt'],['DESIGNER ROOF','designer'],['METAL ROOF','metal'],['TILE ROOF','tile']].map(([name,img])=><a href="/#quote" class="material"><img src={photo(`material-${img}`)} alt={name.toLowerCase()} width="1254" height="1254" loading="lazy"/><h3>{name}</h3></a>)}</div><div class="callout"><h2>Give Us Call today to Discuss your<br/>Roofing Projects</h2><a href={site.phoneHref}>Call: {site.phone}</a></div></div></section>
+ <section class="stats-section" aria-label="Illustrative template figures"><div class="shell stats-grid">{[['document','6,250','ROOFING PROJECTS'],['calendar','6,250','COMPLETED PROJECTS'],['team','50+','ROOFING PROFESSIONALS'],['smile','5,450','HAPPY CUSTOMERS']].map(([icon,n,label])=><div class="stat"><span class="hex"><Icon name={icon}/></span><strong>{n}</strong><span>{label}</span></div>)}<p class="stats-demo">DEMO FIGURES · FOR LAYOUT PREVIEW ONLY</p></div></section>
+ <section class="reviews-section" id="reviews"><div class="shell"><SectionTitle text="What Our Roofing The Highest Standard Happiest Customers Say"/><p class="review-intro"><span class="stars" aria-label="5 sample stars">{Array.from({length:5},()=> <Icon name="star"/>)}</span><span>Sample testimonials for this demo website.</span></p>
+  <div class="reviews-grid">{[
+   ['Alex M.','The process was straightforward, communication was clear, and the roofing options were easy to understand.'],
+   ['Jordan T.','The service information made it simple to understand the difference between repair and replacement.'],
+   ['Morgan R.','The quote request process was quick, clear and worked well on my phone.'],
+  ].map(([name,quote],i)=><figure class="review-card"><blockquote>{quote}</blockquote><figcaption><div class="review-avatar"><img src={photo(i===0?'new-roof':i===1?'roof-inspector':'crew-cutout')} alt="" width="64" height="64" loading="lazy"/></div><strong>{name}</strong><span class="stars" aria-label="5 sample stars">{Array.from({length:5},()=> <Icon name="star"/>)}</span></figcaption></figure>)}</div>
+  <div class="review-platforms" aria-label="Example review platforms"><span class="platform-bbb">BBB<span>BETTER BUSINESS BUREAU</span></span><span class="platform-yelp">yelp<span class="platform-stars">★★★★★</span></span><span class="platform-google"><i>G</i><i>o</i><i>o</i><i>g</i><i>l</i><i>e</i><span class="platform-stars">★★★★★</span></span><span class="platform-facebook">facebook<span class="platform-stars">★★★★★</span></span></div><p class="platform-note">Sample platform placements; no affiliation or rating is claimed.</p>
+ </div></section>
+ <section class="projects-section" id="projects"><div class="shell"><SectionTitle text="View Some Of Our Recent Projects Below"/><div class="project-carousel"><button class="gallery-arrow previous" type="button" aria-label="Previous project"><Icon name="arrow"/></button><div class="project-track">{projects.map(([img,alt,title],i)=><button type="button" class:list={['project',i===1&&'selected']} aria-pressed={i===1} aria-label={`View ${title.toLowerCase()}`}><img src={photo(img)} alt={alt} width="1024" height="1536" loading="lazy"/><span>{title}</span></button>)}</div><button class="gallery-arrow next" type="button" aria-label="Next project"><Icon name="arrow"/></button></div><p class="project-caption" aria-live="polite">LARGE ROOF DESIGN PROJECT</p></div></section>
+ <section class="faq-section" id="faq"><div class="shell narrow-shell"><SectionTitle text="Some Frequently Asked Questions" eyebrow="WE ARE HERE TO HELP"/><div class="faq-grid"><div class="faq-list">{faqs.map(([q,a],i)=><details open={i===1}><summary><span class="faq-plus" aria-hidden="true"></span>{q}</summary><p>{a}</p></details>)}</div><aside class="faq-promo"><img src={photo('material-asphalt')} alt="Shingled roof and white dormer windows" width="1254" height="1254" loading="lazy"/><div><h3>Get the Best Roofing Service</h3><a class="button angled" href="/#quote"><span>REQUEST AN APPOINTMENT</span></a></div></aside></div></div></section>
+ <section class="contact-section" id="contact"><img class="contact-crew" src={photo('crew-cutout')} alt="" loading="lazy" width="1536" height="1024"/><div class="shell contact-grid"><div class="map-card"><h2>Thank You</h2><p>For Choosing Best Roofing!</p><a href="https://www.openstreetmap.org/search?query=Austin%2C%20Texas" target="_blank" rel="noopener noreferrer" aria-label="View the Austin service area on OpenStreetMap"><img src={photo('contact-map')} alt="Illustrative map representing the Austin service area" loading="lazy" width="1024" height="1024"/></a><small>Illustrative service area map</small><a class="map-link" href="https://www.openstreetmap.org/search?query=Austin%2C%20Texas" target="_blank" rel="noopener noreferrer">VIEW SERVICE AREA</a></div><div class="contact-info"><h2>How To Contact<br/>Best Roofing</h2><div class="contact-row"><span class="hex"><Icon name="pin"/></span><div><h3>Service Area</h3><p>{site.serviceArea}</p></div></div><div class="contact-row"><span class="hex"><Icon name="phone"/></span><div><h3>Phone Number</h3><a href={site.phoneHref}>{site.phone}</a></div></div><div class="contact-row"><span class="hex"><Icon name="mail"/></span><div><h3>Email Address</h3><a href={`mailto:${site.email}`}>{site.email}</a></div></div></div></div></section>
+</main>
+<footer class="site-footer"><div class="footer-main"><div class="footer-hours"><Icon name="clock"/><p><strong>Opening Hours</strong>{site.hours}</p></div><a class="brand footer-brand" href="/" aria-label="ROOFRIVA home"><BrandMark light/><span>roofriva</span></a><a class="footer-phone" href={site.phoneHref}><Icon name="phone"/><span><small>Call us today</small><strong>{site.phone}</strong></span></a></div><nav class="footer-nav" aria-label="Footer navigation"><a href="/">HOME</a><a href="/#about">ABOUT US</a><a href="/#services">SERVICES</a><a href="/#contact">CONTACT US</a></nav><div class="footer-contact"><a href={site.phoneHref} aria-label="Call ROOFRIVA"><Icon name="phone"/></a><a href={`mailto:${site.email}`} aria-label="Email ROOFRIVA"><Icon name="mail"/></a><a href="/#quote" aria-label="Request an estimate"><Icon name="document"/></a></div><p class="copyright">© {new Date().getFullYear()} ROOFRIVA. Demo website · Sample imagery and content.</p></footer>
+</SiteLayout>
 <script>
-  import { connectLeadForm } from '../scripts/lead-form';
-  const form = document.querySelector<HTMLFormElement>('#callback');
-  if (form) connectLeadForm(form);
+ const toggle=document.querySelector<HTMLButtonElement>('.menu-toggle');
+ const nav=document.querySelector<HTMLElement>('#mobile-nav');
+ function closeMenu(){ if(toggle&&nav){nav.hidden=true;toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open navigation');} }
+ toggle?.addEventListener('click',()=>{if(!nav)return;const isOpen=toggle.getAttribute('aria-expanded')==='true';nav.hidden=isOpen;toggle.setAttribute('aria-expanded',String(!isOpen));toggle.setAttribute('aria-label',isOpen?'Open navigation':'Close navigation');});
+ nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&toggle?.getAttribute('aria-expanded')==='true'){closeMenu();toggle.focus();}});
+ const cards=Array.from(document.querySelectorAll<HTMLButtonElement>('.project'));
+ let current=1;
+ function selectProject(index:number){current=(index+cards.length)%cards.length;cards.forEach((c,i)=>{c.classList.toggle('selected',i===current);c.setAttribute('aria-pressed',String(i===current));});const caption=document.querySelector('.project-caption');if(caption)caption.textContent=cards[current].querySelector('span')?.textContent||'';}
+ cards.forEach((c,i)=>c.addEventListener('click',()=>selectProject(i)));
+ document.querySelector('.gallery-arrow.previous')?.addEventListener('click',()=>selectProject(current-1));
+ document.querySelector('.gallery-arrow.next')?.addEventListener('click',()=>selectProject(current+1));
+ document.querySelectorAll<HTMLDetailsElement>('.faq-list details').forEach(item=>item.addEventListener('toggle',()=>{if(item.open)document.querySelectorAll<HTMLDetailsElement>('.faq-list details').forEach(other=>{if(other!==item)other.open=false;});}));
 </script>

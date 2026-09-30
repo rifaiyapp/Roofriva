@@ -1,8 +1,7 @@
 ---
-import RuntimePage from '../layouts/RuntimePage.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import BrandMark from '../components/BrandMark.astro';
 ---
-<RuntimePage title="Page not found">
-  <h1>Page not found</h1>
-  <p>The requested page does not exist.</p>
-  <a href="/" data-runtime-mount-home>Back to home</a>
-</RuntimePage>
+<SiteLayout title="Page not found | ROOFRIVA" description="The requested page does not exist.">
+ <main id="main-content" class="message-page"><BrandMark/><p>404</p><h1>Page not found</h1><p>The requested page does not exist.</p><a href="/" data-runtime-mount-home class="button">Back to home</a></main>
+</SiteLayout>
