@@ -6,6 +6,7 @@ export function connectLeadForm(form: HTMLFormElement) {
   const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
   const status = form.querySelector<HTMLElement>('.form-status');
   if (!button || !status) return;
+  const buttonLabel = button.querySelector<HTMLElement>('span');
   form.dataset.leadConnected = 'true';
   const connectedAt = performance.now();
   let submitting = false;
@@ -79,10 +80,11 @@ export function connectLeadForm(form: HTMLFormElement) {
       meta: metadata,
       website: honeypot,
     };
-    const originalText = button.textContent;
+    const originalText = (buttonLabel?.textContent || button.textContent || '').trim();
     submitting = true;
     button.disabled = true;
-    button.textContent = 'Sending…';
+    if (buttonLabel) buttonLabel.textContent = 'Sending…';
+    else button.textContent = 'Sending…';
     form.setAttribute('aria-busy', 'true');
     status.textContent = 'Sending your request…';
     const controller = new AbortController();
@@ -116,7 +118,8 @@ export function connectLeadForm(form: HTMLFormElement) {
       window.clearTimeout(timeout);
       submitting = false;
       button.disabled = submitted;
-      button.textContent = originalText;
+      if (buttonLabel) buttonLabel.textContent = originalText;
+      else button.textContent = originalText;
       form.removeAttribute('aria-busy');
     }
   });
