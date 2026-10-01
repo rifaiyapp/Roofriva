@@ -13,11 +13,36 @@ const services = [
  {title:'Roof Inspection',image:'roof-inspector',icon:'search',copy:'Understand the condition of your roof and the next steps for repair or replacement.'},
 ];
 const benefits = [
- { icon: 'shield', number: '01', title: 'Considered Approach', copy: 'Thorough structural assessment of your roof deck, flashing, and ventilation to deliver lifelong protection.' },
- { icon: 'house', number: '02', title: 'Transparent Options', copy: 'Clear material comparisons, upfront itemized proposals, and honest recommendations with zero sales pressure.' },
- { icon: 'document', number: '03', title: 'Precision Planning', copy: 'Organized scheduling, comprehensive site protection, and meticulous daily cleanup that respects your home.' },
- { icon: 'calendar', number: '04', title: 'Clear Communication', copy: 'Dedicated supervisor updates at every milestone, keeping you informed from initial inspection to final review.' },
- { icon: 'team', number: '05', title: 'Attention to Detail', copy: 'Certified master installers adhering strictly to highest industry standards and manufacturer warranties.' }
+ {
+  icon: 'shield',
+  number: '01',
+  title: 'Comprehensive Roof & Deck Assessment',
+  copy: 'Full multi-point evaluation of structural decking, underlayment integrity, flashing seams, valleys, and intake/exhaust ventilation balance.'
+ },
+ {
+  icon: 'document',
+  number: '02',
+  title: 'Itemized, Fixed-Price Estimates',
+  copy: 'Transparent proposals with exact material specifications, transparent tier comparisons, and guaranteed zero surprise hidden fees.'
+ },
+ {
+  icon: 'house',
+  number: '03',
+  title: 'Architectural-Grade Weatherproofing',
+  copy: 'Installed to strict hurricane-rated wind and severe hail tolerances using heavy-duty ice & water shields and synthetic moisture barriers.'
+ },
+ {
+  icon: 'calendar',
+  number: '04',
+  title: 'Dedicated Daily Project Supervision',
+  copy: 'A dedicated on-site manager coordinates every crew member, keeps you updated in real-time, and ensures precise schedule adherence.'
+ },
+ {
+  icon: 'team',
+  number: '05',
+  title: 'Meticulous Cleanup & Magnet Sweeps',
+  copy: 'Complete tarps protecting landscaping, gutters, and siding, backed by dual magnetic wheel sweeps for total lawn and driveway safety.'
+ }
 ];
 const roofTypes=[
  ['Gable Roof','A familiar roof shape with two slopes meeting at a ridge. Its simple profile works with a wide range of residential roofing materials.'],
@@ -63,43 +88,45 @@ const projects=[['project-cabin','Blue metal roof on a timber home','METAL ROOF 
  </section>
  <section class="why-section" id="why-us" aria-labelledby="why-title">
   <div class="shell">
-   <div class="why-header">
-    <p class="eyebrow">WHY CHOOSE ROOFRIVA</p>
-    <h2 id="why-title">What Makes ROOFRIVA Roofing The Best Choice</h2>
-    <span class="section-title-line" aria-hidden="true"></span>
-    <p class="why-subtitle">Delivering high-caliber residential and commercial roofing with precision craftsmanship, transparent communication, and enduring weather protection.</p>
-   </div>
-   <div class="why-cards-grid">
-    {benefits.map((b) => (
-     <div class="why-card">
-      <div class="why-card-top">
-       <span class="why-hex">
-        <Icon name={b.icon}/>
-       </span>
-       <span class="why-card-num">{b.number}</span>
-      </div>
-      <div class="why-card-content">
-       <h3>{b.title}</h3>
-       <p>{b.copy}</p>
-      </div>
-      <div class="why-card-accent" aria-hidden="true"></div>
+   <div class="why-layout">
+    <div class="why-intro-col">
+     <div class="why-pill-badge">
+      <span class="why-pill-icon"><Icon name="shield"/></span>
+      <span>THE ROOFRIVA ADVANTAGE</span>
      </div>
-    ))}
-   </div>
-   <div class="why-trust-bar">
-    <div class="why-trust-item">
-     <Icon name="shield"/>
-     <span><strong>Fully Licensed & Insured</strong> Local Roofing Pros</span>
+     <h2 id="why-title" class="why-main-title">Engineered For Decades of Extreme Weather Protection.</h2>
+     <p class="why-description">
+      Your roof is your property's first and most critical defense. We reject shortcuts, combining certified master installers, architectural-grade materials, and proactive project supervision from inspection through final warranty sign-off.
+     </p>
+     <div class="why-credential-card">
+      <div class="why-cred-header">
+       <span class="why-cred-badge">100% GUARANTEED</span>
+       <strong>Full Workmanship Warranty</strong>
+      </div>
+      <p>Every residential and commercial project is backed by our direct contractor guarantee and manufacturer warranties.</p>
+      <div class="why-cred-actions">
+       <a class="button angled" href="/#quote"><span>REQUEST A FREE ESTIMATE</span></a>
+       <a class="why-call-link" href={site.phoneHref}>
+        <Icon name="phone"/>
+        <span>{site.phone}</span>
+       </a>
+      </div>
+     </div>
     </div>
-    <div class="why-trust-divider" aria-hidden="true"></div>
-    <div class="why-trust-item">
-     <Icon name="house"/>
-     <span><strong>Premium Grade Materials</strong> & Solid Warranties</span>
-    </div>
-    <div class="why-trust-divider" aria-hidden="true"></div>
-    <div class="why-trust-item">
-     <Icon name="document"/>
-     <span><strong>Free On-Site Inspections</strong> & Fast Quotes</span>
+    
+    <div class="why-list-col">
+     {benefits.map((b) => (
+      <article class="why-item-card">
+       <div class="why-item-index" aria-hidden="true">{b.number}</div>
+       <div class="why-item-icon-box">
+        <Icon name={b.icon}/>
+       </div>
+       <div class="why-item-content">
+        <h3>{b.title}</h3>
+        <p>{b.copy}</p>
+       </div>
+      </article>
+     ))}
     </div>
    </div>
   </div>
