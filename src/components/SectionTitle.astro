@@ -1,10 +1,10 @@
 ---
-import Icon from './Icon.astro';
 interface Props { text: string; eyebrow?: string; }
 const { text, eyebrow } = Astro.props;
 ---
 <div class="section-title">
  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
  <h2>{text}</h2>
- <Icon name="house" class="section-title-icon" />
+ <span class="section-title-line" aria-hidden="true"></span>
 </div>
+

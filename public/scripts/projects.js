@@ -189,8 +189,29 @@
   lightboxPrev?.addEventListener('click', () => changeLightbox(-1));
   lightboxNext?.addEventListener('click', () => changeLightbox(1));
   lightbox.addEventListener('click', event => {
-    if (event.target === lightbox) closeLightbox();
+    if (event.target === lightbox || event.target === lightbox.querySelector('.project-lightbox-dialog')) {
+      closeLightbox();
+    }
   });
+
+  let touchStartX = 0;
+  let touchStartY = 0;
+  lightbox.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 1) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }
+  }, { passive: true });
+
+  lightbox.addEventListener('touchend', (e) => {
+    if (e.changedTouches.length === 1) {
+      const deltaX = e.changedTouches[0].clientX - touchStartX;
+      const deltaY = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY) * 1.3) {
+        changeLightbox(deltaX < 0 ? 1 : -1);
+      }
+    }
+  }, { passive: true });
 
   document.addEventListener('keydown', event => {
     if (!lightbox.classList.contains('is-open')) return;

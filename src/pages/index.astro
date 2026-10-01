@@ -12,7 +12,13 @@ const services = [
  {title:'Fixing Damaged Roofs',image:'roof-repair',icon:'repair',copy:'Find the right solution for damaged tiles, worn flashing and roofing that needs attention.'},
  {title:'Roof Inspection',image:'roof-inspector',icon:'search',copy:'Understand the condition of your roof and the next steps for repair or replacement.'},
 ];
-const benefits=[['shield','A considered approach to every roof'],['house','Roofing options explained clearly'],['document','Project planning around your home'],['calendar','Clear communication at every step'],['team','Attention to the details that matter']];
+const benefits = [
+ { icon: 'shield', number: '01', title: 'Considered Approach', copy: 'Thorough structural assessment of your roof deck, flashing, and ventilation to deliver lifelong protection.' },
+ { icon: 'house', number: '02', title: 'Transparent Options', copy: 'Clear material comparisons, upfront itemized proposals, and honest recommendations with zero sales pressure.' },
+ { icon: 'document', number: '03', title: 'Precision Planning', copy: 'Organized scheduling, comprehensive site protection, and meticulous daily cleanup that respects your home.' },
+ { icon: 'calendar', number: '04', title: 'Clear Communication', copy: 'Dedicated supervisor updates at every milestone, keeping you informed from initial inspection to final review.' },
+ { icon: 'team', number: '05', title: 'Attention to Detail', copy: 'Certified master installers adhering strictly to highest industry standards and manufacturer warranties.' }
+];
 const roofTypes=[
  ['Gable Roof','A familiar roof shape with two slopes meeting at a ridge. Its simple profile works with a wide range of residential roofing materials.'],
  ['Hip Roof','Sloping on all four sides, a hip roof creates an even, balanced shape. Its layout can suit both traditional and contemporary homes.'],
@@ -55,9 +61,47 @@ const projects=[['project-cabin','Blue metal roof on a timber home','METAL ROOF 
    <div class="about-point"><span><Icon name="repair"/></span><div><h3>Repairs & Inspections</h3><p>Understand visible damage, wear and the areas that need attention.</p></div></div>
   </div></div>
  </section>
- <section class="why-section">
-  <div class="shell"><SectionTitle text="What Makes ROOFRIVA Roofing The Best Roofer"/>
-   <div class="radial"><BrandMark class="radial-brand"/>{benefits.map(([icon,text],i)=><div class:list={['benefit',`benefit-${i+1}`]}><span class="hex"><Icon name={icon}/></span><p>{text}</p></div>)}</div>
+ <section class="why-section" id="why-us" aria-labelledby="why-title">
+  <div class="shell">
+   <div class="why-header">
+    <p class="eyebrow">WHY CHOOSE ROOFRIVA</p>
+    <h2 id="why-title">What Makes ROOFRIVA Roofing The Best Choice</h2>
+    <span class="section-title-line" aria-hidden="true"></span>
+    <p class="why-subtitle">Delivering high-caliber residential and commercial roofing with precision craftsmanship, transparent communication, and enduring weather protection.</p>
+   </div>
+   <div class="why-cards-grid">
+    {benefits.map((b) => (
+     <div class="why-card">
+      <div class="why-card-top">
+       <span class="why-hex">
+        <Icon name={b.icon}/>
+       </span>
+       <span class="why-card-num">{b.number}</span>
+      </div>
+      <div class="why-card-content">
+       <h3>{b.title}</h3>
+       <p>{b.copy}</p>
+      </div>
+      <div class="why-card-accent" aria-hidden="true"></div>
+     </div>
+    ))}
+   </div>
+   <div class="why-trust-bar">
+    <div class="why-trust-item">
+     <Icon name="shield"/>
+     <span><strong>Fully Licensed & Insured</strong> Local Roofing Pros</span>
+    </div>
+    <div class="why-trust-divider" aria-hidden="true"></div>
+    <div class="why-trust-item">
+     <Icon name="house"/>
+     <span><strong>Premium Grade Materials</strong> & Solid Warranties</span>
+    </div>
+    <div class="why-trust-divider" aria-hidden="true"></div>
+    <div class="why-trust-item">
+     <Icon name="document"/>
+     <span><strong>Free On-Site Inspections</strong> & Fast Quotes</span>
+    </div>
+   </div>
   </div>
  </section>
  <section class="promise-band"><h2>We Work Hard To Ensure Our Customers Are Happy And We Back It That With A 100% Satisfaction Guarantee!</h2><a class="button angled" href="/#quote"><span>REQUEST AN APPOINTMENT</span></a><p class="demo-note">Illustrative template promise — confirm terms with your contractor.</p></section>
@@ -75,13 +119,47 @@ const projects=[['project-cabin','Blue metal roof on a timber home','METAL ROOF 
    ['Jordan T.','The service information made it simple to understand the difference between repair and replacement.'],
    ['Morgan R.','The quote request process was quick, clear and worked well on my phone.'],
   ].map(([name,quote],i)=><figure class="review-card"><blockquote>{quote}</blockquote><figcaption><div class="review-avatar"><img src={photo(i===0?'new-roof':i===1?'roof-inspector':'crew-cutout')} alt="" width="64" height="64" loading="lazy"/></div><strong>{name}</strong><span class="stars" aria-label="5 sample stars">{Array.from({length:5},()=> <Icon name="star"/>)}</span></figcaption></figure>)}</div>
-  <div class="review-platforms" aria-label="Example review platforms"><span class="platform-bbb">BBB<span>BETTER BUSINESS BUREAU</span></span><span class="platform-yelp">yelp<span class="platform-stars">★★★★★</span></span><span class="platform-google"><i>G</i><i>o</i><i>o</i><i>g</i><i>l</i><i>e</i><span class="platform-stars">★★★★★</span></span><span class="platform-facebook">facebook<span class="platform-stars">★★★★★</span></span></div><p class="platform-note">Sample platform placements; no affiliation or rating is claimed.</p>
+  <div class="review-platforms" aria-label="Example review platforms"><span class="platform-bbb">BBB<span>BETTER BUSINESS BUREAU</span><span class="platform-stars">★★★★★</span></span><span class="platform-yelp">yelp<span class="platform-stars">★★★★★</span></span><span class="platform-google"><i>G</i><i>o</i><i>o</i><i>g</i><i>l</i><i>e</i><span class="platform-stars">★★★★★</span></span><span class="platform-facebook">facebook<span class="platform-stars">★★★★★</span></span></div><p class="platform-note">Sample platform placements; no affiliation or rating is claimed.</p>
  </div></section>
  <section class="projects-section" id="projects"><div class="shell"><SectionTitle text="View Some Of Our Recent Projects Below"/><div class="project-carousel"><button class="gallery-arrow previous" type="button" aria-label="Previous project"><Icon name="arrow"/></button><div class="project-track">{projects.map(([img,alt,title],i)=><button type="button" class:list={['project',i===1&&'selected']} aria-pressed={i===1} aria-label={`View ${title.toLowerCase()}`}><img src={photo(img)} alt={alt} width="1024" height="1536" loading="lazy"/><span>{title}</span></button>)}</div><button class="gallery-arrow next" type="button" aria-label="Next project"><Icon name="arrow"/></button></div><p class="project-caption" aria-live="polite">LARGE ROOF DESIGN PROJECT</p></div></section>
- <section class="faq-section" id="faq"><div class="shell narrow-shell"><SectionTitle text="Some Frequently Asked Questions" eyebrow="WE ARE HERE TO HELP"/><div class="faq-grid"><div class="faq-list">{faqs.map(([q,a],i)=><details open={i===1}><summary><span class="faq-plus" aria-hidden="true"></span>{q}</summary><p>{a}</p></details>)}</div><aside class="faq-promo"><img src={photo('material-asphalt')} alt="Shingled roof and white dormer windows" width="1254" height="1254" loading="lazy"/><div><h3>Get the Best Roofing Service</h3><a class="button angled" href="/#quote"><span>REQUEST AN APPOINTMENT</span></a></div></aside></div></div></section>
- <section class="contact-section" id="contact"><img class="contact-crew" src={photo('crew-cutout')} alt="" loading="lazy" width="1536" height="1024"/><div class="shell contact-grid"><div class="map-card"><h2>Thank You</h2><p>For Choosing Best Roofing!</p><a href="https://www.openstreetmap.org/search?query=Austin%2C%20Texas" target="_blank" rel="noopener noreferrer" aria-label="View the Austin service area on OpenStreetMap"><img src={photo('contact-map')} alt="Illustrative map representing the Austin service area" loading="lazy" width="1024" height="1024"/></a><small>Illustrative service area map</small><a class="map-link" href="https://www.openstreetmap.org/search?query=Austin%2C%20Texas" target="_blank" rel="noopener noreferrer">VIEW SERVICE AREA</a></div><div class="contact-info"><h2>How To Contact<br/>Best Roofing</h2><div class="contact-row"><span class="hex"><Icon name="pin"/></span><div><h3>Service Area</h3><p>{site.serviceArea}</p></div></div><div class="contact-row"><span class="hex"><Icon name="phone"/></span><div><h3>Phone Number</h3><a href={site.phoneHref}>{site.phone}</a></div></div><div class="contact-row"><span class="hex"><Icon name="mail"/></span><div><h3>Email Address</h3><a href={`mailto:${site.email}`}>{site.email}</a></div></div></div></div></section>
+  <section class="faq-section" id="faq" aria-labelledby="faq-title">
+   <div id="contact" class="anchor-target" aria-hidden="true"></div>
+   <div class="shell narrow-shell">
+    <div class="faq-grid">
+     <div class="faq-left">
+      <div class="faq-header">
+       <p class="eyebrow">WE ARE HERE TO HELP</p>
+       <h2 id="faq-title">Some Frequently Asked Questions</h2>
+       <span class="section-title-line" aria-hidden="true"></span>
+      </div>
+      <div class="faq-list">
+       {faqs.map(([q,a],i)=><details open={i===1}><summary><span class="faq-plus" aria-hidden="true"></span>{q}</summary><p>{a}</p></details>)}
+      </div>
+     </div>
+     <div class="map-card">
+      <div class="map-card-header">
+       <span class="map-badge"><span class="pulse-dot"></span> Austin Metro Coverage</span>
+       <h2 id="contact-map-title">Service Area Map</h2>
+      </div>
+      <div class="map-wrapper">
+       <iframe class="map-frame" title="ROOFRIVA Service Area - 123 Main Street, Austin, TX" src="https://maps.google.com/maps?q=123+Main+Street,+Austin,+TX&t=&z=14&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="map-card-footer">
+       <div class="map-card-address">
+        <Icon name="pin" class="map-pin-icon"/>
+        <span><strong>123 Main Street</strong>, Austin, TX</span>
+       </div>
+       <a class="map-action-btn" href="https://maps.google.com/?q=123+Main+Street,+Austin,+TX" target="_blank" rel="noopener noreferrer">
+        <span>VIEW MAP</span>
+        <Icon name="arrow"/>
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
 </main>
-<footer class="site-footer"><div class="footer-main"><div class="footer-hours"><Icon name="clock"/><p><strong>Opening Hours</strong>{site.hours}</p></div><a class="brand footer-brand" href="/" aria-label="ROOFRIVA home"><BrandMark light/><span>roofriva</span></a><a class="footer-phone" href={site.phoneHref}><Icon name="phone"/><span><small>Call us today</small><strong>{site.phone}</strong></span></a></div><nav class="footer-nav" aria-label="Footer navigation"><a href="/">HOME</a><a href="/#about">ABOUT US</a><a href="/#services">SERVICES</a><a href="/#contact">CONTACT US</a></nav><div class="footer-contact"><a href={site.phoneHref} aria-label="Call ROOFRIVA"><Icon name="phone"/></a><a href={`mailto:${site.email}`} aria-label="Email ROOFRIVA"><Icon name="mail"/></a><a href="/#quote" aria-label="Request an estimate"><Icon name="document"/></a></div><p class="copyright">© {new Date().getFullYear()} ROOFRIVA. Demo website · Sample imagery and content.</p></footer>
+<footer class="site-footer"><div class="footer-main"><div class="footer-address"><Icon name="pin"/><span><small>Our Address</small><strong>123 Main Street, Austin, TX</strong></span></div><a class="brand footer-brand" href="/" aria-label="ROOFRIVA home"><BrandMark light/><span>roofriva</span></a><a class="footer-phone" href={site.phoneHref}><Icon name="phone"/><span><small>Give us a call</small><strong>{site.phone}</strong></span></a></div><nav class="footer-nav" aria-label="Footer navigation"><a href="/">HOME</a><a href="/#about">ABOUT US</a><a href="/#services">SERVICES</a><a href="/#contact">CONTACT US</a></nav><div class="footer-contact"><a href={site.phoneHref} aria-label="Call ROOFRIVA"><Icon name="phone"/></a><a href={`mailto:${site.email}`} aria-label="Email ROOFRIVA"><Icon name="mail"/></a><a href="/#quote" aria-label="Request an estimate"><Icon name="document"/></a></div><p class="copyright">© {new Date().getFullYear()} ROOFRIVA. Demo website · Sample imagery and content.</p></footer>
 <style is:global>
  .site-header .header-top{width:min(1000px,calc(100% - 80px));height:150px;margin:0 auto;display:grid;grid-template-columns:1fr 220px 1fr;align-items:center;position:relative}
  .site-header .header-address{display:flex;align-items:center;gap:12px;justify-self:start;color:#fff;text-align:left}
