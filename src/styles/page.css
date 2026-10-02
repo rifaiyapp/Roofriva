@@ -1,5 +1,6 @@
 /* Page-level section visibility and layout overrides. */
 .roof-types,
-.materials-section{
+.materials-section,
+.about-band {
   display:none!important;
 }

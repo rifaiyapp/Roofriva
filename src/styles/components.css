@@ -1339,51 +1339,76 @@ h6 {
 }
 
 /* ==========================================================================
-   Professional Redesigned "Why Choose ROOFRIVA" Section (White Background)
+   Professional "About Us" Section (Target: section#why-us)
+   Background Image + Custom Sharp Triangular Cutout
    ========================================================================== */
-main#main-content > section#why-us,
-#why-us,
-.why-section {
+.why-section-wrapper {
+  background-color: #f7f7f7 !important;
   position: relative !important;
-  height: auto !important;
-  min-height: 0 !important;
-  padding: clamp(80px, 9vw, 130px) 0 !important;
-  background: #ffffff !important;
-  background-color: #ffffff !important;
-  border-top: 1px solid #eeeeee;
-  border-bottom: 1px solid #eeeeee;
+  width: 100% !important;
   overflow: hidden !important;
 }
 
+main#main-content > section#why-us,
+#why-us,
+.why-section,
+.about-section {
+  position: relative !important;
+  isolation: isolate !important;
+  z-index: 2 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: clamp(80px, 9vw, 125px) 0 clamp(130px, 14vw, 180px) !important;
+  background-color: #181216 !important;
+  background-image:
+    linear-gradient(180deg, rgba(22, 16, 18, 0.88) 0%, rgba(14, 10, 12, 0.94) 100%),
+    url('/assets/home/hero-reference.webp') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  color: #ffffff !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 30px), 83% calc(100% - 150px), 0 100%) !important;
+  overflow: visible !important;
+}
+
+.about-grid-layout,
 .why-layout {
   display: grid !important;
-  grid-template-columns: minmax(320px, 1fr) minmax(380px, 1.28fr) !important;
-  gap: clamp(40px, 5.5vw, 84px) !important;
-  align-items: start !important;
+  grid-template-columns: minmax(320px, 1.05fr) minmax(360px, 1.15fr) !important;
+  gap: clamp(40px, 5.5vw, 76px) !important;
+  align-items: center !important;
 }
 
-/* Left Column: Story & Trust Credentials */
+/* Left Column: Brand Story & Authority */
+.about-content-col,
 .why-intro-col {
-  position: sticky !important;
-  top: 40px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
 }
 
+.about-pill-badge,
 .why-pill-badge {
   display: inline-flex !important;
   align-items: center !important;
   gap: 8px !important;
   padding: 6px 14px 6px 8px !important;
-  background: #fdf2f2 !important;
-  border: 1px solid #f9d7d8 !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
   border-radius: 999px !important;
-  color: var(--red) !important;
+  color: #ffffff !important;
   font-size: 11px !important;
   font-weight: 700 !important;
   letter-spacing: 0.14em !important;
   text-transform: uppercase !important;
-  margin-bottom: 20px !important;
+  margin-bottom: 18px !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
 }
 
+.about-pill-icon,
 .why-pill-icon {
   width: 22px !important;
   height: 22px !important;
@@ -1394,159 +1419,268 @@ main#main-content > section#why-us,
   place-items: center !important;
 }
 
+.about-pill-icon .icon,
 .why-pill-icon .icon {
   width: 13px !important;
   height: 13px !important;
   stroke-width: 2.4 !important;
 }
 
+.about-title,
 .why-main-title {
   font-family: var(--heading-font) !important;
-  font-size: clamp(30px, 3.6vw, 44px) !important;
+  font-size: clamp(28px, 3.4vw, 42px) !important;
   font-weight: 800 !important;
   line-height: 1.15 !important;
-  color: #1a1a1a !important;
+  color: #ffffff !important;
   letter-spacing: -0.02em !important;
-  margin: 0 0 20px 0 !important;
+  margin: 0 0 18px 0 !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4) !important;
 }
 
-.why-description {
-  font-size: clamp(14px, 1.25vw, 15.5px) !important;
-  line-height: 1.68 !important;
-  color: #555555 !important;
-  margin: 0 0 32px 0 !important;
+.about-intro {
+  font-size: clamp(14.5px, 1.2vw, 16px) !important;
+  line-height: 1.65 !important;
+  color: rgba(255, 255, 255, 0.94) !important;
+  margin: 0 0 14px 0 !important;
 }
 
-.why-credential-card {
-  background: #242424 !important;
-  color: #ffffff !important;
-  padding: 30px 32px !important;
-  border-radius: 8px !important;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12) !important;
-  border-left: 5px solid var(--red) !important;
-}
-
-.why-cred-header {
-  display: flex !important;
-  align-items: center !important;
-  gap: 12px !important;
-  margin-bottom: 12px !important;
-  flex-wrap: wrap !important;
-}
-
-.why-cred-badge {
-  background: var(--red) !important;
-  color: #ffffff !important;
-  font-size: 10px !important;
-  font-weight: 800 !important;
-  letter-spacing: 0.1em !important;
-  padding: 4px 10px !important;
-  border-radius: 3px !important;
-}
-
-.why-cred-header strong {
-  font-family: var(--heading-font) !important;
-  font-size: 16px !important;
+.about-intro strong {
+  color: #ff555c !important;
   font-weight: 700 !important;
-  color: #ffffff !important;
 }
 
-.why-credential-card p {
-  font-size: 13px !important;
-  line-height: 1.5 !important;
-  color: rgba(255, 255, 255, 0.85) !important;
-  margin: 0 0 22px 0 !important;
+.about-body,
+.why-description {
+  font-size: clamp(13px, 1.1vw, 14.5px) !important;
+  line-height: 1.65 !important;
+  color: rgba(255, 255, 255, 0.82) !important;
+  margin: 0 0 26px 0 !important;
 }
 
-.why-cred-actions {
+/* Key Highlights Row */
+.about-key-highlights {
   display: flex !important;
   align-items: center !important;
   gap: 18px !important;
-  flex-wrap: wrap !important;
+  width: 100% !important;
+  padding: 16px 20px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  border-left: 4px solid var(--red) !important;
+  border-radius: 6px !important;
+  margin-bottom: 28px !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
 }
 
-.why-cred-actions .button {
-  min-height: 48px !important;
-  padding: 12px 24px !important;
-  font-size: 11px !important;
-}
-
-.why-call-link {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-  color: #ffffff !important;
-  font-weight: 700 !important;
-  font-size: 14px !important;
-  transition: color .2s ease !important;
-}
-
-.why-call-link:hover,
-.why-call-link:focus-visible {
-  color: #ff555c !important;
-  text-decoration: underline !important;
-}
-
-.why-call-link .icon {
-  width: 18px !important;
-  height: 18px !important;
-  stroke: var(--red) !important;
-}
-
-/* Right Column: Feature Rows */
-.why-list-col {
+.about-highlight-item {
   display: flex !important;
   flex-direction: column !important;
-  gap: 16px !important;
+  gap: 3px !important;
 }
 
-.why-item-card {
-  display: grid !important;
-  grid-template-columns: 36px 48px 1fr !important;
-  align-items: start !important;
-  gap: 18px !important;
-  padding: 24px 26px !important;
-  background: #ffffff !important;
-  border: 1px solid #e8e8e8 !important;
-  border-radius: 8px !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03) !important;
-  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease !important;
-}
-
-.why-item-card:hover {
-  transform: translateX(5px) !important;
-  border-color: #d0d0d0 !important;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.07) !important;
-}
-
-.why-item-index {
+.about-highlight-num {
   font-family: var(--heading-font) !important;
   font-size: 17px !important;
   font-weight: 800 !important;
-  color: #b0b0b0 !important;
-  line-height: 1 !important;
-  padding-top: 14px !important;
-  letter-spacing: -0.01em !important;
-  transition: color .25s ease !important;
+  color: #ffffff !important;
+  line-height: 1.1 !important;
 }
 
-.why-item-card:hover .why-item-index {
-  color: var(--red) !important;
+.about-highlight-label {
+  font-size: 11px !important;
+  color: rgba(255, 255, 255, 0.78) !important;
+  font-weight: 500 !important;
+  line-height: 1.2 !important;
 }
 
-.why-item-icon-box {
-  width: 48px !important;
-  height: 48px !important;
-  background: #fbfbfb !important;
-  border: 1px solid #e6e6e6 !important;
-  border-radius: 8px !important;
+.about-highlight-divider {
+  width: 1px !important;
+  height: 32px !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Actions Row */
+.about-actions-row,
+.why-cred-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 20px !important;
+  flex-wrap: wrap !important;
+}
+
+.about-phone-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  transition: color .2s ease !important;
+}
+
+.about-phone-icon {
+  width: 40px !important;
+  height: 40px !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  border-radius: 50% !important;
   display: grid !important;
   place-items: center !important;
-  color: var(--red) !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+  color: #ffffff !important;
+  transition: all .2s ease !important;
+}
+
+.about-phone-link:hover .about-phone-icon {
+  background: var(--red) !important;
+  color: #ffffff !important;
+  border-color: var(--red) !important;
+}
+
+.about-phone-link small {
+  display: block !important;
+  font-size: 10px !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  font-weight: 600 !important;
+}
+
+.about-phone-link strong {
+  display: block !important;
+  font-size: 15px !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+}
+
+.about-phone-link:hover strong {
+  color: #ff555c !important;
+}
+
+/* Right Column: Photo Card & Core Value Pillars */
+.about-media-col,
+.why-list-col {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+}
+
+.about-photo-card {
+  position: relative !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  background: #1e1e1e !important;
+}
+
+.about-feature-img {
+  width: 100% !important;
+  height: 270px !important;
+  object-fit: cover !important;
+  object-position: center 30% !important;
+  display: block !important;
+  transition: transform .5s cubic-bezier(.2,.7,.2,1) !important;
+}
+
+.about-photo-card:hover .about-feature-img {
+  transform: scale(1.03) !important;
+}
+
+.about-photo-badge {
+  position: absolute !important;
+  bottom: 16px !important;
+  left: 16px !important;
+  right: 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 12px 16px !important;
+  background: rgba(18, 18, 18, 0.92) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  border-radius: 6px !important;
+  color: #ffffff !important;
+}
+
+.about-photo-badge-icon {
+  width: 34px !important;
+  height: 34px !important;
+  background: var(--red) !important;
+  color: #ffffff !important;
+  border-radius: 4px !important;
+  display: grid !important;
+  place-items: center !important;
+  flex: none !important;
+}
+
+.about-photo-badge-icon .icon {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+.about-photo-badge strong {
+  display: block !important;
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  line-height: 1.2 !important;
+}
+
+.about-photo-badge span {
+  display: block !important;
+  font-size: 11px !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Value Pillars Cards */
+.about-pillars {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+.about-pillar-card,
+.why-item-card {
+  display: grid !important;
+  grid-template-columns: 40px 1fr !important;
+  align-items: center !important;
+  gap: 14px !important;
+  padding: 14px 18px !important;
+  background: rgba(20, 20, 20, 0.78) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border-radius: 6px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  transition: transform .25s ease, border-color .25s ease, background .25s ease, box-shadow .25s ease !important;
+}
+
+.about-pillar-card:hover,
+.why-item-card:hover {
+  transform: translateX(4px) !important;
+  border-color: rgba(255, 255, 255, 0.32) !important;
+  background: rgba(28, 28, 28, 0.88) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35) !important;
+}
+
+.about-pillar-icon,
+.why-item-icon-box {
+  width: 40px !important;
+  height: 40px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  border-radius: 6px !important;
+  display: grid !important;
+  place-items: center !important;
+  color: #ffffff !important;
+  flex: none !important;
   transition: all .25s ease !important;
 }
 
+.about-pillar-card:hover .about-pillar-icon,
 .why-item-card:hover .why-item-icon-box {
   background: var(--red) !important;
   color: #ffffff !important;
@@ -1554,59 +1688,92 @@ main#main-content > section#why-us,
   transform: scale(1.05) !important;
 }
 
+.about-pillar-icon .icon,
 .why-item-icon-box .icon {
-  width: 24px !important;
-  height: 24px !important;
+  width: 20px !important;
+  height: 20px !important;
   stroke: currentColor !important;
   stroke-width: 2 !important;
 }
 
+.about-pillar-text h3,
 .why-item-content h3 {
   font-family: var(--heading-font) !important;
-  font-size: 17px !important;
+  font-size: 14.5px !important;
   font-weight: 700 !important;
+  color: #ffffff !important;
+  margin: 0 0 3px 0 !important;
   line-height: 1.25 !important;
-  color: #1a1a1a !important;
-  margin: 0 0 7px 0 !important;
 }
 
+.about-pillar-text p,
 .why-item-content p {
-  font-size: 13px !important;
-  line-height: 1.55 !important;
-  color: #555555 !important;
+  font-size: 12.5px !important;
+  line-height: 1.45 !important;
+  color: rgba(255, 255, 255, 0.8) !important;
   margin: 0 !important;
 }
 
-/* Responsive Breakpoints */
+/* Responsive Adaptations */
 @media (max-width: 960px) {
+  .about-grid-layout,
   .why-layout {
     grid-template-columns: 1fr !important;
-    gap: 45px !important;
+    gap: 40px !important;
   }
-  .why-intro-col {
-    position: static !important;
-  }
-  .why-section {
-    padding: 65px 0 !important;
+
+  main#main-content > section#why-us,
+  #why-us,
+  .why-section,
+  .about-section {
+    padding: 60px 0 130px !important;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), 82% calc(100% - 110px), 0 100%) !important;
   }
 }
 
 @media (max-width: 600px) {
-  .why-item-card {
-    grid-template-columns: 44px 1fr !important;
-    gap: 14px !important;
-    padding: 20px 18px !important;
+  main#main-content > section#why-us,
+  #why-us,
+  .why-section,
+  .about-section {
+    padding: 50px 0 100px !important;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), 80% calc(100% - 70px), 0 100%) !important;
   }
-  .why-item-index {
+
+  .about-key-highlights {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+
+  .about-highlight-divider {
     display: none !important;
   }
-  .why-credential-card {
-    padding: 22px 20px !important;
+
+  .about-feature-img {
+    height: 210px !important;
   }
-  .why-main-title {
-    font-size: 27px !important;
+
+  .about-photo-badge {
+    position: static !important;
+    margin-top: -1px !important;
+    border-radius: 0 0 8px 8px !important;
+  }
+
+  .about-actions-row,
+  .why-cred-actions {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+    width: 100% !important;
+  }
+
+  .about-actions-row .button,
+  .why-cred-actions .button {
+    width: 100% !important;
   }
 }
+
 
 
 

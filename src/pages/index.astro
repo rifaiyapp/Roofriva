@@ -12,36 +12,21 @@ const services = [
  {title:'Fixing Damaged Roofs',image:'roof-repair',icon:'repair',copy:'Find the right solution for damaged tiles, worn flashing and roofing that needs attention.'},
  {title:'Roof Inspection',image:'roof-inspector',icon:'search',copy:'Understand the condition of your roof and the next steps for repair or replacement.'},
 ];
-const benefits = [
+const aboutPillars = [
  {
   icon: 'shield',
-  number: '01',
-  title: 'Comprehensive Roof & Deck Assessment',
-  copy: 'Full multi-point evaluation of structural decking, underlayment integrity, flashing seams, valleys, and intake/exhaust ventilation balance.'
+  title: 'Certified Installations',
+  copy: 'Architectural-grade materials engineered for extreme Texas heat, hail, and high winds.'
  },
  {
   icon: 'document',
-  number: '02',
-  title: 'Itemized, Fixed-Price Estimates',
-  copy: 'Transparent proposals with exact material specifications, transparent tier comparisons, and guaranteed zero surprise hidden fees.'
- },
- {
-  icon: 'house',
-  number: '03',
-  title: 'Architectural-Grade Weatherproofing',
-  copy: 'Installed to strict hurricane-rated wind and severe hail tolerances using heavy-duty ice & water shields and synthetic moisture barriers.'
- },
- {
-  icon: 'calendar',
-  number: '04',
-  title: 'Dedicated Daily Project Supervision',
-  copy: 'A dedicated on-site manager coordinates every crew member, keeps you updated in real-time, and ensures precise schedule adherence.'
+  title: 'Transparent Fixed Pricing',
+  copy: 'Itemized proposals with clear material specifications and zero surprise hidden fees.'
  },
  {
   icon: 'team',
-  number: '05',
-  title: 'Meticulous Cleanup & Magnet Sweeps',
-  copy: 'Complete tarps protecting landscaping, gutters, and siding, backed by dual magnetic wheel sweeps for total lawn and driveway safety.'
+  title: 'Property Care & Cleanup',
+  copy: 'Full tarps protecting your landscaping and magnetic sweeps after every workday.'
  }
 ];
 const roofTypes=[
@@ -79,58 +64,93 @@ const projects=[['project-cabin','Blue metal roof on a timber home','METAL ROOF 
    <div class="service-grid">{services.map((s,i)=><a class:list={['service-card',i===1&&'service-featured']} href="/#quote"><img class="service-photo" src={photo(s.image)} alt={s.title} width="1024" height="1536" loading="lazy"/><div class="service-info"><span class="hex"><Icon name={s.icon}/></span><h3>{s.title}</h3><p>{s.copy}</p></div></a>)}</div>
   </div>
  </section>
- <section class="about-band" id="about" aria-labelledby="about-title">
+ <section class="about-band" id="about-legacy" aria-labelledby="about-title">
   <img class="about-photo" src={photo('about-reference')} alt="Two roofers fitting tiles over blue roofing underlayment" loading="lazy" width="1536" height="1024"/>
   <div class="shell"><div class="about-panel"><h2 id="about-title">About the<br/>ROOFRIVA</h2><p>From a new roof to a repair, every project starts with understanding your property. Explore the materials, roof styles and practical details that can help you choose the right next step for your home or business.</p><p>Tell us what your roof needs. We will help you begin the conversation with a clear picture of your project.</p>
    <div class="about-point"><span><Icon name="house"/></span><div><h3>New Roofs & Replacement</h3><p>Explore roofing options that suit the style and needs of your property.</p></div></div>
    <div class="about-point"><span><Icon name="repair"/></span><div><h3>Repairs & Inspections</h3><p>Understand visible damage, wear and the areas that need attention.</p></div></div>
   </div></div>
  </section>
- <section class="why-section" id="why-us" aria-labelledby="why-title">
+ <div id="about" class="anchor-target" aria-hidden="true"></div>
+ <div class="why-section-wrapper">
+  <section class="why-section about-section" id="why-us" aria-labelledby="why-title">
   <div class="shell">
-   <div class="why-layout">
-    <div class="why-intro-col">
-     <div class="why-pill-badge">
-      <span class="why-pill-icon"><Icon name="shield"/></span>
-      <span>THE ROOFRIVA ADVANTAGE</span>
+   <div class="about-grid-layout">
+    <div class="about-content-col">
+     <div class="about-pill-badge">
+      <span class="about-pill-icon"><Icon name="shield"/></span>
+      <span>ABOUT ROOFRIVA</span>
      </div>
-     <h2 id="why-title" class="why-main-title">Engineered For Decades of Extreme Weather Protection.</h2>
-     <p class="why-description">
-      Your roof is your property's first and most critical defense. We reject shortcuts, combining certified master installers, architectural-grade materials, and proactive project supervision from inspection through final warranty sign-off.
+     <h2 id="why-title" class="about-title">Dedicated Craftsmanship. Built to Protect Texas Properties.</h2>
+     <p class="about-intro">
+      Headquartered in Austin, Texas, <strong>ROOFRIVA</strong> delivers specialized residential and commercial roofing solutions backed by uncompromising engineering standards and clear, direct communication.
      </p>
-     <div class="why-credential-card">
-      <div class="why-cred-header">
-       <span class="why-cred-badge">100% GUARANTEED</span>
-       <strong>Full Workmanship Warranty</strong>
+     <p class="about-body">
+      From complete architectural shingle replacements to storm damage restoration and commercial low-slope systems, our certified crews reject shortcuts. We combine top-tier weatherproofing materials with rigorous daily supervision from initial inspection to final warranty sign-off.
+     </p>
+     <div class="about-key-highlights">
+      <div class="about-highlight-item">
+       <span class="about-highlight-num">100%</span>
+       <span class="about-highlight-label">Workmanship Guarantee</span>
       </div>
-      <p>Every residential and commercial project is backed by our direct contractor guarantee and manufacturer warranties.</p>
-      <div class="why-cred-actions">
-       <a class="button angled" href="/#quote"><span>REQUEST A FREE ESTIMATE</span></a>
-       <a class="why-call-link" href={site.phoneHref}>
-        <Icon name="phone"/>
-        <span>{site.phone}</span>
-       </a>
+      <div class="about-highlight-divider" aria-hidden="true"></div>
+      <div class="about-highlight-item">
+       <span class="about-highlight-num">Austin, TX</span>
+       <span class="about-highlight-label">Metro Area Coverage</span>
       </div>
+      <div class="about-highlight-divider" aria-hidden="true"></div>
+      <div class="about-highlight-item">
+       <span class="about-highlight-num">Full Scope</span>
+       <span class="about-highlight-label">Residential & Commercial</span>
+      </div>
+     </div>
+     <div class="about-actions-row">
+      <a class="button angled" href="/#quote"><span>REQUEST A FREE ESTIMATE</span></a>
+      <a class="about-phone-link" href={site.phoneHref}>
+       <span class="about-phone-icon"><Icon name="phone"/></span>
+       <span>
+        <small>Direct Specialist Line</small>
+        <strong>{site.phone}</strong>
+       </span>
+      </a>
      </div>
     </div>
     
-    <div class="why-list-col">
-     {benefits.map((b) => (
-      <article class="why-item-card">
-       <div class="why-item-index" aria-hidden="true">{b.number}</div>
-       <div class="why-item-icon-box">
-        <Icon name={b.icon}/>
+    <div class="about-media-col">
+     <div class="about-photo-card">
+      <img
+       src={photo('about-reference')}
+       alt="ROOFRIVA certified technicians installing precision roof underlayment and tiles"
+       width="1024"
+       height="680"
+       loading="lazy"
+       class="about-feature-img"
+      />
+      <div class="about-photo-badge">
+       <span class="about-photo-badge-icon"><Icon name="house"/></span>
+       <div>
+        <strong>Master Roofer Standards</strong>
+        <span>Strict Austin building code compliance</span>
        </div>
-       <div class="why-item-content">
-        <h3>{b.title}</h3>
-        <p>{b.copy}</p>
+      </div>
+     </div>
+
+     <div class="about-pillars">
+      {aboutPillars.map((p) => (
+       <div class="about-pillar-card">
+        <div class="about-pillar-icon"><Icon name={p.icon}/></div>
+        <div class="about-pillar-text">
+         <h3>{p.title}</h3>
+         <p>{p.copy}</p>
+        </div>
        </div>
-      </article>
-     ))}
+      ))}
+     </div>
     </div>
    </div>
   </div>
  </section>
+ </div>
  <section class="promise-band"><h2>We Work Hard To Ensure Our Customers Are Happy And We Back It That With A 100% Satisfaction Guarantee!</h2><a class="button angled" href="/#quote"><span>REQUEST AN APPOINTMENT</span></a><p class="demo-note">Illustrative template promise — confirm terms with your contractor.</p></section>
  <section class="roof-types" id="roof-types"><div class="shell narrow-shell">
   <SectionTitle text="Types of Residential Roofs We Install & Repairs"/>
