@@ -46,11 +46,197 @@ const projects=[['project-cabin','Blue metal roof on a timber home','METAL ROOF 
   <div class="header-address"><Icon name="pin"/><span><small>Our Address</small><strong>123 Main Street, Austin, TX</strong></span></div>
   <a class="brand" href="/" aria-label="ROOFRIVA home"><BrandMark light/><span>roofriva</span></a>
   <a class="header-phone" href={site.phoneHref}><Icon name="phone"/><span><small>Give us a call</small><strong>{site.phone}</strong></span></a>
-  <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav"><Icon name="menu"/></button>
+  <button class="menu-toggle mobile-creative-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+   <span class="toggle-icon-wrap" aria-hidden="true">
+    <span class="bar bar-top"></span>
+    <span class="bar bar-mid"><span class="bar-mid-dot"></span></span>
+    <span class="bar bar-bot"></span>
+   </span>
+  </button>
  </div>
- <nav class="header-nav desktop-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/#about">About Us</a><a href="/#services">Services</a><a href="/#projects">Projects</a><a href="/#contact">Contact Us</a></nav>
- <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" hidden><a href="/">Home</a><a href="/#about">About Us</a><a href="/#services">Services</a><a href="/#projects">Projects</a><a href="/#contact">Contact Us</a></nav>
+ <nav class="header-nav desktop-nav" aria-label="Main navigation">
+  <a href="/">Home</a>
+  <a href="/#about">About Us</a>
+  <div class="nav-dropdown">
+   <a href="/#services" class="nav-dropdown-toggle">
+    <span>Services</span>
+    <Icon name="chevron" class="dropdown-chevron"/>
+   </a>
+   <div class="nav-dropdown-menu">
+    <a href="/#services" class="dropdown-item">
+     <strong>Residential Roofing</strong>
+     <small>Shingle, slate & tile installations</small>
+    </a>
+    <a href="/#services" class="dropdown-item">
+     <strong>Commercial Roofing</strong>
+     <small>EPDM, TPO & metal systems</small>
+    </a>
+    <a href="/#services" class="dropdown-item">
+     <strong>Roof Repair & Leak Stop</strong>
+     <small>Fast response & storm repairs</small>
+    </a>
+    <a href="/#services" class="dropdown-item">
+     <strong>Roof Inspection & Report</strong>
+     <small>Detailed certification for insurance</small>
+    </a>
+   </div>
+  </div>
+  <a href="/#projects">Projects</a>
+  <a href="/#faq">Service Area</a>
+  <a href="/#contact">Contact Us</a>
+ </nav>
 </header>
+<div id="mobile-menu-backdrop" class="mobile-menu-backdrop" hidden aria-hidden="true"></div>
+<aside id="mobile-nav" class="mobile-menu-drawer" aria-label="Mobile navigation" aria-hidden="true" hidden>
+ <div class="mobile-drawer-inner">
+  <div class="mobile-drawer-header">
+   <a class="mobile-drawer-brand" href="/" aria-label="ROOFRIVA home">
+    <BrandMark light/>
+    <div class="mobile-drawer-brand-text">
+     <span class="mobile-drawer-title">ROOFRIVA</span>
+     <span class="mobile-drawer-tag">Austin Roofing Specialists</span>
+    </div>
+   </a>
+   <button class="mobile-drawer-close" type="button" aria-label="Close navigation menu">
+    <Icon name="close"/>
+   </button>
+  </div>
+
+  <div class="mobile-drawer-quick-bar" style="--i:1;">
+   <div class="mobile-quick-badge">
+    <span class="pulse-dot"></span>
+    <span>Austin Metro Service</span>
+   </div>
+   <span class="mobile-quick-guarantee">100% Satisfaction Guarantee</span>
+  </div>
+
+  <nav class="mobile-drawer-nav" aria-label="Mobile navigation links">
+   <a href="/" class="mobile-drawer-item" style="--i:2;">
+    <div class="drawer-item-icon"><Icon name="house"/></div>
+    <div class="drawer-item-body">
+     <strong>Home</strong>
+     <small>Back to overview</small>
+    </div>
+    <span class="drawer-item-arrow" aria-hidden="true"><Icon name="arrow"/></span>
+   </a>
+
+   <a href="/#about" class="mobile-drawer-item" style="--i:3;">
+    <div class="drawer-item-icon"><Icon name="shield"/></div>
+    <div class="drawer-item-body">
+     <strong>About Us</strong>
+     <small>Certified Texas craftsmanship</small>
+    </div>
+    <span class="drawer-item-arrow" aria-hidden="true"><Icon name="arrow"/></span>
+   </a>
+
+   <div class="mobile-drawer-group" style="--i:4;">
+    <div class="mobile-drawer-accordion">
+     <a href="/#services" class="mobile-drawer-item mobile-accordion-main">
+      <div class="drawer-item-icon"><Icon name="repair"/></div>
+      <div class="drawer-item-body">
+       <strong>Our Services</strong>
+       <small>Installation, repair & inspection</small>
+      </div>
+     </a>
+     <button class="mobile-submenu-toggle" type="button" aria-expanded="false" aria-label="Toggle Services submenu">
+      <Icon name="chevron" class="submenu-chevron"/>
+     </button>
+    </div>
+    <div class="mobile-submenu" hidden>
+     <a href="/#services" class="mobile-sub-link">
+      <span class="sub-link-dot"></span>
+      <div class="sub-link-text">
+       <strong>Residential Roofing</strong>
+       <small>Shingle, slate & tile</small>
+      </div>
+     </a>
+     <a href="/#services" class="mobile-sub-link">
+      <span class="sub-link-dot"></span>
+      <div class="sub-link-text">
+       <strong>Commercial Roofing</strong>
+       <small>Flat & metal systems</small>
+      </div>
+     </a>
+     <a href="/#services" class="mobile-sub-link">
+      <span class="sub-link-dot"></span>
+      <div class="sub-link-text">
+       <strong>Roof Repair & Leak Stop</strong>
+       <small>Emergency storm repairs</small>
+      </div>
+     </a>
+     <a href="/#services" class="mobile-sub-link">
+      <span class="sub-link-dot"></span>
+      <div class="sub-link-text">
+       <strong>Roof Inspection</strong>
+       <small>Multi-point structural audits</small>
+      </div>
+     </a>
+    </div>
+   </div>
+
+   <a href="/#projects" class="mobile-drawer-item" style="--i:5;">
+    <div class="drawer-item-icon"><Icon name="document"/></div>
+    <div class="drawer-item-body">
+     <strong>Recent Projects</strong>
+     <small>Featured residential & commercial work</small>
+    </div>
+    <span class="drawer-item-arrow" aria-hidden="true"><Icon name="arrow"/></span>
+   </a>
+
+   <a href="/#faq" class="mobile-drawer-item" style="--i:6;">
+    <div class="drawer-item-icon"><Icon name="location"/></div>
+    <div class="drawer-item-body">
+     <strong>Service Area & Map</strong>
+     <small>123 Main St, Austin & FAQs</small>
+    </div>
+    <span class="drawer-item-arrow" aria-hidden="true"><Icon name="arrow"/></span>
+   </a>
+
+   <a href="/#contact" class="mobile-drawer-item" style="--i:7;">
+    <div class="drawer-item-icon"><Icon name="pin"/></div>
+    <div class="drawer-item-body">
+     <strong>Contact Us</strong>
+     <small>Get in touch with our team</small>
+    </div>
+    <span class="drawer-item-arrow" aria-hidden="true"><Icon name="arrow"/></span>
+   </a>
+  </nav>
+
+  <div class="mobile-drawer-cta-wrap" style="--i:8;">
+   <a class="button angled mobile-drawer-btn" href="/#quote">
+    <span>REQUEST AN APPOINTMENT</span>
+   </a>
+  </div>
+
+  <div class="mobile-drawer-contact-card" style="--i:9;">
+   <h3 class="mobile-contact-title">Direct Contact & Support</h3>
+   <a href={site.phoneHref} class="mobile-contact-row phone-row">
+    <div class="mobile-contact-icon"><Icon name="phone"/></div>
+    <div class="mobile-contact-text">
+     <small>Direct Specialist Line</small>
+     <strong>{site.phone}</strong>
+    </div>
+    <span class="mobile-call-pill">CALL NOW</span>
+   </a>
+
+   <a href={`mailto:${site.email}`} class="mobile-contact-row">
+    <div class="mobile-contact-icon"><Icon name="mail"/></div>
+    <div class="mobile-contact-text">
+     <small>Email Support</small>
+     <strong>{site.email}</strong>
+    </div>
+   </a>
+
+   <div class="mobile-contact-row">
+    <div class="mobile-contact-icon"><Icon name="clock"/></div>
+    <div class="mobile-contact-text">
+     <small>Working Hours</small>
+     <strong>{site.hours}</strong>
+    </div>
+   </div>
+  </div>
+ </div>
+</aside>
 <main id="main-content">
  <section class="hero" aria-labelledby="hero-title">
   <img class="hero-house" src={photo('hero-reference')} alt="Craftsman home with a dark roof at sunset" width="1536" height="1024" fetchpriority="high"/>
@@ -180,7 +366,7 @@ const projects=[['project-cabin','Blue metal roof on a timber home','METAL ROOF 
        <span class="section-title-line" aria-hidden="true"></span>
       </div>
       <div class="faq-list">
-       {faqs.map(([q,a],i)=><details open={i===1}><summary><span class="faq-plus" aria-hidden="true"></span>{q}</summary><p>{a}</p></details>)}
+       {faqs.map(([q,a])=><details><summary><span class="faq-plus" aria-hidden="true"></span>{q}</summary><p>{a}</p></details>)}
       </div>
      </div>
      <div class="map-card">
@@ -189,7 +375,17 @@ const projects=[['project-cabin','Blue metal roof on a timber home','METAL ROOF 
        <h2 id="contact-map-title">Service Area Map</h2>
       </div>
       <div class="map-wrapper">
-       <iframe class="map-frame" title="ROOFRIVA Service Area - 123 Main Street, Austin, TX" src="https://maps.google.com/maps?q=123+Main+Street,+Austin,+TX&t=&z=14&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+       <iframe
+        class="map-frame"
+        title="ROOFRIVA Service Area - 123 Main Street, Austin, TX"
+        src="https://maps.google.com/maps?q=123+Main+Street,+Austin,+TX&t=&z=14&ie=UTF8&iwloc=&output=embed"
+        width="100%"
+        height="100%"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+       ></iframe>
       </div>
       <div class="map-card-footer">
        <div class="map-card-address">
@@ -197,7 +393,7 @@ const projects=[['project-cabin','Blue metal roof on a timber home','METAL ROOF 
         <span><strong>123 Main Street</strong>, Austin, TX</span>
        </div>
        <a class="map-action-btn" href="https://maps.google.com/?q=123+Main+Street,+Austin,+TX" target="_blank" rel="noopener noreferrer">
-        <span>VIEW MAP</span>
+        <span>VIEW ON GOOGLE MAPS</span>
         <Icon name="arrow"/>
        </a>
       </div>
@@ -221,18 +417,88 @@ const projects=[['project-cabin','Blue metal roof on a timber home','METAL ROOF 
   .site-header .header-top{width:calc(100% - 36px);height:104px;display:grid;grid-template-columns:1fr auto;align-items:center}
   .site-header .header-address,.site-header .header-phone,.site-header .header-nav{display:none!important}
   .site-header .header-top>.brand{grid-column:1;justify-self:start}
-  .site-header .menu-toggle{display:grid;grid-column:2;place-items:center;justify-self:end;background:transparent;border:0;color:#fff;padding:10px}
-  .site-header .menu-toggle .icon{width:30px;height:30px}
+  .site-header .menu-toggle{grid-column:2;justify-self:end}
  }
 </style>
 </SiteLayout>
 <script>
  const toggle=document.querySelector<HTMLButtonElement>('.menu-toggle');
  const nav=document.querySelector<HTMLElement>('#mobile-nav');
- function closeMenu(){ if(toggle&&nav){nav.hidden=true;toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open navigation');} }
- toggle?.addEventListener('click',()=>{if(!nav)return;const isOpen=toggle.getAttribute('aria-expanded')==='true';nav.hidden=isOpen;toggle.setAttribute('aria-expanded',String(!isOpen));toggle.setAttribute('aria-label',isOpen?'Open navigation':'Close navigation');});
- nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
- document.addEventListener('keydown',e=>{if(e.key==='Escape'&&toggle?.getAttribute('aria-expanded')==='true'){closeMenu();toggle.focus();}});
+ const backdrop=document.querySelector<HTMLElement>('#mobile-menu-backdrop');
+ const closeBtn=document.querySelector<HTMLButtonElement>('.mobile-drawer-close');
+
+ let isMenuOpen = false;
+ let isAnimating = false;
+
+ function openMenu() {
+   if (!nav || !backdrop || isAnimating) return;
+   isAnimating = true;
+   isMenuOpen = true;
+   backdrop.hidden = false;
+   nav.hidden = false;
+   void backdrop.offsetWidth;
+   void nav.offsetWidth;
+   backdrop.classList.add('is-open');
+   nav.classList.add('is-open');
+   toggle?.classList.add('is-active');
+   toggle?.setAttribute('aria-expanded', 'true');
+   toggle?.setAttribute('aria-label', 'Close navigation menu');
+   nav.setAttribute('aria-hidden', 'false');
+   document.body.classList.add('menu-open');
+   setTimeout(() => { isAnimating = false; }, 350);
+ }
+
+ function closeMenu() {
+   if (!nav || !backdrop || !isMenuOpen || isAnimating) return;
+   isAnimating = true;
+   isMenuOpen = false;
+   backdrop.classList.remove('is-open');
+   backdrop.classList.add('is-closing');
+   nav.classList.remove('is-open');
+   nav.classList.add('is-closing');
+   toggle?.classList.remove('is-active');
+   toggle?.setAttribute('aria-expanded', 'false');
+   toggle?.setAttribute('aria-label', 'Open navigation menu');
+   nav.setAttribute('aria-hidden', 'true');
+   document.body.classList.remove('menu-open');
+   setTimeout(() => {
+     backdrop.hidden = true;
+     nav.hidden = true;
+     backdrop.classList.remove('is-closing');
+     nav.classList.remove('is-closing');
+     isAnimating = false;
+   }, 260);
+ }
+
+ toggle?.addEventListener('click', () => {
+   if (isMenuOpen) closeMenu();
+   else openMenu();
+ });
+
+ closeBtn?.addEventListener('click', closeMenu);
+ backdrop?.addEventListener('click', closeMenu);
+ nav?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+ 
+ document.querySelectorAll<HTMLButtonElement>('.mobile-submenu-toggle').forEach(btn => {
+   btn.addEventListener('click', (e) => {
+     e.stopPropagation();
+     const group = btn.closest('.mobile-drawer-group');
+     const submenu = group?.querySelector<HTMLElement>('.mobile-submenu');
+     if (!submenu) return;
+     const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+     btn.setAttribute('aria-expanded', String(!isExpanded));
+     submenu.hidden = isExpanded;
+     group?.classList.toggle('is-expanded', !isExpanded);
+   });
+ });
+
+ document.addEventListener('keydown', e => {
+   if (e.key === 'Escape' && isMenuOpen) {
+     closeMenu();
+     toggle?.focus();
+   }
+ });
+
  const cards=Array.from(document.querySelectorAll<HTMLButtonElement>('.project'));
  let current=1;
  function selectProject(index:number){current=(index+cards.length)%cards.length;cards.forEach((c,i)=>{c.classList.toggle('selected',i===current);c.setAttribute('aria-pressed',String(i===current));});const caption=document.querySelector('.project-caption');if(caption)caption.textContent=cards[current].querySelector('span')?.textContent||'';}
